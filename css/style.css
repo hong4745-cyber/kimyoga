@@ -511,17 +511,70 @@ button { cursor: pointer; font-family: var(--font-kr); }
   font-weight: 600;
   color: var(--color-font);
 }
-.mob-parent { cursor: default; }
+.mob-parent {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
 .mob-arrow { font-size: 14px; color: var(--color-font-light); font-weight: 400; }
 .mob-dot {
-  width: 8px; height: 8px;
+  display: none;
+}
+
+/* 모바일 메뉴 active 상태 */
+.mob-nav-item.active > a {
+  color: var(--color-main);
+}
+.mob-nav-item.active > a .mob-arrow {
+  display: none;
+}
+.mob-nav-item.active > a::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--color-point);
   flex-shrink: 0;
 }
+.mob-nav-item.active .mob-parent {
+  color: var(--color-main);
+}
+.mob-nav-item.active .mob-parent::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-point);
+  flex-shrink: 0;
+}
+.mob-sub-link.active {
+  color: var(--color-main);
+  font-weight: 700;
+}
+.mob-sub-link.active::before {
+  color: var(--color-main);
+}
 .mob-sub {
   list-style: none;
   padding: 4px 0 14px 4px;
+  display: none;
+}
+.mob-has-sub.open .mob-sub {
+  display: block;
+}
+.mob-chevron {
+  font-size: 18px;
+  color: var(--color-font-light);
+  font-weight: 400;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.mob-has-sub.open .mob-chevron {
+  transform: rotate(180deg);
 }
 .mob-sub-link {
   display: block;
@@ -2976,12 +3029,12 @@ footer {
   .instructors-full-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .instr-card-photo { height: 200px; }
   .location-img-grid { grid-template-columns: repeat(2, 1fr); }
-  .prog-hero { height: 220px; }
-  .prog-hero-body h1 { font-size: 24px; }
+  .prog-hero { height: 340px; }
+  .prog-hero-body h1 { font-size: 26px; }
   .prog-list-layout { grid-template-columns: 1fr; }
   .prog-sidebar { position: static; }
   .prog-item { grid-template-columns: 1fr; }
-  .prog-item-img { width: 100%; height: 180px; border-radius: 0; }
+  .prog-item-img { width: 100%; height: 240px; border-radius: 0; }
   .prog-info-grid { grid-template-columns: 1fr 1fr; }
   .community-tab-link { padding: 14px 18px; font-size: 13px; }
   .review-page-grid { grid-template-columns: 1fr; }
@@ -2992,4 +3045,63 @@ footer {
   .inquiry-card { padding: 28px 20px; }
   .inquiry-tabs { flex-direction: column; align-items: center; }
   .inquiry-tab-btn { width: 100%; max-width: 320px; justify-content: center; }
+
+  /* ── 교육프로그램 768px ── */
+  .page-subnav a { padding: 12px 14px; font-size: 12px; }
+  .prog-pro-section { padding: 56px 0 72px; }
+  .prog-pro-header { margin-bottom: 36px; }
+  .prog-pro-header h2 { font-size: 22px; }
+  .prog-pro-header p { font-size: 13px; }
+  .prog-pro-img { height: 360px; margin-bottom: 36px; }
+  .prog-info-cell { padding: 26px 20px; }
+  .prog-info-cell h4 { font-size: 12px; padding: 4px 14px; margin-bottom: 12px; }
+  .prog-info-cell p { font-size: 13px; }
+  .prog-kya-logo { flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; }
+  .prog-kya-logo p { font-size: 13px; }
+  .prog-list-page { padding: 40px 0 72px; }
+  .prog-list-title { font-size: 22px; letter-spacing: 1px; margin-bottom: 24px; padding-bottom: 18px; }
+  .prog-item { gap: 20px; padding: 28px 0; }
+  .prog-item-img { height: 220px; }
+  .prog-item-text h3 { font-size: 16px; }
+  .prog-item-text p { font-size: 13px; }
+  .prog-sidebar h3 { font-size: 13px; }
+  .prog-sidebar-body { padding: 16px; }
+}
+
+@media (max-width: 480px) {
+  /* ── 교육프로그램 480px ── */
+  .page-subnav .container { overflow-x: auto; flex-wrap: nowrap; }
+  .page-subnav a { padding: 11px 10px; font-size: 11px; }
+  .prog-hero { height: 280px; }
+  .prog-hero-body h1 { font-size: 20px; margin-bottom: 12px; }
+  .prog-hero-body p { font-size: 13px; margin-bottom: 16px; }
+  .prog-hero-label { font-size: 11px; letter-spacing: 2px; }
+  .prog-hero-btns .btn-green { font-size: 13px; padding: 11px 20px; }
+  .prog-pro-section { padding: 40px 0 56px; }
+  .prog-pro-header h2 { font-size: 19px; }
+  .prog-pro-subtitle { font-size: 12px; }
+  .prog-pro-header p { font-size: 12px; }
+  .prog-pro-img { height: 260px; margin-bottom: 24px; }
+  .prog-info-grid { grid-template-columns: 1fr; }
+  .prog-info-cell { padding: 20px 16px; border-bottom: 1px solid var(--color-border); }
+  .prog-info-cell:last-child { border-bottom: none; }
+  .prog-info-cell h4 { font-size: 12px; padding: 4px 14px; margin-bottom: 12px; }
+  .prog-info-cell p { font-size: 13px; line-height: 1.8; }
+  .prog-kya-logo { flex-direction: column; padding: 20px 16px; gap: 12px; }
+  .prog-kya-logo img { height: 48px !important; }
+  .prog-kya-logo p { font-size: 12px; }
+  .prog-list-page { padding: 28px 0 56px; }
+  .prog-list-title { font-size: 18px; letter-spacing: 0; margin-bottom: 20px; padding-bottom: 14px; }
+  .prog-item { gap: 16px; padding: 24px 0; }
+  .prog-item-img { height: 200px; border-radius: 12px; }
+  .prog-item-text h3 { font-size: 15px; }
+  .prog-item-en { font-size: 12px; margin-bottom: 10px; }
+  .prog-item-text p { font-size: 13px; }
+  .prog-sidebar { border-radius: 16px; }
+  .prog-sidebar h3 { font-size: 13px; padding: 13px 16px; }
+  .prog-sidebar-body { padding: 14px; }
+  .prog-sidebar label { font-size: 12px; }
+  .prog-sidebar select,
+  .prog-sidebar input[type="text"],
+  .prog-sidebar textarea { font-size: 13px; padding: 9px 12px; margin-bottom: 12px; }
 }
