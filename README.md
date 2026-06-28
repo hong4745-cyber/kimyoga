@@ -2,12 +2,14 @@
 
 > 기존 요가·필라테스 교육기관 홈페이지를 사용자 중심의 UI/UX와 반응형 웹으로 리뉴얼한 프로젝트입니다.
 
-![KIM'S YOGA PILATES](./readme/main.png)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d00b306b-7b07-48dc-aaa7-d2624587ec26" width="100%">
+</p>
 
 <p align="center">
-
-<a href="https://hong4745-cyber.github.io/kimyoga/">🌐 Live Demo</a> • <a href="https://github.com/hong4745-cyber/kimyoga">📂 Repository</a>
-
+  <img src="https://github.com/user-attachments/assets/f613e932-0626-42f8-8faf-3a4b70b0a672" width="31%">
+  <img src="https://github.com/user-attachments/assets/e6787d43-eb0c-42cf-b74a-9a79f8bb8128" width="31%">
+  <img src="https://github.com/user-attachments/assets/c12fcbeb-de0f-4ffd-a4da-f42b8223bcfa" width="31%">
 </p>
 
 ---
@@ -47,9 +49,25 @@
 
 # 🖼️ Before / After
 
-|        Before       |        After       |
-| :-----------------: | :----------------: |
-| <!-- Before 이미지 --> | <!-- After 이미지 --> |
+<table>
+<tr>
+<td width="50%" align="center">
+
+### Before
+
+<img src="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279"/>
+
+</td>
+
+<td width="50%" align="center">
+
+### After
+
+<img src="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe"/>
+
+</td>
+</tr>
+</table>
 
 ---
 
