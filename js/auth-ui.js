@@ -117,10 +117,31 @@
     if (el) el.style.display = 'none';
   }
 
+  function showSuccessToast(msg) {
+    var existing = document.getElementById('loginSuccessToast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.id = 'loginSuccessToast';
+    toast.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><circle cx="10" cy="10" r="10" fill="rgba(255,255,255,0.25)"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' + msg;
+    toast.style.cssText = 'position:fixed;top:90px;left:50%;transform:translateX(-50%);background:#496357;color:#fff;padding:14px 28px;border-radius:50px;font-size:15px;font-weight:700;font-family:\'Noto Sans KR\',sans-serif;box-shadow:0 8px 32px rgba(73,99,87,0.35);z-index:999999;display:flex;align-items:center;gap:10px;white-space:nowrap;animation:toastIn .3s ease;';
+    if (!document.getElementById('toastKeyframes')) {
+      var style = document.createElement('style');
+      style.id = 'toastKeyframes';
+      style.textContent = '@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+      document.head.appendChild(style);
+    }
+    document.body.appendChild(toast);
+    setTimeout(function () {
+      toast.style.transition = 'opacity .4s';
+      toast.style.opacity = '0';
+    }, 1200);
+  }
+
   function onLoginSuccess() {
     localStorage.setItem('kimyoga_logged_in', '1');
     closeLoginModal();
-    window.location.reload();
+    showSuccessToast('로그인 성공');
+    setTimeout(function () { window.location.reload(); }, 1600);
   }
 
   function handleEmailLogin() {
@@ -158,8 +179,8 @@
   function ensureFirebase() {
     if (window._auth) return;
     var scripts = [
-      'https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js',
-      'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js',
+      'https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js',
+      'https://www.gstatic.com/firebasejs/12.15.0/firebase-auth-compat.js',
       'js/firebase-init.js'
     ];
     var loaded = 0;

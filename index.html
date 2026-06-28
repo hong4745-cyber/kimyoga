@@ -348,7 +348,7 @@
             <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_3.png');" role="img" aria-label="프로그램 아이콘"></div>
             <h3>다양한 프로그램</h3>
             <p class="care-card-en">Variety Programs</p>
-            <p style="letter-spacing:-0.08em;">입문부터 심화, 지도자 과정까지 레벨별<br>수업을 제공합니다.</p>
+            <p style="letter-spacing:-0.08em;">입문부터 심화, 지도자 과정까지 레벨별 수업을 제공합니다.</p>
           </div>
           <div class="care-card" data-center="images/1_HOME_img/care_9.png" data-bg-size="90%" data-bg-size-sm="155%" data-href="about.html">
             <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_4.png');" role="img" aria-label="공인 아이콘"></div>
@@ -833,6 +833,19 @@
     );
   })();
 
+  // Care card 높이 균등화
+  (function () {
+    function equalCareCards() {
+      var cards = document.querySelectorAll('.care-card');
+      cards.forEach(function (c) { c.style.height = 'auto'; });
+      var max = 0;
+      cards.forEach(function (c) { max = Math.max(max, c.offsetHeight); });
+      cards.forEach(function (c) { c.style.height = max + 'px'; });
+    }
+    equalCareCards();
+    window.addEventListener('resize', equalCareCards);
+  })();
+
   // Care card click → center image change
   (function () {
     var cards   = document.querySelectorAll('.care-card');
@@ -845,10 +858,6 @@
 
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
-        if (window.innerWidth <= 768) {
-          var href = card.getAttribute('data-href');
-          if (href) { window.location.href = href; return; }
-        }
         cards.forEach(function (c) { c.classList.remove('active'); });
         card.classList.add('active');
 

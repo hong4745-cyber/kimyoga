@@ -61,7 +61,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 
 .sec-en {
   font-family: var(--font-en);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -819,7 +819,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 
 .spread-top-text p.body {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-font-sub);
   line-height: 1.85;
   word-break: keep-all;
@@ -934,14 +934,14 @@ button { cursor: pointer; font-family: var(--font-kr); }
   margin-bottom: 12px;
 }
 .count-num {
-  font-size: 48px;
+  font-size: 35px;
   font-family: var(--font-kr);
   font-weight: 700;
   color: var(--color-main);
   line-height: 1;
 }
 .type-text {
-  font-size: 48px;
+  font-size: 35px;
   font-family: var(--font-kr);
   font-weight: 700;
   color: var(--color-main);
@@ -964,7 +964,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 
 .spread-feature p {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-font-sub);
   line-height: 1.85;
   word-break: keep-all;
@@ -1055,7 +1055,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 .program-content .sec-en { color: var(--color-sub); font-size: 40px; margin-bottom: 20px; }
 
 .program-desc {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-sub);
   line-height: 1.85;
   word-break: keep-all;

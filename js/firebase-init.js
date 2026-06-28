@@ -12,11 +12,14 @@ var firebaseConfig = {
 };
 
 // ★ 카카오 개발자센터 > 내 애플리케이션 > 앱 키 > JavaScript 키
-var KAKAO_JS_KEY = "YOUR_KAKAO_JS_KEY";
+var KAKAO_JS_KEY = "39ac7a82e7bb0bee38a1312c30fb47a6";
+window._KAKAO_JS_KEY = KAKAO_JS_KEY;
 
 // ★ 네이버 개발자센터 > 애플리케이션 > Client ID
-var NAVER_CLIENT_ID    = "YOUR_NAVER_CLIENT_ID";
+var NAVER_CLIENT_ID    = "Zk2TxV4XsJudA19uuw2i";
 var NAVER_CALLBACK_URL = location.origin + "/login.html";
+window._NAVER_CLIENT_ID    = NAVER_CLIENT_ID;
+window._NAVER_CALLBACK_URL = NAVER_CALLBACK_URL;
 
 // ================================================================
 // Firebase 초기화

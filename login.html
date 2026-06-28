@@ -420,9 +420,9 @@
 </script>
 
 <!-- ── Firebase ── -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore-compat.js"></script>
 <script src="js/firebase-init.js"></script>
 
 <!-- ── 카카오 SDK ── -->
@@ -451,10 +451,20 @@ firebase.auth().onAuthStateChanged(function(user) {
   function showError(msg) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
   function clearError()   { errorEl.style.display = 'none'; }
 
+  function showSuccessToast(msg) {
+    var toast = document.createElement('div');
+    toast.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><circle cx="10" cy="10" r="10" fill="rgba(255,255,255,0.25)"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' + msg;
+    toast.style.cssText = 'position:fixed;top:90px;left:50%;transform:translateX(-50%);background:#496357;color:#fff;padding:14px 28px;border-radius:50px;font-size:15px;font-weight:700;font-family:\'Noto Sans KR\',sans-serif;box-shadow:0 8px 32px rgba(73,99,87,0.35);z-index:999999;display:flex;align-items:center;gap:10px;white-space:nowrap;animation:toastIn .3s ease;';
+    document.head.insertAdjacentHTML('beforeend','<style>@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}</style>');
+    document.body.appendChild(toast);
+    setTimeout(function(){toast.style.transition='opacity .4s';toast.style.opacity='0';},1200);
+  }
+
   function onLoginSuccess() {
     if (rememberBox.checked) localStorage.setItem('kimyoga_email', emailInput.value.trim());
     else                     localStorage.removeItem('kimyoga_email');
-    window.location.href = 'index.html';
+    showSuccessToast('로그인 성공');
+    setTimeout(function () { window.location.href = 'index.html'; }, 1600);
   }
 
   /* 이메일/비밀번호 로그인 */
@@ -552,3 +562,4 @@ firebase.auth().onAuthStateChanged(function(user) {
 <script src="js/auth-ui.js"></script>
 </body>
 </html>
+
