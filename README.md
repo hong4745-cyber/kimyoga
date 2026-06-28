@@ -363,3 +363,324 @@
 * 로그인 상태를 실시간으로 감지하여 UI를 동적으로 변경했습니다.
 * 소셜 로그인과 일반 로그인을 동일한 사용자 흐름으로 통합했습니다.
 
+---
+
+# 💡 핵심 구현 내용
+
+프로젝트에서 단순히 화면을 구현하는 것을 넘어, 사용자 경험과 유지보수를 고려하여 다음과 같은 기능을 직접 구현했습니다.
+
+---
+
+## 🎨 UI / UX
+
+* Figma 디자인을 기반으로 UI를 직접 퍼블리싱
+* 반응형 레이아웃 구현 (Desktop / Tablet / Mobile)
+* Sticky Header 및 Dropdown Navigation
+* 모바일 Drawer Navigation
+* Scroll Progress Bar
+* Hover Interaction 및 Transition 효과
+* 사용자 중심 정보 구조(IA) 재구성
+
+---
+
+## ⚙️ Front-end
+
+* HTML5 시맨틱 마크업
+* CSS Variables를 활용한 디자인 시스템 구축
+* Flexbox와 Grid를 활용한 반응형 레이아웃
+* Vanilla JavaScript 기반 인터랙션 구현
+* 공통 UI 패턴(Header / Footer / Navigation) 적용
+
+---
+
+## 🔥 Firebase
+
+* Firebase Authentication
+* Firebase Realtime Database
+* Firebase Firestore
+* Firebase Storage
+
+### 구현 기능
+
+* 이메일 회원가입 / 로그인
+* 카카오 · 네이버 소셜 로그인
+* 로그인 상태에 따른 Header UI 변경
+* 게시판 CRUD
+* 수강 상담 데이터 저장
+* 회원 프로필 관리
+* 게시글 이미지 업로드
+
+---
+
+## 🌏 API 연동
+
+### NAVER Map API
+
+* 지점별 지도 출력
+* Marker 및 InfoWindow 구현
+* 지점 변경 시 지도 정보 동기화
+
+### Social Login
+
+* Kakao Login SDK
+
+* Naver Login SDK
+
+* OAuth 기반 로그인
+
+* Firebase Authentication 연동
+
+---
+
+## 📱 사용자 경험(UX)
+
+* 반응형 웹 지원
+* 모바일 우선 사용자 경험 고려
+* 페이지 간 일관된 Navigation
+* 직관적인 정보 탐색 구조
+* 페이지 이동을 최소화한 인터랙션
+
+---
+
+# 🔧 Trouble Shooting
+
+## 1. 모바일 메뉴 UX 개선
+
+### 문제
+
+모바일 환경에서 메뉴의 계층 구조가 복잡하여 원하는 메뉴를 빠르게 찾기 어려웠습니다.
+
+### 해결
+
+Drawer Navigation을 적용하여 메뉴를 전체 화면 형태로 제공하고, 한 손으로도 쉽게 탐색할 수 있도록 개선했습니다.
+
+---
+
+## 2. Git index.lock 충돌
+
+### 문제
+
+이미지 파일이 많아 `git add` 수행 중 타임아웃이 발생하면서 `.git/index.lock` 파일이 남아 Git 명령이 실행되지 않았습니다.
+
+### 해결
+
+잠금 파일을 삭제한 뒤 다시 Staging과 Commit을 진행하여 문제를 해결했습니다.
+
+---
+
+## 3. Windows 한글 경로 문제
+
+### 문제
+
+프로젝트 경로에 한글이 포함되어 `git -C` 명령 실행 시 인코딩 오류가 발생했습니다.
+
+### 해결
+
+VS Code 터미널에서 직접 프로젝트 폴더로 이동하여 Git 명령을 실행하는 방식으로 해결했습니다.
+
+---
+
+## 4. Firebase 소셜 로그인 이메일 처리
+
+### 문제
+
+카카오와 네이버 계정에서 이메일 제공에 동의하지 않은 경우 Firebase 회원 생성이 불가능했습니다.
+
+### 해결
+
+이메일 정보가 없는 경우 안내 메시지를 출력하고 로그인 과정을 중단하도록 예외 처리를 추가했습니다.
+
+---
+
+# ⚡ 성능 최적화
+
+| 항목           | 적용 내용                                           |
+| ------------ | ----------------------------------------------- |
+| 이미지 최적화      | 지점 이미지를 해상도별로 분리하여 환경에 맞게 제공                    |
+| CSS 관리       | 모든 스타일을 하나의 CSS 파일로 통합하여 HTTP 요청 최소화            |
+| Scroll 이벤트   | Progress Bar와 Header 상태 변경을 하나의 Scroll 이벤트에서 처리 |
+| Firebase SDK | 필요한 페이지에서만 SDK를 선택적으로 로드하여 초기 로딩 최적화            |
+
+---
+
+# 🗄️ 데이터 구조
+
+프로젝트에서는 **Firebase Realtime Database**와 **Firestore**를 목적에 맞게 분리하여 사용했습니다.
+
+## Firebase Realtime Database
+
+* 회원 정보
+* 커뮤니티 게시글
+* 수강 상담 신청
+
+```text
+root
+├── users
+├── posts
+└── inquiries
+```
+
+---
+
+## Firebase Firestore
+
+* 회원 프로필
+* 사용자 문서 데이터
+
+```text
+users
+└── {uid}
+```
+
+---
+
+# 📁 프로젝트 구조
+
+```text
+kimyoga-main
+│
+├── index.html
+├── about.html
+├── instructors.html
+├── location.html
+├── inquiry.html
+├── login.html
+├── signup.html
+│
+├── css
+│   └── style.css
+│
+├── js
+│   ├── firebase-init.js
+│   ├── auth-ui.js
+│   └── community.js
+│
+├── images
+│
+├── firestore.rules
+├── firestore.indexes.json
+└── README.md
+```
+
+> **💡 Tip**
+> GitHub에서는 프로젝트 구조를 너무 세부적으로 나열하기보다, **핵심 디렉터리와 주요 파일만 보여주는 것이 가독성이 좋습니다.**
+> 현재 README에 있는 전체 구조는 너무 길기 때문에, 이처럼 핵심 구조만 정리하는 것을 추천합니다.
+
+---
+
+# ▶️ 실행 방법
+
+## 1. 저장소 클론
+
+```bash
+git clone https://github.com/hong4745-cyber/kimyoga.git
+```
+
+---
+
+## 2. 프로젝트 폴더 이동
+
+```bash
+cd kimyoga
+```
+
+---
+
+## 3. 실행
+
+본 프로젝트는 별도의 빌드 과정이 없는 **Static Web Project**입니다.
+
+`index.html`을 브라우저에서 실행하거나 **VS Code Live Server**를 이용하여 실행할 수 있습니다.
+
+### VS Code Live Server 실행
+
+```text
+1. 프로젝트 열기
+2. index.html 선택
+3. Open with Live Server
+```
+
+---
+
+## 4. Firebase 설정
+
+Firebase 기능(로그인, 회원가입, 게시판, 상담 신청)을 사용하려면 Firebase 프로젝트를 생성한 뒤 `firebase-init.js`에 자신의 설정 정보를 입력해야 합니다.
+
+```javascript
+const firebaseConfig = {
+  apiKey: "...",
+  authDomain: "...",
+  projectId: "...",
+  ...
+};
+```
+
+> **참고**
+> 보안을 위해 실제 API Key는 Repository에 포함하지 않았습니다.
+
+---
+
+# 🚀 배포
+
+GitHub Pages를 이용하여 프로젝트를 배포했습니다.
+
+| 구분            | 주소                                        |
+| ------------- | ----------------------------------------- |
+| 🌐 Live Demo  | https://hong4745-cyber.github.io/kimyoga/ |
+| 📂 Repository | https://github.com/hong4745-cyber/kimyoga |
+
+---
+
+# 🔮 개선 예정
+
+| 항목        | 내용                               |
+| --------- | -------------------------------- |
+| 📷 콘텐츠 개선 | 실제 강사 및 시설 이미지로 교체하여 완성도 향상      |
+| 🔐 로그인 기능 | 카카오 · 네이버 소셜 로그인 기능 고도화          |
+| 📱 반응형 개선 | Tablet(768px) 구간 레이아웃 최적화        |
+| 🚀 SEO    | Meta Tag, Open Graph, Sitemap 적용 |
+| ♿ 접근성     | Keyboard Navigation 및 ARIA 속성 보완 |
+| 🧩 코드 구조  | Header · Footer 공통 컴포넌트 모듈화      |
+| ⚡ 성능      | 이미지 Lazy Loading 및 코드 최적화        |
+
+---
+
+# 📚 What I Learned
+
+프로젝트를 진행하며 다음과 같은 역량을 키울 수 있었습니다.
+
+* Figma 디자인을 코드로 구현하는 방법
+* 반응형 UI 설계 및 퍼블리싱
+* CSS 레이아웃 정밀 구현
+* Firebase 기반 인증 및 데이터 관리
+* 외부 API 연동
+* Git을 활용한 버전 관리
+* 사용자 중심 UI/UX 개선
+
+---
+
+# 🌱 프로젝트를 통해 배운 점
+
+* Figma 디자인을 실제 웹 페이지로 구현하며 여백, 정렬, 이미지 그리드 등 디테일을 코드로 표현하는 과정의 중요성을 배웠습니다.
+* 브라우저 개발자 도구를 활용해 값을 반복적으로 수정하며 CSS 레이아웃에 대한 이해와 작업 속도를 함께 향상시킬 수 있었습니다.
+* Firebase와 외부 API를 연동하면서 공식 문서를 기반으로 기능을 구현하는 경험을 쌓았고, 유지보수를 고려한 코드 구조의 중요성을 체감했습니다.
+
+---
+
+# 📝 프로젝트 회고
+
+짧은 기간 동안 기획부터 디자인, 퍼블리싱, 프론트엔드 개발까지 전 과정을 직접 진행하며 프로젝트를 완성했습니다.
+
+기능 구현에 집중하는 것에서 나아가 사용자 경험과 유지보수를 고려한 구조를 설계하는 과정의 중요성을 경험할 수 있었으며, 디자인을 코드로 구현하는 과정에서 퍼블리싱 역량 또한 크게 향상되었습니다.
+
+다음 프로젝트에서는 컴포넌트 기반 구조와 코드 모듈화를 적극적으로 적용하고, 성능 최적화와 접근성을 더욱 고려한 프로젝트를 구현하는 것을 목표로 하고 있습니다.
+
+---
+
+# 📄 License
+
+본 프로젝트는 **학습 및 포트폴리오 목적**으로 제작되었습니다.
+
+기존 **KIM'S YOGA PILATES** 홈페이지를 참고하여 UI/UX를 리뉴얼한 프로젝트이며, 상업적 목적이 아닌 프론트엔드 개발 및 UI/UX 개선 역량을 보여주기 위한 용도로 제작되었습니다.
+
+모든 상표 및 원본 콘텐츠의 권리는 해당 소유자에게 있습니다.
