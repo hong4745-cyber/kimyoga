@@ -29,7 +29,7 @@
 * ✔ Firebase 기반 회원 인증
 * ✔ 커뮤니티 게시판 구현
 * ✔ NAVER Map API 연동
-* ✔ 카카오 · 네이버 소셜 로그인
+* ✔ 구글 로그인
 * ✔ Vanilla JavaScript 기반 인터랙션 구현
 * ✔ 사용자 중심 정보 구조 개선
 * ✔ 모바일 Drawer Navigation
@@ -325,6 +325,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/665bf84a-ebff-410a-b2dc-433e4ab41c82" width="100%">
   <img width="1364" height="641" alt="Image" src="https://github.com/user-attachments/assets/ee8a996e-b530-41ec-8447-61be61840b95" />
+  <img width="937" height="524" alt="Image" src="https://github.com/user-attachments/assets/3ac85b77-49bc-4cee-ac5f-4a827f95e87b" />
 </p>
 
 ### ✨ 주요 기능
@@ -415,7 +416,6 @@
 ### ✨ 주요 기능
 
 - 이메일 회원가입 및 로그인을 지원합니다.
-- 카카오와 네이버 소셜 로그인을 제공하여 간편하게 회원 인증을 진행할 수 있습니다.
 - 로그인 상태에 따라 Header UI가 동적으로 변경되어 사용자에게 맞는 메뉴를 제공합니다.
 
 ### 💻 구현 내용
@@ -465,7 +465,6 @@
 ### 구현 기능
 
 * 이메일 회원가입 / 로그인
-* 카카오 · 네이버 소셜 로그인
 * 로그인 상태에 따른 Header UI 변경
 * 게시판 CRUD
 * 수강 상담 데이터 저장
@@ -540,17 +539,6 @@ Drawer Navigation을 적용하여 메뉴를 전체 화면 형태로 제공하고
 
 VS Code 터미널에서 직접 프로젝트 폴더로 이동하여 Git 명령을 실행하는 방식으로 해결했습니다.
 
----
-
-## 4. Firebase 소셜 로그인 이메일 처리
-
-### 문제
-
-카카오와 네이버 계정에서 이메일 제공에 동의하지 않은 경우 Firebase 회원 생성이 불가능했습니다.
-
-### 해결
-
-이메일 정보가 없는 경우 안내 메시지를 출력하고 로그인 과정을 중단하도록 예외 처리를 추가했습니다.
 
 ---
 
@@ -695,15 +683,15 @@ GitHub Pages를 이용하여 프로젝트를 배포했습니다.
 
 # 🔮 개선 예정
 
-| 항목        | 내용                               |
-| --------- | -------------------------------- |
-| 📷 콘텐츠 개선 | 실제 강사 및 시설 이미지로 교체하여 완성도 향상      |
-| 🔐 로그인 기능 | 카카오 · 네이버 소셜 로그인 기능 고도화          |
-| 📱 반응형 개선 | Tablet(768px) 구간 레이아웃 최적화        |
-| 🚀 SEO    | Meta Tag, Open Graph, Sitemap 적용 |
-| ♿ 접근성     | Keyboard Navigation 및 ARIA 속성 보완 |
-| 🧩 코드 구조  | Header · Footer 공통 컴포넌트 모듈화      |
-| ⚡ 성능      | 이미지 Lazy Loading 및 코드 최적화        |
+| 항목           | 내용                                         |
+| ---------      | --------------------------------             |
+| 📷 콘텐츠 개선 | 실제 강사 및 시설 이미지로 교체하여 완성도 향상  |
+| 🔐 로그인 기능 | 구글 로그인 기능                          |
+| 📱 반응형 개선  | Tablet(768px) 구간 레이아웃 최적화             |
+| 🚀 SEO        | Meta Tag, Open Graph, Sitemap 적용 |
+| ♿ 접근성      | Keyboard Navigation 및 ARIA 속성 보완 |
+| 🧩 코드 구조   | Header · Footer 공통 컴포넌트 모듈화      |
+| ⚡ 성능       | 이미지 Lazy Loading 및 코드 최적화        |
 
 ---
 
