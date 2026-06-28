@@ -2,6 +2,30 @@
 
 > 기존 요가·필라테스 교육기관 홈페이지를 사용자 중심의 UI/UX와 반응형 웹으로 리뉴얼한 프로젝트입니다.
 
+## 🚧 README 리팩토링 미리보기
+
+이 파일은 **최종본 초안(v1)** 입니다.
+기존 README의 내용을 유지하면서 GitHub 포트폴리오 형식으로 리디자인하기 위한 중간 결과물입니다.
+
+---
+
+## ✨ Highlights
+
+- Responsive Web
+- Vanilla JavaScript
+- Firebase Authentication
+- Realtime Database
+- Firestore
+- NAVER Map API
+- Kakao / Naver Login
+- Community Board
+
+---
+
+# KIM'S YOGA PILATES
+
+> 기존 요가·필라테스 교육기관 홈페이지를 사용자 중심의 UI/UX와 반응형 웹으로 리뉴얼한 프로젝트입니다.
+
 ![main](./readme/main.png)
 
 ## 프로젝트 소개
