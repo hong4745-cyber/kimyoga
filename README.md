@@ -55,7 +55,7 @@
 
 ### Before
 
-<img src="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279"/>
+<img src="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279" height="500"/>
 
 </td>
 
@@ -63,7 +63,7 @@
 
 ### After
 
-<img src="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe"/>
+<img src="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe" height="500"/>
 
 </td>
 </tr>
@@ -207,182 +207,217 @@
 
 ---
 
-## 1. 🎞️ 히어로 슬라이드쇼 (`index.html`)
+1. 🎞️ 히어로 슬라이드쇼 (`index.html`)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/<!-- 첫 번째 이미지 ID -->" width="49%">
-  <img src="https://github.com/user-attachments/assets/<!-- 두 번째 이미지 ID -->" width="49%">
+  <img src="https://github.com/user-attachments/assets/a77bea56-c760-4689-b66f-2b5cfb1202cd" width="49%">
+  <img src="https://github.com/user-attachments/assets/e32c37b3-6b21-41a3-a455-8dfcaf3e85f9" width="49%">
 </p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 풀스크린 Hero 슬라이드를 자동으로 전환하여 브랜드의 첫인상을 전달합니다.
-* 화살표 버튼과 도트 인디케이터를 통해 원하는 슬라이드로 직접 이동할 수 있습니다.
-* 자동 재생과 수동 조작을 함께 지원하여 사용자 편의성을 높였습니다.
+- 메인 화면에 자동 전환되는 Hero Slider를 배치하여 브랜드의 첫인상을 효과적으로 전달했습니다.
+- 이전/다음 버튼과 페이지 인디케이터(Dot Navigation)를 제공하여 원하는 슬라이드로 자유롭게 이동할 수 있습니다.
+- 자동 재생과 수동 조작을 함께 지원하여 사용자 편의성을 높였습니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* JavaScript를 이용해 자동 슬라이드 및 수동 제어를 구현했습니다.
-* 현재 슬라이드와 도트 인디케이터를 실시간으로 동기화했습니다.
-* 사용자 조작 이후에도 자연스럽게 자동 재생이 이어지도록 구현했습니다.
-
----
-
-## 2. Sticky Header & Dropdown Navigation (전 페이지 공통)
-
-<img src="https://github.com/user-attachments/assets/186c0a74-650c-4b55-9428-dfc438592d73" width="100%">
-
-### 주요 기능
-
-* 스크롤해도 상단에 고정되는 Header를 제공합니다.
-* 마우스를 올리면 하위 메뉴가 Dropdown 형태로 표시됩니다.
-* 어느 페이지에서도 원하는 메뉴로 빠르게 이동할 수 있습니다.
-
-### 구현 내용
-
-* CSS `position: sticky`를 활용해 상단 고정 Header를 구현했습니다.
-* JavaScript와 CSS를 조합하여 Hover 기반 Dropdown 메뉴를 구현했습니다.
-* 공통 Header를 사용하여 페이지 간 일관된 사용자 경험을 제공했습니다.
+- **Vanilla JavaScript**를 활용하여 자동 재생(Auto Play)과 이전/다음 버튼을 구현했습니다.
+- 현재 활성화된 슬라이드와 Dot Navigation이 실시간으로 동기화되도록 구현했습니다.
+- 부드러운 화면 전환 애니메이션을 적용하여 자연스러운 사용자 경험을 제공했습니다.
+- 반응형 레이아웃을 적용하여 Desktop과 Mobile 환경 모두에서 동일한 사용성을 제공합니다.
 
 ---
 
-## 3. 모바일 Drawer Menu (전 페이지 공통)
+## 2. 🧭 Sticky Header & Dropdown Navigation (전 페이지 공통)
 
-<img src="https://github.com/user-attachments/assets/006be519-d2f0-4ff5-bd16-bbfcb2b20a33" width="100%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c86cf4f-517e-4935-b046-4eb8ffbd0873" width="49%">
+  <img src="https://github.com/user-attachments/assets/348d976a-487e-4c9e-bced-2fe57dafd982" width="49%">
+</p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 모바일 환경에서는 GNB를 햄버거 메뉴로 제공합니다.
-* 버튼 클릭 시 전체 화면 Drawer Menu가 슬라이드 애니메이션과 함께 나타납니다.
-* 메뉴 선택 후 자동으로 닫혀 모바일 사용성을 높였습니다.
+- 페이지를 스크롤해도 Header가 상단에 고정되어 언제든지 주요 메뉴에 접근할 수 있습니다.
+- 메뉴에 마우스를 올리면 Dropdown Navigation이 표시되어 하위 페이지로 빠르게 이동할 수 있습니다.
+- 현재 페이지를 직관적으로 확인할 수 있도록 Active Menu를 표시했습니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* JavaScript를 이용해 Drawer Menu의 열림/닫힘 상태를 제어했습니다.
-* Overlay와 애니메이션을 적용하여 자연스러운 화면 전환을 구현했습니다.
-* 모바일 환경에 최적화된 네비게이션 구조를 구성했습니다.
-
----
-
-## 4. Scroll Progress Bar (전 페이지 공통)
-
-<img src="https://github.com/user-attachments/assets/bb9d7253-16eb-4d7d-ba97-67d9e64750dd" width="100%">
-
-### 주요 기능
-
-* 현재 페이지의 스크롤 진행률을 상단 Progress Bar로 표시합니다.
-* 긴 페이지에서도 현재 위치를 직관적으로 확인할 수 있습니다.
-
-### 구현 내용
-
-* Scroll 이벤트를 이용해 문서 전체 높이 대비 현재 위치를 계산했습니다.
-* 계산된 값을 Progress Bar의 Width에 반영하여 실시간으로 업데이트했습니다.
+- **CSS `position: sticky`**를 활용하여 Header를 상단에 고정했습니다.
+- **Vanilla JavaScript**를 이용해 스크롤 위치에 따라 Header 스타일이 자연스럽게 변경되도록 구현했습니다.
+- Hover 이벤트를 활용하여 Dropdown Navigation을 구현하고, 사용자의 메뉴 탐색성을 향상시켰습니다.
+- Desktop과 Mobile에서 동일한 네비게이션 경험을 제공할 수 있도록 공통 구조를 적용했습니다.
 
 ---
 
-## 5. 강사 필터링 카드 (`instructors.html`)
+## 3. 📱 모바일 Drawer Menu (전 페이지 공통)
 
-<img src="https://github.com/user-attachments/assets/f7bfe3ca-535f-4129-899a-bf787e5033a2" width="100%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f4a0bc32-8d4c-42aa-831d-839405593560" width="38%">
+</p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 전체보기 및 카테고리별 강사 필터링을 제공합니다.
-* 강사 정보를 카드 형태로 구성하여 가독성을 높였습니다.
-* 상세보기 버튼을 통해 추가 정보를 확인할 수 있습니다.
+- 모바일 환경에서는 GNB를 햄버거 메뉴(Hamburger Menu) 형태로 제공합니다.
+- 메뉴 버튼을 클릭하면 Drawer Menu가 슬라이드 애니메이션과 함께 나타나며, 모든 메뉴를 한 화면에서 확인할 수 있습니다.
+- 모바일 사용 환경에 최적화된 직관적인 네비게이션을 제공합니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* JavaScript를 이용해 버튼 클릭 시 카드 목록을 동적으로 필터링했습니다.
-* Grid Layout을 활용하여 반응형 카드 UI를 구현했습니다.
-
----
-
-## 6. 지점 정보 & 시설 갤러리 (`location.html`)
-
-<img src="https://github.com/user-attachments/assets/c06f35b7-09f0-4635-b724-c4fb01df478f" width="100%">
-
-### 주요 기능
-
-* 6개 지점을 탭으로 전환할 수 있습니다.
-* 선택한 지점에 따라 지도, 시설 이미지, 교통 정보가 함께 변경됩니다.
-* 별도의 페이지 이동 없이 필요한 정보를 확인할 수 있습니다.
-
-### 구현 내용
-
-* NAVER Map API를 활용하여 지점별 지도를 출력했습니다.
-* 탭 변경 시 지도와 시설 정보가 함께 변경되도록 구현했습니다.
-* Marker와 InfoWindow를 활용하여 위치 정보를 제공합니다.
+- **Vanilla JavaScript**를 활용하여 Drawer Menu의 열림/닫힘 상태를 구현했습니다.
+- Overlay와 슬라이드 애니메이션을 적용하여 자연스러운 화면 전환 효과를 구현했습니다.
+- 메뉴 선택 시 Drawer Menu가 자동으로 닫히도록 구현하여 사용자 편의성을 높였습니다.
+- 반응형 레이아웃을 적용하여 Mobile 환경에서 최적의 사용성을 제공합니다.
 
 ---
 
-## 7. 프로그램 검색 및 필터 (`program-yoga.html`, `program-pilates.html`)
+## 4. 📊 Scroll Progress Bar (전 페이지 공통)
 
-<img src="https://github.com/user-attachments/assets/f0f88055-bfc0-4a01-b44b-53a64cb5ea8c" width="100%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1a128356-ab18-4495-8bf4-28024eb70934" width="100%">
+</p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 프로그램, 강사, 요일, 지점을 조건별로 선택할 수 있습니다.
-* 선택한 조건에 맞는 프로그램을 빠르게 확인할 수 있습니다.
+- 페이지 상단에 현재 스크롤 진행률을 실시간으로 표시합니다.
+- 긴 콘텐츠에서도 사용자가 현재 읽고 있는 위치를 직관적으로 확인할 수 있습니다.
+- 스크롤 진행 상황을 시각적으로 제공하여 사용자 경험을 향상시켰습니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* Sidebar Filter UI를 직접 구현했습니다.
-* Select Box를 조합하여 프로그램 탐색이 쉽도록 구성했습니다.
-* 반응형 레이아웃을 적용하여 모바일에서도 동일한 사용성을 제공합니다.
-
----
-
-## 8. 커뮤니티 게시판 (`community-*`)
-
-<img src="https://github.com/user-attachments/assets/4039329b-2e09-4dc7-afef-674dce967e2b" width="100%">
-
-### 주요 기능
-
-* 공지사항, 후기, 뉴스 게시판을 제공합니다.
-* 검색 및 페이지네이션 기능을 지원합니다.
-* 태그를 활용하여 게시글을 직관적으로 구분할 수 있습니다.
-
-### 구현 내용
-
-* Firebase Realtime Database를 이용하여 게시글을 저장 및 조회했습니다.
-* JavaScript로 검색과 페이지네이션 기능을 구현했습니다.
-* 공통 게시판 레이아웃을 적용하여 유지보수성을 높였습니다.
+- **Vanilla JavaScript**를 활용하여 스크롤 위치와 전체 문서 높이를 계산했습니다.
+- 계산된 값을 Progress Bar의 `width`에 실시간으로 반영하여 진행률을 표시했습니다.
+- 스크롤 이벤트를 최적화하여 부드럽고 자연스럽게 동작하도록 구현했습니다.
+- 모든 페이지에서 공통으로 사용할 수 있도록 재사용 가능한 구조로 구현했습니다.
 
 ---
 
-## 9. 수강 상담 신청 (`inquiry.html`)
+## 5. 👨‍🏫 강사 필터링 카드 (`instructors.html`)
 
-<img src="https://github.com/user-attachments/assets/d0aae841-279e-44e4-be3a-3440a89f4637" width="100%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4631ecc6-301c-4d03-8cd3-c3736e3be14b" width="100%">
+</p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 온라인 상담, 시간표 조회, 원데이 클래스 신청을 하나의 페이지에서 제공합니다.
-* 사용자는 원하는 상담 유형을 탭으로 쉽게 전환할 수 있습니다.
+- 카테고리 버튼을 통해 원하는 강사만 빠르게 확인할 수 있습니다.
+- 강사 정보를 카드(Card) 형태로 구성하여 가독성과 탐색성을 높였습니다.
+- 전문 분야와 주요 정보를 한눈에 확인할 수 있도록 UI를 구성했습니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* Tab UI를 이용해 하나의 페이지에서 여러 폼을 관리했습니다.
-* Firebase Database와 연동하여 상담 신청 데이터를 저장했습니다.
-* 입력 폼을 사용자 중심으로 구성하여 입력 편의성을 높였습니다.
+- **Vanilla JavaScript**를 활용하여 카테고리 버튼 클릭 시 강사 목록을 동적으로 필터링하도록 구현했습니다.
+- **CSS Grid Layout**을 적용하여 반응형 카드 레이아웃을 구현했습니다.
+- 카드 Hover 효과를 적용하여 사용자 인터랙션과 시각적 피드백을 강화했습니다.
+- 반응형 레이아웃을 적용하여 Desktop과 Mobile 환경 모두에서 최적의 UI를 제공합니다.
+
+---
+
+## 6. 📍 지점 정보 & 시설 갤러리 (`location.html`)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/665bf84a-ebff-410a-b2dc-433e4ab41c82" width="100%">
+  <img width="1364" height="641" alt="Image" src="https://github.com/user-attachments/assets/ee8a996e-b530-41ec-8447-61be61840b95" />
+</p>
+
+### ✨ 주요 기능
+
+- 지점 선택 시 해당 지점의 **시설 이미지, 위치 정보, 교통 안내**를 한 번에 확인할 수 있습니다.
+- **NAVER Map API**를 연동하여 실제 위치를 지도에서 직관적으로 확인할 수 있습니다.
+- 별도의 페이지 이동 없이 지점 정보를 빠르게 탐색할 수 있도록 구성했습니다.
+
+### 💻 구현 내용
+
+- **NAVER Map API**를 활용하여 지점별 지도와 Marker를 동적으로 출력했습니다.
+- 지점(Tab) 선택 시 시설 이미지, 주소, 교통 정보가 함께 변경되도록 구현했습니다.
+- JavaScript를 이용해 선택한 지점에 맞는 콘텐츠를 동적으로 렌더링했습니다.
+- 반응형 레이아웃을 적용하여 Desktop과 Mobile 환경 모두에서 동일한 사용자 경험을 제공합니다.
+
+---
+
+7. 🔍 프로그램 검색 및 필터 (`program-yoga.html`, `program-pilates.html`)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dc8278af-83a7-457c-94a8-69d5b7f04852" width="100%">
+</p>
+
+### ✨ 주요 기능
+
+- 프로그램 유형, 요일, 강사, 지점 등 다양한 조건을 선택하여 원하는 교육 과정을 빠르게 탐색할 수 있습니다.
+- 사이드바 필터를 통해 사용자가 필요한 프로그램을 직관적으로 찾을 수 있도록 구성했습니다.
+- 프로그램 정보를 카드 형태로 제공하여 가독성과 정보 탐색성을 높였습니다.
+
+### 💻 구현 내용
+
+- **Vanilla JavaScript**를 활용하여 프로그램 탐색 UI를 구현했습니다.
+- **Sidebar Filter UI**를 적용하여 프로그램 유형, 요일, 강사, 지점 등의 조건을 선택할 수 있도록 구성했습니다.
+- **CSS Grid와 Flexbox**를 활용하여 프로그램 목록을 반응형 레이아웃으로 구현했습니다.
+- Desktop과 Mobile 환경 모두에서 일관된 사용자 경험을 제공하도록 반응형 UI를 적용했습니다.
+
+---
+
+## 8. 📝 커뮤니티 게시판 (`community-*`)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/211ef86c-d3d9-47d2-b58a-42c4614b8923" width="100%">
+</p>
+
+### ✨ 주요 기능
+
+- 공지사항, 수강생 후기, 뉴스 게시판을 통합된 UI로 제공합니다.
+- 게시글 검색과 페이지네이션 기능을 지원하여 원하는 게시글을 빠르게 찾을 수 있습니다.
+- 태그(Tag)를 활용해 게시글 유형을 직관적으로 구분할 수 있도록 구성했습니다.
+
+### 💻 구현 내용
+
+- **Firebase Realtime Database**를 활용하여 게시글 데이터를 저장하고 조회하도록 구현했습니다.
+- **Vanilla JavaScript**를 이용해 게시글 검색(Search)과 페이지네이션(Pagination) 기능을 구현했습니다.
+- 공통 게시판 레이아웃을 적용하여 여러 게시판을 일관된 UI와 구조로 관리할 수 있도록 구현했습니다.
+- 반응형 레이아웃을 적용하여 Desktop과 Mobile 환경 모두에서 편리하게 이용할 수 있습니다.
+
+---
+
+## 9. 📩 수강 상담 신청 (`inquiry.html`)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8ad68f62-ccd8-405a-8ab1-7409fe7710f7" width="34%">
+</p>
+
+### ✨ 주요 기능
+
+- 온라인 상담, 시간표 조회, 원데이 클래스 신청을 하나의 페이지에서 제공합니다.
+- 사용자 정보를 입력하고 원하는 프로그램을 선택하여 간편하게 상담을 신청할 수 있습니다.
+- Desktop과 Mobile 환경 모두에서 최적화된 입력 폼을 제공합니다.
+
+### 💻 구현 내용
+
+- **Tab UI**를 적용하여 하나의 페이지에서 여러 상담 유형을 전환할 수 있도록 구현했습니다.
+- **Firebase Realtime Database**와 연동하여 상담 신청 데이터를 실시간으로 저장하도록 구현했습니다.
+- 입력값 유효성 검사(Validation)를 적용하여 올바른 정보만 저장되도록 처리했습니다.
+- 반응형 레이아웃을 적용하여 Desktop과 Mobile 환경 모두에서 동일한 사용자 경험을 제공합니다.
 
 ---
 
 ## 10. Firebase 회원 인증 (`login.html`, `signup.html`)
 
-<img src="https://github.com/user-attachments/assets/267d5bfb-f570-4fd4-9cc4-273ed9349bf9" width="100%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/cb98efde-4d7f-41ea-a323-e85c07921ee6" width="49%">
+  <img src="https://github.com/user-attachments/assets/8ef46fdd-19e5-4d75-b1d7-a30f326b6083" width="49%">
+</p>
 
-### 주요 기능
+### ✨ 주요 기능
 
-* 이메일 회원가입 및 로그인을 제공합니다.
-* 카카오와 네이버 소셜 로그인도 지원합니다.
-* 로그인 상태에 따라 Header 메뉴가 자동으로 변경됩니다.
+- 이메일 회원가입 및 로그인을 지원합니다.
+- 카카오와 네이버 소셜 로그인을 제공하여 간편하게 회원 인증을 진행할 수 있습니다.
+- 로그인 상태에 따라 Header UI가 동적으로 변경되어 사용자에게 맞는 메뉴를 제공합니다.
 
-### 구현 내용
+### 💻 구현 내용
 
-* Firebase Authentication을 이용해 회원 인증 기능을 구현했습니다.
-* Firestore를 활용하여 회원 정보를 관리했습니다.
-* 로그인 상태를 실시간으로 감지하여 UI를 동적으로 변경했습니다.
-* 소셜 로그인과 일반 로그인을 동일한 사용자 흐름으로 통합했습니다.
+- **Firebase Authentication**을 활용하여 이메일 기반 회원가입 및 로그인 기능을 구현했습니다.
+- **Kakao Login SDK**와 **Naver Login SDK**를 연동하여 소셜 로그인 기능을 구현했습니다.
+- 로그인 상태를 실시간으로 감지하여 Header UI와 사용자 정보를 동적으로 변경하도록 구현했습니다.
+- **Firestore**를 활용하여 회원 정보를 저장하고 관리하는 구조를 적용했습니다.
 
 ---
 
