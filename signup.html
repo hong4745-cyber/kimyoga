@@ -1,0 +1,785 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 | KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .signup-section {
+      min-height: calc(100vh - 120px);
+      background: var(--color-sub);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 64px 20px 80px;
+    }
+    .signup-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 52px 48px 48px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.09);
+    }
+    .signup-logo { text-align: center; margin-bottom: 28px; }
+    .signup-logo img { height: 40px; width: auto; }
+    .signup-logo p { font-family: var(--font-en); font-size: 11px; letter-spacing: 2px; color: var(--color-font-light); margin-top: 7px; }
+
+    /* 단계 표시 */
+    .signup-steps { display: flex; align-items: center; justify-content: center; margin-bottom: 36px; }
+    .signup-step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .signup-step-circle {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--color-border); color: var(--color-font-light);
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    .signup-step.active .signup-step-circle { background: var(--color-main); color: var(--white); }
+    .signup-step.done .signup-step-circle { background: var(--color-main); color: var(--white); font-size: 0; }
+    .signup-step.done .signup-step-circle::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 13px; }
+    .signup-step-label { font-size: 11px; color: var(--color-font-light); white-space: nowrap; }
+    .signup-step.active .signup-step-label,
+    .signup-step.done .signup-step-label { color: var(--color-main); font-weight: 600; }
+    .signup-step-line { width: 52px; height: 2px; background: var(--color-border); margin-bottom: 20px; transition: background 0.3s; }
+    .signup-step-line.done { background: var(--color-main); }
+
+    /* 스텝 패널 */
+    .signup-panel { display: none; animation: fadeUp 0.25s ease; }
+    .signup-panel.active { display: block; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .signup-panel-title { font-size: 18px; font-weight: 700; color: var(--color-main); margin-bottom: 6px; }
+    .signup-panel-desc { font-size: 13px; color: var(--color-font-sub); margin-bottom: 28px; line-height: 1.7; }
+
+    /* 필드 */
+    .signup-group { margin-bottom: 24px; }
+    .signup-group-title {
+      font-size: 12px; font-weight: 700; color: var(--color-main);
+      letter-spacing: 0.5px; margin-bottom: 14px;
+      padding-bottom: 8px; border-bottom: 1.5px solid var(--color-sub2);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .signup-field { margin-bottom: 14px; }
+    .signup-field label { display: block; font-size: 12px; font-weight: 600; color: var(--color-font-sub); margin-bottom: 6px; }
+    .signup-field label .req { color: var(--color-point); margin-left: 2px; }
+    .signup-input-wrap { position: relative; display: flex; align-items: center; gap: 8px; }
+    .signup-input-wrap > i { position: absolute; left: 14px; color: var(--color-font-light); font-size: 13px; pointer-events: none; }
+    .signup-field input[type="text"],
+    .signup-field input[type="email"],
+    .signup-field input[type="password"],
+    .signup-field input[type="tel"],
+    .signup-field select {
+      flex: 1; height: 46px;
+      border: 1.5px solid var(--color-border); border-radius: 10px;
+      padding: 0 14px 0 40px;
+      font-size: 14px; font-family: var(--font-kr);
+      color: var(--color-font); background: var(--white);
+      outline: none; transition: border-color 0.2s; width: 100%;
+    }
+    .signup-field input:focus,
+    .signup-field select:focus { border-color: var(--color-main); }
+    .signup-field input::placeholder { color: var(--color-font-light); }
+    .signup-field select { appearance: none; cursor: pointer; }
+    .signup-field-hint { font-size: 11px; color: var(--color-font-light); margin-top: 5px; }
+    .signup-field-hint.ok { color: #3a9a6a; }
+    .signup-field-hint.err { color: #e55; }
+    .signup-input-btn {
+      height: 46px; padding: 0 14px;
+      background: var(--color-main); color: var(--white);
+      border: none; border-radius: 10px;
+      font-size: 12px; font-family: var(--font-kr);
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .signup-input-btn:hover { opacity: 0.85; }
+
+    /* 약관 */
+    .terms-all {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; background: var(--color-sub);
+      border-radius: 10px; margin-bottom: 12px; cursor: pointer;
+    }
+    .terms-all span { font-size: 14px; font-weight: 700; color: var(--color-main); }
+    .terms-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 4px; border-bottom: 1px solid var(--color-sub2);
+    }
+    .terms-item:last-child { border-bottom: none; }
+    .terms-item-left { display: flex; align-items: center; gap: 9px; cursor: pointer; }
+    .terms-item span { font-size: 13px; color: var(--color-font-sub); }
+    .badge-req { font-size: 10px; background: var(--color-main); color: var(--white); padding: 2px 7px; border-radius: 4px; }
+    .badge-opt { font-size: 10px; background: var(--color-border); color: var(--color-font-sub); padding: 2px 7px; border-radius: 4px; }
+    .terms-view { font-size: 11px; color: var(--color-font-light); text-decoration: underline; background: none; border: none; cursor: pointer; }
+    .terms-view:hover { color: var(--color-main); }
+    input[type="checkbox"] { accent-color: var(--color-main); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+
+    /* 완료 화면 */
+    .signup-done { text-align: center; padding: 20px 0 8px; }
+    .signup-done-icon { font-size: 56px; color: var(--color-main); margin-bottom: 20px; }
+    .signup-done h2 { font-size: 22px; font-weight: 700; color: var(--color-main); margin-bottom: 10px; }
+    .signup-done p { font-size: 14px; color: var(--color-font-sub); line-height: 1.9; margin-bottom: 32px; }
+    .signup-done-name { font-weight: 700; color: var(--color-font); }
+    .signup-done-btns { display: flex; gap: 12px; justify-content: center; }
+
+    /* 하단 버튼 */
+    .signup-nav { display: flex; gap: 10px; margin-top: 28px; }
+    .signup-btn-prev {
+      height: 52px; padding: 0 28px;
+      background: none; color: var(--color-font-sub);
+      border: 1.5px solid var(--color-border); border-radius: 50px;
+      font-size: 14px; font-family: var(--font-kr);
+      cursor: pointer; transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+    }
+    .signup-btn-prev:hover { border-color: var(--color-main); color: var(--color-main); }
+    .signup-btn-next {
+      flex: 1; height: 52px;
+      background: var(--color-main); color: var(--white);
+      border: none; border-radius: 50px;
+      font-size: 15px; font-weight: 700; font-family: var(--font-kr);
+      cursor: pointer; letter-spacing: 0.4px;
+      transition: background 0.2s;
+    }
+    .signup-btn-next:hover { background: var(--color-main-hover); }
+
+    .signup-login-link { text-align: center; font-size: 13px; color: var(--color-font-sub); margin-top: 20px; }
+    .signup-login-link a { color: var(--color-main); font-weight: 600; text-decoration: underline; }
+
+    .signup-divider { display: flex; align-items: center; gap: 12px; margin: 24px 0 16px; }
+    .signup-divider::before, .signup-divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
+    .signup-divider span { font-size: 12px; color: var(--color-font-light); white-space: nowrap; }
+
+    .signup-social-btns { display: flex; flex-direction: column; gap: 10px; }
+    .signup-social-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; height: 48px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; font-family: var(--font-kr);
+      border: none; cursor: pointer; transition: opacity 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .signup-social-btn:hover { opacity: 0.88; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .signup-social-btn .social-icon {
+      width: 24px; height: 24px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 900; flex-shrink: 0;
+    }
+    .signup-social-btn.kakao { background: #FEE500; color: #191919; }
+    .signup-social-btn.kakao .social-icon { background: rgba(0,0,0,0.08); color: #191919; }
+    .signup-social-btn.naver { background: #03C75A; color: #ffffff; }
+    .signup-social-btn.naver .social-icon { background: rgba(0,0,0,0.10); color: #ffffff; }
+    .signup-social-btn.google { background: #ffffff; color: #3c4043; border: 1.5px solid #dadce0; }
+    .signup-social-btn.google .social-icon { background: transparent; color: inherit; font-size: 15px; }
+
+    @media (max-width: 480px) {
+      .signup-card { padding: 36px 20px 36px; }
+      .signup-step-line { width: 28px; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a>
+      <a href="#">신부점</a>
+      <a href="#">신길온천점</a>
+      <a href="#">원곡점</a>
+      <a href="#">안양 평촌점</a>
+      <a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      <a href="tel:031-480-3308">031.480.3308</a>
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </a>
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li>
+          <a href="about.html">KIM'S 소개</a>
+          <ul class="gnb-dropdown">
+            <li><a href="about.html">브랜드 소개</a></li>
+            <li><a href="instructors.html">강사소개</a></li>
+            <li><a href="location.html">교육시설·위치</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="program-yoga-pro.html">교육 프로그램</a>
+          <ul class="gnb-dropdown">
+            <li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li>
+            <li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li>
+            <li><a href="program-yoga.html">요가</a></li>
+            <li><a href="program-pilates.html">필라테스</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="community-notice.html">커뮤니티</a>
+          <ul class="gnb-dropdown">
+            <li><a href="community-notice.html">공지사항·이벤트</a></li>
+            <li><a href="community-review.html">수강생 후기</a></li>
+            <li><a href="community-news.html">뉴스·포토스토리</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="inquiry.html" class="btn-gnb">문의하기</a>
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">
+            <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div>
+      <button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button>
+    </div>
+    <div class="mob-logo"><img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스"></div>
+    <ul class="mob-nav-list">
+      <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+    </ul>
+    <div class="mob-quick">
+      <a href="inquiry.html">온라인 상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+    </div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section">
+      <p class="mob-section-label">대표문의</p>
+      <a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a>
+    </div>
+    <div class="mob-cta">
+      <a href="inquiry.html" class="mob-btn-primary">문의하기</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="signup-section">
+    <div class="signup-card">
+
+      <div class="signup-logo">
+        <img src="images/1_HOME_img/logo nav.png" alt="킴스요가필라테스">
+        <p>KIM'S YOGA &amp; PILATES</p>
+      </div>
+
+      <!-- 단계 인디케이터 -->
+      <div class="signup-steps" id="signupSteps">
+        <div class="signup-step active" id="step-ind-1">
+          <div class="signup-step-circle">1</div>
+          <span class="signup-step-label">정보 입력</span>
+        </div>
+        <div class="signup-step-line" id="line-1"></div>
+        <div class="signup-step" id="step-ind-2">
+          <div class="signup-step-circle">2</div>
+          <span class="signup-step-label">약관 동의</span>
+        </div>
+        <div class="signup-step-line" id="line-2"></div>
+        <div class="signup-step" id="step-ind-3">
+          <div class="signup-step-circle">3</div>
+          <span class="signup-step-label">가입 완료</span>
+        </div>
+      </div>
+
+      <!-- ── STEP 1 : 정보 입력 ── -->
+      <div class="signup-panel active" id="panel-1">
+        <p class="signup-panel-title">기본 정보를 입력해 주세요</p>
+        <p class="signup-panel-desc">* 표시는 필수 입력 항목입니다.</p>
+
+        <div class="signup-group">
+          <p class="signup-group-title"><i class="fa-solid fa-key"></i> 계정 정보</p>
+
+          <div class="signup-field">
+            <label for="signupId">아이디 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="signupId" placeholder="6~20자 영문·숫자 조합">
+              <button type="button" class="signup-input-btn" id="btnCheckId">중복확인</button>
+            </div>
+            <p class="signup-field-hint" id="hintId">영문 소문자·숫자 조합 6~20자</p>
+          </div>
+
+          <div class="signup-field">
+            <label for="signupPw">비밀번호 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="signupPw" placeholder="8자 이상, 영문+숫자+특수문자">
+            </div>
+            <p class="signup-field-hint" id="hintPw">8자 이상, 영문·숫자·특수문자 포함</p>
+          </div>
+
+          <div class="signup-field">
+            <label for="signupPwConfirm">비밀번호 확인 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="signupPwConfirm" placeholder="비밀번호를 다시 입력하세요">
+            </div>
+            <p class="signup-field-hint" id="hintPwConfirm"></p>
+          </div>
+        </div>
+
+        <div class="signup-group">
+          <p class="signup-group-title"><i class="fa-solid fa-address-card"></i> 개인 정보</p>
+
+          <div class="signup-field">
+            <label for="signupName">이름 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-solid fa-signature"></i>
+              <input type="text" id="signupName" placeholder="실명을 입력하세요">
+            </div>
+          </div>
+
+          <div class="signup-field">
+            <label for="signupEmail">이메일 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" id="signupEmail" placeholder="example@email.com">
+              <button type="button" class="signup-input-btn" id="btnEmailVerify">인증발송</button>
+            </div>
+            <p class="signup-field-hint" id="hintEmail"></p>
+          </div>
+
+          <div class="signup-field">
+            <label for="signupPhone">휴대폰 번호 <span class="req">*</span></label>
+            <div class="signup-input-wrap">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <input type="tel" id="signupPhone" placeholder="- 없이 숫자만 입력">
+              <button type="button" class="signup-input-btn" id="btnPhoneVerify">인증요청</button>
+            </div>
+            <p class="signup-field-hint" id="hintPhone"></p>
+          </div>
+
+          <div class="signup-field">
+            <label for="signupBranch">관심 지점</label>
+            <div class="signup-input-wrap">
+              <i class="fa-solid fa-location-dot"></i>
+              <select id="signupBranch">
+                <option value="">지점을 선택하세요 (선택)</option>
+                <option value="main">KIM'S 본점</option>
+                <option value="sinbu">신부점</option>
+                <option value="singil">신길온천점</option>
+                <option value="wongok">원곡점</option>
+                <option value="pyeongchon">안양 평촌점</option>
+                <option value="anseong">안성1호점</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup-nav">
+          <button type="button" class="signup-btn-next" id="btnNext1">다음 단계 <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="signup-divider"><span>또는 간편 가입</span></div>
+
+        <div class="signup-social-btns">
+          <button type="button" class="signup-social-btn kakao" aria-label="카카오 계정으로 가입">
+            <span class="social-icon">K</span>
+            카카오로 시작하기
+          </button>
+          <button type="button" class="signup-social-btn naver" aria-label="네이버 계정으로 가입">
+            <span class="social-icon">N</span>
+            네이버로 시작하기
+          </button>
+          <button type="button" class="signup-social-btn google" id="btnGoogleSignup" aria-label="구글 계정으로 가입">
+            <span class="social-icon"><i class="fa-brands fa-google"></i></span>
+            Google로 시작하기
+          </button>
+        </div>
+
+        <p class="signup-login-link">이미 회원이신가요? <a href="login.html">로그인</a></p>
+      </div>
+
+      <!-- ── STEP 2 : 약관 동의 ── -->
+      <div class="signup-panel" id="panel-2">
+        <p class="signup-panel-title">약관에 동의해 주세요</p>
+        <p class="signup-panel-desc">서비스 이용을 위해 아래 약관을 확인하고 동의해 주세요.</p>
+
+        <label class="terms-all">
+          <input type="checkbox" id="agreeAll">
+          <span>전체 동의합니다</span>
+        </label>
+
+        <div class="terms-item">
+          <label class="terms-item-left">
+            <input type="checkbox" class="agree-item" id="agree1">
+            <span class="badge-req">필수</span>
+            <span>이용약관 동의</span>
+          </label>
+          <button type="button" class="terms-view">보기</button>
+        </div>
+        <div class="terms-item">
+          <label class="terms-item-left">
+            <input type="checkbox" class="agree-item" id="agree2">
+            <span class="badge-req">필수</span>
+            <span>개인정보 수집·이용 동의</span>
+          </label>
+          <button type="button" class="terms-view">보기</button>
+        </div>
+        <div class="terms-item">
+          <label class="terms-item-left">
+            <input type="checkbox" class="agree-item" id="agree3">
+            <span class="badge-opt">선택</span>
+            <span>마케팅 정보 수신 동의 (이메일·SMS)</span>
+          </label>
+          <button type="button" class="terms-view">보기</button>
+        </div>
+        <div class="terms-item">
+          <label class="terms-item-left">
+            <input type="checkbox" class="agree-item" id="agree4">
+            <span class="badge-opt">선택</span>
+            <span>위치 기반 서비스 이용 동의</span>
+          </label>
+          <button type="button" class="terms-view">보기</button>
+        </div>
+
+        <div class="signup-nav">
+          <button type="button" class="signup-btn-prev" id="btnPrev2"><i class="fa-solid fa-arrow-left"></i> 이전</button>
+          <button type="button" class="signup-btn-next" id="btnNext2">가입 완료 <i class="fa-solid fa-check"></i></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3 : 가입 완료 ── -->
+      <div class="signup-panel" id="panel-3">
+        <div class="signup-done">
+          <div class="signup-done-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h2>회원가입이 완료되었습니다!</h2>
+          <p>
+            <span class="signup-done-name" id="doneName"></span>님, 환영합니다.<br>
+            킴스요가필라테스의 회원이 되신 것을 축하드립니다.<br>
+            지금 바로 다양한 프로그램을 만나보세요.
+          </p>
+          <div class="signup-done-btns">
+            <a href="login.html" class="btn-green">로그인하기</a>
+            <a href="index.html" class="btn-outline" style="border-radius:50px; display:inline-flex; align-items:center; justify-content:center;">홈으로</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px; width:auto;"></div>
+        <p class="footer-brand">KIM'S YOGA &amp; PILATES</p>
+      </div>
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p>킴스요가필라테스요가<br>사업자번호 : 134-27-80643<br>대표 : 박경화<br>경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>대표전화 : 031-480-3308<br>Email : dona4330@naver.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">이용약관</a>
+        <span class="footer-bottom-sep">|</span>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button>
+  <button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+
+<script>
+  /* GNB */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', function () { mobileNav.classList.add('open'); this.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
+  function closeMenu() { mobileNav.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  document.querySelectorAll('.mob-close').forEach(function(btn){ btn.addEventListener('click', closeMenu); });
+  mobileNav.addEventListener('click', function(e){ if(e.target===mobileNav) closeMenu(); });
+
+  /* Floating */
+  const topBtn = document.getElementById('topBtn');
+  const floatingEl = document.querySelector('.floating');
+  floatingEl.style.opacity = '0'; floatingEl.style.pointerEvents = 'none'; floatingEl.style.transition = 'opacity 0.3s';
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){ var s=window.scrollY>400; floatingEl.style.opacity=s?'1':'0'; floatingEl.style.pointerEvents=s?'auto':'none'; });
+  (function(){ var btns=document.querySelectorAll('.float-btn'),footer=document.querySelector('footer'); if(!footer||!btns.length)return; new IntersectionObserver(function(e){ btns.forEach(function(b){ b.classList.toggle('is-footer',e[0].isIntersecting); }); },{threshold:0}).observe(footer); })();
+
+  /* ── 회원가입 멀티스텝 ── */
+  (function () {
+    var currentStep = 1;
+
+    function setStep(n) {
+      /* 패널 전환 */
+      document.querySelectorAll('.signup-panel').forEach(function (p) { p.classList.remove('active'); });
+      document.getElementById('panel-' + n).classList.add('active');
+
+      /* 인디케이터 업데이트 */
+      for (var i = 1; i <= 3; i++) {
+        var ind = document.getElementById('step-ind-' + i);
+        ind.classList.remove('active', 'done');
+        if (i < n) ind.classList.add('done');
+        else if (i === n) ind.classList.add('active');
+      }
+      /* 연결선 */
+      for (var j = 1; j <= 2; j++) {
+        var line = document.getElementById('line-' + j);
+        if (j < n) line.classList.add('done');
+        else line.classList.remove('done');
+      }
+
+      /* 완료 화면 이름 */
+      if (n === 3) {
+        var name = document.getElementById('signupName').value.trim() || '회원';
+        document.getElementById('doneName').textContent = name;
+      }
+
+      currentStep = n;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* Step 1 → 2 유효성 */
+    document.getElementById('btnNext1').addEventListener('click', function () {
+      var id = document.getElementById('signupId').value.trim();
+      var pw = document.getElementById('signupPw').value;
+      var pwc = document.getElementById('signupPwConfirm').value;
+      var name = document.getElementById('signupName').value.trim();
+      var email = document.getElementById('signupEmail').value.trim();
+      var phone = document.getElementById('signupPhone').value.trim();
+
+      if (!id || id.length < 6) { alert('아이디를 6자 이상 입력해 주세요.'); return; }
+      if (!pw || pw.length < 8) { alert('비밀번호를 8자 이상 입력해 주세요.'); return; }
+      if (pw !== pwc) { alert('비밀번호가 일치하지 않습니다.'); return; }
+      if (!name) { alert('이름을 입력해 주세요.'); return; }
+      if (!email || !email.includes('@')) { alert('올바른 이메일을 입력해 주세요.'); return; }
+      if (!phone || phone.length < 10) { alert('휴대폰 번호를 입력해 주세요.'); return; }
+
+      setStep(2);
+    });
+
+    /* Step 2 → 3 : Firebase 계정 생성 */
+    document.getElementById('btnNext2').addEventListener('click', function () {
+      var req1 = document.getElementById('agree1').checked;
+      var req2 = document.getElementById('agree2').checked;
+      if (!req1 || !req2) { alert('필수 약관에 동의해 주세요.'); return; }
+
+      var btn   = this;
+      var email = document.getElementById('signupEmail').value.trim();
+      var pw    = document.getElementById('signupPw').value;
+      var username = document.getElementById('signupId').value.trim();
+      var name     = document.getElementById('signupName').value.trim();
+      var phone    = document.getElementById('signupPhone').value.trim();
+      var branch   = document.getElementById('signupBranch').value;
+
+      btn.disabled = true; btn.textContent = '처리 중…';
+
+      _auth.createUserWithEmailAndPassword(email, pw)
+        .then(function (cred) {
+          /* Firestore 프로필 저장은 백그라운드로 처리 — UI를 블로킹하지 않음 */
+          _db.collection('users').doc(cred.user.uid).set({
+            username: username,
+            name: name,
+            email: email,
+            phone: phone,
+            branch: branch,
+            marketing: document.getElementById('agree3').checked,
+            provider: 'email',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          }).catch(function (e) { console.warn('프로필 저장 실패:', e); });
+
+          setStep(3); /* Auth 생성 즉시 완료 화면으로 */
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          btn.innerHTML = '가입 완료 <i class="fa-solid fa-check"></i>';
+          var msg = '회원가입 중 오류가 발생했습니다.';
+          if (err.code === 'auth/email-already-in-use') msg = '이미 사용 중인 이메일입니다. 로그인 페이지를 이용해 주세요.';
+          else if (err.code === 'auth/weak-password')   msg = '비밀번호는 6자 이상이어야 합니다.';
+          else if (err.code === 'auth/invalid-email')   msg = '올바른 이메일 형식이 아닙니다.';
+          alert(msg);
+          if (err.code === 'auth/email-already-in-use') setStep(1);
+        });
+    });
+
+    /* 이전 버튼 */
+    document.getElementById('btnPrev2').addEventListener('click', function () { setStep(1); });
+
+    /* 전체 동의 */
+    var agreeAll = document.getElementById('agreeAll');
+    var agreeItems = document.querySelectorAll('.agree-item');
+    agreeAll.addEventListener('change', function () {
+      agreeItems.forEach(function (cb) { cb.checked = agreeAll.checked; });
+    });
+    agreeItems.forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        agreeAll.checked = Array.prototype.every.call(agreeItems, function (c) { return c.checked; });
+      });
+    });
+
+    /* 비밀번호 확인 실시간 */
+    document.getElementById('signupPwConfirm').addEventListener('input', function () {
+      var hint = document.getElementById('hintPwConfirm');
+      var pw = document.getElementById('signupPw').value;
+      if (!this.value) { hint.textContent = ''; hint.className = 'signup-field-hint'; return; }
+      if (this.value === pw) { hint.textContent = '비밀번호가 일치합니다.'; hint.className = 'signup-field-hint ok'; }
+      else { hint.textContent = '비밀번호가 일치하지 않습니다.'; hint.className = 'signup-field-hint err'; }
+    });
+
+    /* 중복확인 (데모) */
+    document.getElementById('btnCheckId').addEventListener('click', function () {
+      var id = document.getElementById('signupId').value.trim();
+      var hint = document.getElementById('hintId');
+      if (!id || id.length < 6) { hint.textContent = '6자 이상 입력해 주세요.'; hint.className = 'signup-field-hint err'; return; }
+      hint.textContent = '사용 가능한 아이디입니다.'; hint.className = 'signup-field-hint ok';
+    });
+
+    /* 인증발송 (데모) */
+    document.getElementById('btnEmailVerify').addEventListener('click', function () {
+      var email = document.getElementById('signupEmail').value.trim();
+      var hint = document.getElementById('hintEmail');
+      if (!email || !email.includes('@')) { hint.textContent = '올바른 이메일을 입력해 주세요.'; hint.className = 'signup-field-hint err'; return; }
+      hint.textContent = '인증 메일을 발송했습니다. 메일함을 확인해 주세요.'; hint.className = 'signup-field-hint ok';
+    });
+
+    /* 인증요청 (데모) */
+    document.getElementById('btnPhoneVerify').addEventListener('click', function () {
+      var phone = document.getElementById('signupPhone').value.trim();
+      var hint = document.getElementById('hintPhone');
+      if (!phone || phone.length < 10) { hint.textContent = '올바른 휴대폰 번호를 입력해 주세요.'; hint.className = 'signup-field-hint err'; return; }
+      hint.textContent = 'SMS 인증번호를 발송했습니다.'; hint.className = 'signup-field-hint ok';
+    });
+  })();
+</script>
+
+<!-- ── Firebase ── -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-init.js"></script>
+
+<!-- ── 카카오 SDK ── -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<!-- ── 네이버 로그인 SDK ── -->
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
+
+<script>
+(function () {
+  /* 구글 간편 가입 */
+  var btnGoogle = document.getElementById('btnGoogleSignup');
+  if (btnGoogle) {
+    btnGoogle.addEventListener('click', function () {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      _auth.signInWithPopup(provider)
+        .then(function (result) {
+          var user = result.user;
+          return _db.collection('users').doc(user.uid).set({
+            name: user.displayName || '',
+            email: user.email || '',
+            provider: 'google',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+        })
+        .then(function () { window.location.href = 'index.html'; })
+        .catch(function (err) {
+          if (err.code !== 'auth/popup-closed-by-user') alert('구글 로그인 중 오류가 발생했습니다.\n' + err.message);
+        });
+    });
+  }
+
+  /* 카카오 간편 가입 */
+  var btnKakao = document.querySelector('.signup-social-btn.kakao');
+  if (btnKakao) {
+    btnKakao.addEventListener('click', function () {
+      if (typeof Kakao === 'undefined') { alert('카카오 SDK를 불러오지 못했습니다.'); return; }
+      if (!Kakao.isInitialized()) Kakao.init(window._KAKAO_JS_KEY);
+      Kakao.Auth.login({
+        success: function () {
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function (res) {
+              var acct  = res.kakao_account || {};
+              var email = acct.email;
+              var name  = (acct.profile && acct.profile.nickname) || '';
+              window._socialSignIn('kakao', res.id, email, name);
+            },
+            fail: function (err) { alert('카카오 정보를 가져오지 못했습니다.'); console.error(err); }
+          });
+        },
+        fail: function (err) { console.error(err); }
+      });
+    });
+  }
+
+  /* 네이버 간편 가입 */
+  var btnNaver = document.querySelector('.signup-social-btn.naver');
+  if (btnNaver && typeof naver_id_login !== 'undefined') {
+    var naverLogin = new naver_id_login(window._NAVER_CLIENT_ID, window._NAVER_CALLBACK_URL);
+    naverLogin.setDomain(location.origin);
+    naverLogin.setState(Math.random().toString(36).substr(2));
+    naverLogin.setPopup();
+
+    btnNaver.addEventListener('click', function () { naverLogin.loginStart(); });
+
+    if (naverLogin.oauthParams && naverLogin.oauthParams.access_token) {
+      fetch('https://openapi.naver.com/v1/nid/me', {
+        headers: { Authorization: 'Bearer ' + naverLogin.oauthParams.access_token }
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var res   = data.response || {};
+        window._socialSignIn('naver', res.id, res.email, res.name || res.nickname || '');
+      })
+      .catch(function (err) { alert('네이버 정보를 가져오지 못했습니다.'); console.error(err); });
+    }
+  }
+})();
+</script>
+<script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+</script>
+<script src="js/auth-ui.js"></script>
+</body>
+</html>

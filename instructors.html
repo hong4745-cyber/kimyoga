@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강사소개 | KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a>
+      <a href="#">신부점</a>
+      <a href="#">신길온천점</a>
+      <a href="#">원곡점</a>
+      <a href="#">안양 평촌점</a>
+      <a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      031.480.3308
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </a>
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li class="active">
+          <a href="about.html">KIM'S 소개</a>
+          <ul class="gnb-dropdown">
+            <li><a href="about.html">브랜드 소개</a></li>
+            <li><a href="instructors.html">강사소개</a></li>
+            <li><a href="location.html">교육시설·위치</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="program-yoga-pro.html">교육 프로그램</a>
+          <ul class="gnb-dropdown">
+            <li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li>
+            <li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li>
+            <li><a href="program-yoga.html">요가</a></li>
+            <li><a href="program-pilates.html">필라테스</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="community-notice.html">커뮤니티</a>
+          <ul class="gnb-dropdown">
+            <li><a href="community-notice.html">공지사항·이벤트</a></li>
+            <li><a href="community-review.html">수강생 후기</a></li>
+            <li><a href="community-news.html">뉴스·포토스토리</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="inquiry.html" class="btn-gnb">문의하기</a>
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">
+            <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div>
+      <button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button>
+    </div>
+    <div class="mob-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </div>
+    <ul class="mob-nav-list">
+      <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <ul class="mob-sub">
+          <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
+          <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
+          <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+    </ul>
+    <div class="mob-quick">
+      <a href="inquiry.html">온라인 상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+    </div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section">
+      <p class="mob-section-label">지점안내</p>
+      <div class="mob-branch-wrap">
+        <a href="#">본점</a><a href="#">선부점</a><a href="#">신길온천점</a>
+        <a href="#">원곡점</a><a href="#">안양 평촌점</a><a href="#">안성1호점</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <p class="mob-section-label">대표문의</p>
+      <a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a>
+      <p class="mob-hours">평일 10:00 - 21:00 &middot; 주말 10:00 - 16:00</p>
+    </div>
+    <div class="mob-cta">
+      <a href="inquiry.html" class="mob-btn-primary">문의하기</a>
+      <div class="mob-cta-auth">
+        <a href="signup.html" class="mob-btn-outline" id="mobSignup">회원가입</a>
+        <a href="login.html" class="mob-btn-outline" id="mobAuth">로그인</a>
+      </div>
+    </div>
+    <div class="mob-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<nav class="page-subnav">
+  <div class="container">
+    <a href="about.html">브랜드 소개</a>
+    <a href="instructors.html" class="active">강사소개</a>
+    <a href="location.html">교육시설·위치</a>
+  </div>
+</nav>
+
+<main>
+  <section class="instructors-page">
+    <div class="container">
+      <div class="instructors-page-title">
+        <h2>KIM'S INSTRUCTORS</h2>
+        <p class="sec-kr">KIM'S 강사진</p>
+        <p>
+          킴스요가필라테스의 전문 강사진을 소개합니다.<br>
+          풍부한 경험과 열정으로 여러분의 건강한 삶을 함께 만들어 나가겠습니다.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <select class="filter-select" aria-label="정렬 기준">
+          <option>전체보기</option>
+          <option>요가 전문</option>
+          <option>필라테스 전문</option>
+          <option>재활 전문</option>
+        </select>
+        <select class="filter-select" aria-label="지점 선택">
+          <option>전체 지점</option>
+          <option>본점</option>
+          <option>신부점</option>
+          <option>신길온천점</option>
+          <option>원곡점</option>
+          <option>안양 평촌점</option>
+          <option>안성1호점</option>
+        </select>
+      </div>
+
+      <div class="instructors-full-grid">
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_박경화.png'); background-size:150%; background-position:center -120px;" role="img" aria-label="박경화 대표 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>박경화</h3>
+              <span class="tag">대표 · 전문지도자</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_강수연.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="강수연 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>강수연</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_강지현.jpg'); background-size:150%; background-position:center top -115px;" role="img" aria-label="강지현 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>강지현</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo photo-light" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_김진솔.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="김진솔 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김진솔</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_김진희.jpg'); background-size:160%; background-position:right -150px top -130px;" role="img" aria-label="김진희 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김진희</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_오혜린.jpg'); background-size:160%; background-position:right -70px top -160px;" role="img" aria-label="오혜린 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>오혜린</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)_정보람.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="정보람 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>정보람</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(고잔&amp;중앙)김성수.jpg'); background-size:130%; background-position:right -30px top -40px;" role="img" aria-label="김성수 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김성수</h3>
+              <span class="tag">재활 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(선부)_강수연.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="강수연 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>강수연</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(선부)_박경진.jpg'); background-size:170%; background-position:center top -240px;" role="img" aria-label="박경진 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>박경진</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(선부)_조은숙.jpg'); background-size:130%; background-position:center top -70px;" role="img" aria-label="조은숙 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>조은숙</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(선부점)_임진아.png'); background-size:140%; background-position:right -100px top -220px;" role="img" aria-label="임진아 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>임진아</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(신길온천)_한향숙.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="한향숙 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>한향숙</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(신길온천)_이금옥.jpg'); background-size:160%; background-position:right -30px top -50px;" role="img" aria-label="이금옥 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>이금옥</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(신길온천)_이은영.jpg'); background-size:170%; background-position:right -90px top -115px;" role="img" aria-label="이은영 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>이은영</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(신길온천)_배미선.jpg'); background-size:90%; background-position:center top -40px;" role="img" aria-label="배미선 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>배미선</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(원곡)_강수연.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="강수연 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>강수연</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(원곡)_강지현.jpg'); background-size:150%; background-position:center top -16px;" role="img" aria-label="강지현 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>강지현</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(원곡)_김현숙.jpg'); background-size:120%; background-position:center top;" role="img" aria-label="김현숙 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김현숙</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(안양평촌)_박율찬.jpg'); background-size:cover; background-position:right -100px top;" role="img" aria-label="박율찬 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>박율찬</h3>
+              <span class="tag">필라테스 · 요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(안성1호)_김시은.jpg'); background-size:cover; background-position:center top;" role="img" aria-label="김시은 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김시은</h3>
+              <span class="tag">요가 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+        <div class="instr-card">
+          <div class="instr-card-photo" style="background-image:url('images/3_instrsuctors_img/(안성1호)_김세연.jpg'); background-size:260%; background-position:right -220px top -80px;" role="img" aria-label="김세연 강사 사진"></div>
+          <div class="instr-card-body">
+            <div class="instr-card-info">
+              <h3>김세연</h3>
+              <span class="tag">필라테스 전문 강사</span>
+            </div>
+            <button class="instr-arrow" aria-label="자세히 보기">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="prefooter">
+  <div class="container">
+    <div class="prefooter-text">
+      <h2>지금, 가까운 지점에서 시작하세요.</h2>
+      <p>상담부터 체험까지 — 전문 강사가 직접 안내 드립니다.</p>
+    </div>
+    <div class="prefooter-links">
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>수강료조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>시간표조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-id-card"></i>
+        <span>원데이신청</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px; width:auto;"></div>
+        <p class="footer-brand">KIM'S YOGA &amp; PILATES</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p>
+          킴스요가필라테스요가<br>
+          사업자번호 : 134-27-80643<br>
+          대표 : 박경화<br>
+          경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>
+          대표전화 : 031-480-3308<br>
+          Email : dona4330@naver.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">이용약관</a>
+        <span class="footer-bottom-sep">|</span>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button>
+  <button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', function () { mobileNav.classList.add('open'); this.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
+  function closeMenu() { mobileNav.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  document.querySelectorAll('.mob-close').forEach(function(btn){ btn.addEventListener('click', closeMenu); });
+  mobileNav.addEventListener('click', function(e){ if(e.target===mobileNav) closeMenu(); });
+    const topBtn = document.getElementById('topBtn');
+  const floatingEl = document.querySelector('.floating');
+  floatingEl.style.opacity = '0';
+  floatingEl.style.pointerEvents = 'none';
+  floatingEl.style.transition = 'opacity 0.3s';
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){
+    var show = window.scrollY > 400;
+    floatingEl.style.opacity = show ? '1' : '0';
+    floatingEl.style.pointerEvents = show ? 'auto' : 'none';
+  });
+  (function () {
+    var btns = document.querySelectorAll('.float-btn');
+    var footer = document.querySelector('footer');
+    if (!footer || !btns.length) return;
+    new IntersectionObserver(function (entries) {
+      btns.forEach(function (btn) {
+        btn.classList.toggle('is-footer', entries[0].isIntersecting);
+      });
+    }, { threshold: 0 }).observe(footer);
+  })();
+</script>
+<script src="js/auth-ui.js"></script>
+<script>
+  (function () {
+    var selects = document.querySelectorAll('.filter-select');
+    var specialtySelect = selects[0];
+    var branchSelect = selects[1];
+    var cards = document.querySelectorAll('.instr-card');
+
+    cards.forEach(function (card) {
+      var tag = card.querySelector('.tag') ? card.querySelector('.tag').textContent : '';
+      var bg = card.querySelector('.instr-card-photo') ? card.querySelector('.instr-card-photo').style.backgroundImage : '';
+
+      var spec = 'all';
+      if (tag.includes('요가')) spec = '요가';
+      else if (tag.includes('필라테스')) spec = '필라테스';
+      else if (tag.includes('재활')) spec = '재활';
+      card.dataset.specialty = spec;
+
+      var branch = 'all';
+      if (bg.includes('고잔') || bg.includes('중앙')) branch = '본점';
+      else if (bg.includes('선부')) branch = '신부점';
+      else if (bg.includes('신길온천')) branch = '신길온천점';
+      else if (bg.includes('원곡')) branch = '원곡점';
+      else if (bg.includes('안양평촌')) branch = '안양 평촌점';
+      else if (bg.includes('안성1호')) branch = '안성1호점';
+      card.dataset.branch = branch;
+
+      if (branch !== 'all') {
+        var branchBadge = document.createElement('span');
+        branchBadge.className = 'tag-branch';
+        branchBadge.textContent = branch;
+        card.querySelector('.instr-card-info').appendChild(branchBadge);
+      }
+    });
+
+    function applyFilter() {
+      var spec = specialtySelect.value;
+      var branch = branchSelect.value;
+      var seenNames = {};
+      cards.forEach(function (card) {
+        var tagText = card.querySelector('.tag') ? card.querySelector('.tag').textContent : '';
+        var name = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
+        var specOk = spec === '전체보기' || tagText.includes(spec.replace(' 전문', ''));
+        var branchOk = branch === '전체 지점' || card.dataset.branch === branch;
+        var show = specOk && branchOk;
+        if (show && branch === '전체 지점') {
+          if (seenNames[name]) { show = false; } else { seenNames[name] = true; }
+        }
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    specialtySelect.addEventListener('change', applyFilter);
+    branchSelect.addEventListener('change', applyFilter);
+    applyFilter();
+  })();
+</script>
+<script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
+

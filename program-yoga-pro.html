@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전문지도자 요가 과정 | KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a>
+      <a href="#">신부점</a>
+      <a href="#">신길온천점</a>
+      <a href="#">원곡점</a>
+      <a href="#">안양 평촌점</a>
+      <a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      <a href="tel:031-480-3308">031.480.3308</a>
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </a>
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li>
+          <a href="about.html">KIM'S 소개</a>
+          <ul class="gnb-dropdown">
+            <li><a href="about.html">브랜드 소개</a></li>
+            <li><a href="instructors.html">강사소개</a></li>
+            <li><a href="location.html">교육시설·위치</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="program-yoga-pro.html">교육 프로그램</a>
+          <ul class="gnb-dropdown">
+            <li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li>
+            <li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li>
+            <li><a href="program-yoga.html">요가</a></li>
+            <li><a href="program-pilates.html">필라테스</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="community-notice.html">커뮤니티</a>
+          <ul class="gnb-dropdown">
+            <li><a href="community-notice.html">공지사항·이벤트</a></li>
+            <li><a href="community-review.html">수강생 후기</a></li>
+            <li><a href="community-news.html">뉴스·포토스토리</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="inquiry.html" class="btn-gnb">문의하기</a>
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">
+            <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div>
+      <button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button>
+    </div>
+    <div class="mob-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </div>
+    <ul class="mob-nav-list">
+      <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <ul class="mob-sub">
+          <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
+          <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
+          <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+    </ul>
+    <div class="mob-quick">
+      <a href="inquiry.html">온라인 상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+    </div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section">
+      <p class="mob-section-label">지점안내</p>
+      <div class="mob-branch-wrap">
+        <a href="#">본점</a><a href="#">선부점</a><a href="#">신길온천점</a>
+        <a href="#">원곡점</a><a href="#">안양 평촌점</a><a href="#">안성1호점</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <p class="mob-section-label">대표문의</p>
+      <a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a>
+      <p class="mob-hours">평일 10:00 - 21:00 &middot; 주말 10:00 - 16:00</p>
+    </div>
+    <div class="mob-cta">
+      <a href="inquiry.html" class="mob-btn-primary">문의하기</a>
+      <div class="mob-cta-auth">
+        <a href="signup.html" class="mob-btn-outline" id="mobSignup">회원가입</a>
+        <a href="login.html" class="mob-btn-outline" id="mobAuth">로그인</a>
+      </div>
+    </div>
+    <div class="mob-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<nav class="page-subnav">
+  <div class="container">
+    <a href="program-yoga-pro.html" class="active">전문지도자 요가 과정</a>
+    <a href="program-pilates-pro.html">전문지도자 필라테스 과정</a>
+    <a href="program-yoga.html">요가</a>
+    <a href="program-pilates.html">필라테스</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="prog-hero">
+    <div class="prog-hero-bg"></div>
+    <div class="container">
+      <div class="prog-hero-body">
+        <span class="prog-hero-label">YOGA</span>
+        <h1>몸과 마음의 균형,<br>킴스에서 시작하세요.</h1>
+        <p>전문 강사진과 함께하는 체계적인 지도자 양성 과정</p>
+        <div class="prog-hero-btns">
+          <a href="inquiry.html" class="btn-green">수강상담 신청하기</a>
+        </div>
+      </div>
+    </div>
+    <div class="prog-hero-wave">
+      <img src="images/1_HOME_img/SVG.png" alt="">
+    </div>
+  </div>
+
+  <section class="prog-pro-section">
+    <div class="container">
+      <div class="prog-pro-header">
+        <h2>전문지도자 요가 과정</h2>
+        <span class="prog-pro-subtitle">KYAT-300 (6개월과정)</span>
+        <p>
+          요가 철학, 해부학, 아사나(1·2·3), 명상, 바가바드기타, 공기 및 조화,
+          프라나야마 200시간 필수 이수 후 국제 공인 자격증이 발급됩니다.
+        </p>
+      </div>
+
+      <div class="prog-pro-img" style="background-image:url('images/5_Kims story_img/yoga_main.png'); background-size:cover; background-position:center;" role="img" aria-label="전문지도자 요가 과정 수업 이미지"></div>
+
+      <div class="prog-info-grid">
+        <div class="prog-info-cell">
+          <h4>교육과정</h4>
+          <p>
+            요가철학, 해부생리학, 아사나(초·중·심화),<br>
+            명상, 프라나야마, 바가바드기타,<br>
+            지도법 실습 및 관찰 1인 1회
+          </p>
+        </div>
+        <div class="prog-info-cell">
+          <h4>교육기간</h4>
+          <p>
+            매주 토요일 am11:00~pm5:00<br>
+            6개월 (180시간 수강)
+          </p>
+        </div>
+        <div class="prog-info-cell">
+          <h4>교육비용</h4>
+          <p>
+            교육비 120만원 (재원비)<br>
+            재료비 및 교재비 별도<br>
+            ※ 분할납부 가능
+          </p>
+        </div>
+        <div class="prog-info-cell">
+          <h4>교육과정 혜택</h4>
+          <p>
+            지도자과정 수업 참여 횟수 제한 없이 재수강<br>
+            킴스 전 지점 수강생 수업 무료 참관<br>
+            KYA 국제 공인 자격증 발급
+          </p>
+        </div>
+        <div class="prog-info-cell">
+          <h4>모집인원</h4>
+          <p>인원 제한 있음<br>※ 선착순 마감</p>
+        </div>
+        <div class="prog-info-cell">
+          <h4>교육장소</h4>
+          <p>
+            킴스요가 합정구 교육관<br>
+            Tel: 031-480-3308
+          </p>
+        </div>
+      </div>
+
+      <div class="prog-kya-logo">
+        <img src="images/5_Kims story_img/logo_kyaga.jpg" alt="KYA 코리아요가얼라이언스 로고" style="height:60px; width:auto; display:block; margin-bottom:12px;">
+        <p>
+          킴스요가필라테스는 대한요가기협회(KYA) 공인 교육기관으로서<br>
+          국제적으로 인정받는 요가 자격증을 발급합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="prefooter">
+  <div class="container">
+    <div class="prefooter-text">
+      <h2>지금, 가까운 지점에서 시작하세요.</h2>
+      <p>상담부터 체험까지 — 전문 강사가 직접 안내 드립니다.</p>
+    </div>
+    <div class="prefooter-links">
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>수강료조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>시간표조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-id-card"></i>
+        <span>원데이신청</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px; width:auto;"></div>
+        <p class="footer-brand">KIM'S YOGA &amp; PILATES</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p>
+          킴스요가필라테스요가<br>
+          사업자번호 : 134-27-80643<br>
+          대표 : 박경화<br>
+          경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>
+          대표전화 : 031-480-3308<br>
+          Email : dona4330@naver.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">이용약관</a>
+        <span class="footer-bottom-sep">|</span>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button>
+  <button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', function () { mobileNav.classList.add('open'); this.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
+  function closeMenu() { mobileNav.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  document.querySelectorAll('.mob-close').forEach(function(btn){ btn.addEventListener('click', closeMenu); });
+  mobileNav.addEventListener('click', function(e){ if(e.target===mobileNav) closeMenu(); });
+    const topBtn = document.getElementById('topBtn');
+  const floatingEl = document.querySelector('.floating');
+  floatingEl.style.opacity = '0';
+  floatingEl.style.pointerEvents = 'none';
+  floatingEl.style.transition = 'opacity 0.3s';
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){
+    var show = window.scrollY > 400;
+    floatingEl.style.opacity = show ? '1' : '0';
+    floatingEl.style.pointerEvents = show ? 'auto' : 'none';
+  });
+  (function () {
+    var btns = document.querySelectorAll('.float-btn');
+    var footer = document.querySelector('footer');
+    if (!footer || !btns.length) return;
+    new IntersectionObserver(function (entries) {
+      btns.forEach(function (btn) {
+        btn.classList.toggle('is-footer', entries[0].isIntersecting);
+      });
+    }, { threshold: 0 }).observe(footer);
+  })();
+</script>
+<script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+</script>
+<script src="js/auth-ui.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,1145 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<!-- ================================================
+     TOP UTILITY BAR
+================================================ -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a>
+      <a href="#">신부점</a>
+      <a href="#">신길온천점</a>
+      <a href="#">원곡점</a>
+      <a href="#">안양 평촌점</a>
+      <a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      031.480.3308
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     GNB HEADER
+================================================ -->
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </a>
+
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li class="active"><a href="index.html">HOME</a></li>
+        <li>
+          <a href="about.html">KIM'S 소개</a>
+          <ul class="gnb-dropdown">
+            <li><a href="about.html">브랜드 소개</a></li>
+            <li><a href="instructors.html">강사소개</a></li>
+            <li><a href="location.html">교육시설·위치</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="program-yoga-pro.html">교육 프로그램</a>
+          <ul class="gnb-dropdown">
+            <li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li>
+            <li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li>
+            <li><a href="program-yoga.html">요가</a></li>
+            <li><a href="program-pilates.html">필라테스</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="community-notice.html">커뮤니티</a>
+          <ul class="gnb-dropdown">
+            <li><a href="community-notice.html">공지사항·이벤트</a></li>
+            <li><a href="community-review.html">수강생 후기</a></li>
+            <li><a href="community-news.html">뉴스·포토스토리</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <a href="inquiry.html" class="btn-gnb">문의하기</a>
+
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">
+            <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div>
+      <button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button>
+    </div>
+    <div class="mob-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </div>
+    <ul class="mob-nav-list">
+      <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <ul class="mob-sub">
+          <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
+          <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
+          <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+    </ul>
+    <div class="mob-quick">
+      <a href="inquiry.html">온라인 상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+    </div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section">
+      <p class="mob-section-label">지점안내</p>
+      <div class="mob-branch-wrap">
+        <a href="#">본점</a><a href="#">선부점</a><a href="#">신길온천점</a>
+        <a href="#">원곡점</a><a href="#">안양 평촌점</a><a href="#">안성1호점</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <p class="mob-section-label">대표문의</p>
+      <a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a>
+      <p class="mob-hours">평일 10:00 - 21:00 &middot; 주말 10:00 - 16:00</p>
+    </div>
+    <div class="mob-cta">
+      <a href="inquiry.html" class="mob-btn-primary">문의하기</a>
+      <div class="mob-cta-auth">
+        <a href="signup.html" class="mob-btn-outline" id="mobSignup">회원가입</a>
+        <a href="login.html" class="mob-btn-outline" id="mobAuth">로그인</a>
+      </div>
+    </div>
+    <div class="mob-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ================================================
+       HERO
+  ================================================ -->
+  <section class="hero" aria-label="히어로 배너">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image:url('images/1_HOME_img/main_1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_2.png')"></div>
+      <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_3.png')"></div>
+      <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_4.png')"></div>
+    </div>
+    <button class="hero-arrow hero-arrow-prev" aria-label="이전 슬라이드"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="hero-arrow hero-arrow-next" aria-label="다음 슬라이드"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="hero-wave">
+      <img src="images/1_HOME_img/SVG.png" alt="">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-body">
+      <div class="container">
+        <div class="hero-text">
+          <p class="hero-sub">KIM'S YOGA &amp; PILATES</p>
+          <h1>1992년부터 이어온<br>요가·필라테스 전문 교육기관</h1>
+          <p class="hero-desc">
+            몸과 마음의 균형, 킴스에서 시작하세요.<br>
+            전문 강사진과 함께하는 체계적인 요가·필라테스 교육.
+          </p>
+          <div class="btn-glass-wrap">
+            <a href="about.html" class="btn-green">KIM'S 소개</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-dots">
+        <button class="hero-dot active" aria-label="슬라이드 1"></button>
+        <button class="hero-dot" aria-label="슬라이드 2"></button>
+        <button class="hero-dot" aria-label="슬라이드 3"></button>
+        <button class="hero-dot" aria-label="슬라이드 4"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       THE SPREAD OF PILATES
+  ================================================ -->
+  <section class="spread">
+    <div class="spread-deco" aria-hidden="true">
+      <img class="deco-flower-lg" src="images/1_HOME_img/flower.png" alt="">
+      <img class="deco-flower-sm" src="images/1_HOME_img/flower.png" alt="">
+      <img class="deco-circle-1"  src="images/1_HOME_img/flower_2.png" alt="">
+      <img class="deco-circle-1b" src="images/1_HOME_img/flower_2.png" alt="">
+      <img class="deco-circle-3"  src="images/1_HOME_img/flower_2.png" alt="">
+    </div>
+    <div class="container">
+      <div class="spread-top">
+        <div class="spread-top-text">
+          <h2 class="sec-en">THE SPREAD OF PILATES</h2>
+          <p class="body">
+            1992년 최초로 한국에 필라테스를 도입한 이래,<br>
+            킴스요가필라테스는 수천 명의 전문 강사를 양성하며<br>
+            요가·필라테스 교육의 선두를 지켜왔습니다.
+          </p>
+          <a href="location.html" class="btn-green spread-btn">지점안내</a>
+        </div>
+      </div>
+
+      <div class="spread-divider"></div>
+
+      <div class="spread-features">
+        <div class="spread-feature">
+          <div class="spread-icon">
+            <img src="images/1_HOME_img/icon1-768x769.png" alt="1992년 설립 아이콘">
+          </div>
+          <h3><span class="count-num" data-target="1992">0</span>년 설립</h3>
+          <p>30년 이상 이어온 교육 노하우로<br>전문 지도자를 양성하며<br>교육의 기준을 만들어갑니다.</p>
+        </div>
+        <div class="spread-feature">
+          <div class="spread-icon">
+            <img src="images/1_HOME_img/icon2-768x769.png" alt="6개 직영 지점 아이콘">
+          </div>
+          <h3><span class="count-num" data-target="6">0</span>개 직영 지점</h3>
+          <p>경기 지역 6개 직영 지점에서<br>동일한 커리큘럼과 강사진으로 교육합니다.<br>가까운 지점에서 바로 시작할 수 있습니다.</p>
+        </div>
+        <div class="spread-feature">
+          <div class="spread-icon">
+            <img src="images/1_HOME_img/icon3-768x768.png" alt="KYA 공인 지도과정 아이콘">
+          </div>
+          <h3><span class="type-text" data-text="KYA"></span> 공인 지도과정</h3>
+          <p>김스요가필라테스의 모든 교육과정은<br>KYA(한국요가협회) 공인 커리큘럼을 기반으로 하며,<br>수료 후 공인 자격을 취득할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-width image band -->
+  <div class="img-band" style="background-image:url('images/1_HOME_img/program.jpg')" role="img" aria-label="요가 그룹 수업 이미지">
+    <div class="img-band-wave-top">
+      <img src="images/1_HOME_img/SVG(상단).png" alt="">
+    </div>
+
+  </div>
+
+  <!-- ================================================
+       PROGRAM
+  ================================================ -->
+  <section class="program-section" aria-label="교육 프로그램">
+    <div class="program-bg"></div>
+    <div class="program-overlay" aria-hidden="true"></div>
+    <div class="program-wave-bottom">
+      <img src="images/1_HOME_img/SVG(하단).png" alt="">
+    </div>
+    <div class="container">
+      <div class="program-content">
+        <h2 class="sec-en">PROGRAM</h2>
+        <p class="program-desc">1992년부터 이어온 요가·필라테스 전문 교육기관,<br>킴스요가필라테스의 지도자 과정을 소개합니다.</p>
+        <a href="program-yoga-pro.html" class="btn-green">프로그램</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       YOGA PILATES INSTRUCTORS
+  ================================================ -->
+  <section class="instructors">
+    <div class="container">
+      <h2 class="sec-en">YOGA PILATES INSTRUCTORS</h2>
+      <p class="sec-kr">KIM'S 강사진</p>
+
+      <div class="instructors-scroll-wrap">
+      <div class="instructors-grid">
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background-image:url('images/1_HOME_img/instrsuctors_1.png'); background-size:cover; background-position:center bottom;" role="img" aria-label="박경화 대표 사진"></div>
+          <h3>김성수</h3>
+          <p>대표 · 전문지도자</p>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background-image:url('images/1_HOME_img/instrsuctors_2.png'); background-size:165%; background-position:50% 55%;" role="img" aria-label="김세연 강사 사진"></div>
+          <h3>김세연</h3>
+          <p>요가 전문 강사</p>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background-image:url('images/1_HOME_img/instrsuctors_3.jpg'); background-size:cover; background-position:center bottom;" role="img" aria-label="김시은 강사 사진"></div>
+          <h3>김시은</h3>
+          <p>필라테스 전문 강사</p>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background-image:url('images/1_HOME_img/instrsuctors_4.jpg'); background-size:cover; background-position:center bottom;" role="img" aria-label="강수연 강사 사진"></div>
+          <h3>강수연</h3>
+          <p>요가·필라테스 강사</p>
+        </div>
+      </div>
+      </div><!-- /.instructors-scroll-wrap -->
+
+      <div style="text-align:center; margin-top: 15px;">
+        <a href="instructors.html" class="btn-outline">VIEW MORE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       WE'RE THE ONES THAT CARE
+  ================================================ -->
+  <section class="care">
+    <div class="container">
+      <div class="care-head">
+        <h2 class="sec-en">WE'RE THE ONES THAT CARE</h2>
+        <p class="sec-kr">킴스가 특별한 이유</p>
+      </div>
+      <div class="care-layout">
+
+        <!-- 좌측 카드 -->
+        <div class="care-cards">
+          <div class="care-card active" data-center="images/1_HOME_img/care_6.png" data-bg-size="80%" data-bg-size-sm="145%" data-href="about.html">
+            <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_1.png');" role="img" aria-label="마음 아이콘"></div>
+            <h3>몸과 함께 다루는 心</h3>
+            <p class="care-card-en">Mind &amp; Body</p>
+            <p>단순한 운동을 넘어 몸과 마음의 균형을 찾는 수업을 진행합니다.</p>
+          </div>
+          <div class="care-card" data-center="images/1_HOME_img/care_7.png" data-bg-size="95%" data-bg-size-sm="160%" data-href="instructors.html">
+            <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_2.png');" role="img" aria-label="지도자 아이콘"></div>
+            <h3>전문 지도자 양성</h3>
+            <p class="care-card-en">Expert Training</p>
+            <p>체계적인 커리큘럼으로 현장에서 바로 활동 가능한 전문 강사를 양성합니다.</p>
+          </div>
+        </div>
+
+        <!-- 센터 사진 -->
+        <div class="care-center">
+          <img src="images/1_HOME_img/care_ring.png" class="care-ring" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower_2.png" class="care-flower-2" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower_2.png" class="care-flower-2c" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower_2.png" class="care-flower-2d" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower_2.png" class="care-flower-2e" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower.png" class="care-flower" alt="" aria-hidden="true">
+          <img src="images/1_HOME_img/flower.png" class="care-flower-2b" alt="" aria-hidden="true">
+          <div class="care-photo" id="carePhoto" style="background-image:url('images/1_HOME_img/care_6.png'); background-size:80%;" role="img" aria-label="요가 포즈 이미지" data-bg-size="80%"></div>
+          <img src="images/1_HOME_img/Element_1.png" class="care-element" alt="" aria-hidden="true">
+        </div>
+
+        <!-- 우측 카드 -->
+        <div class="care-cards">
+          <div class="care-card" data-center="images/1_HOME_img/care_8.png" data-bg-size="100%" data-bg-size-sm="165%" data-href="program-yoga.html">
+            <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_3.png');" role="img" aria-label="프로그램 아이콘"></div>
+            <h3>다양한 프로그램</h3>
+            <p class="care-card-en">Variety Programs</p>
+            <p style="letter-spacing:-0.08em;">입문부터 심화, 지도자 과정까지 레벨별<br>수업을 제공합니다.</p>
+          </div>
+          <div class="care-card" data-center="images/1_HOME_img/care_9.png" data-bg-size="90%" data-bg-size-sm="155%" data-href="about.html">
+            <div class="care-card-icon" style="background-image:url('images/1_HOME_img/care_4.png');" role="img" aria-label="공인 아이콘"></div>
+            <h3>공인 교육 기관</h3>
+            <p class="care-card-en">Certified Institution</p>
+            <p>대한요가기협회 공인 교육기관으로 공신력 있는 자격증을 발급합니다.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       REVIEWS FROM OUR MEMBERS
+  ================================================ -->
+  <section class="reviews">
+    <div class="container">
+      <div class="reviews-head">
+        <h2 class="sec-en reviews-title">REVIEWS FROM OUR MEMBERS</h2>
+        <p class="sec-kr reviews-sub">KIM'S 수강생 후기</p>
+      </div>
+
+      <div class="reviews-wrap">
+        <!-- 1행: 사진 | 텍스트 | 사진 -->
+        <a href="community-review.html" class="review-card-photo">
+          <div class="review-card-photo-img" style="background-image:url('images/1_HOME_img/members_1.png'); background-size:cover; background-position:center;" role="img" aria-label="수강생 후기 이미지"></div>
+          <div class="review-card-photo-bottom">
+            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+            <span class="review-card-photo-name">박○○</span>
+          </div>
+        </a>
+        <a href="community-review.html" class="review-card-sm">
+          <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+          <h3>처음엔 자격증만 목표였는데</h3>
+          <p>솔직히 처음엔 그냥 자격증 하나 따려고 등록했는데요. 그런데 수업 들으면서 제가 요가를 얼마나 좋아했는지 알았어요. 선생님들이 정말 좋아요, 맞춤 지도해 주셔서 정말 너무 잘 배웠어요!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background-image:url('images/1_HOME_img/members_1.png'); background-size:cover; background-position:center;" role="img" aria-label="수강생 프로필"></div>
+            <span>김○○</span>
+          </div>
+        </a>
+        <a href="community-review.html" class="review-card-photo">
+          <div class="review-card-photo-img" style="background-image:url('images/1_HOME_img/members_2.png'); background-size:cover; background-position:center;" role="img" aria-label="수강생 후기 이미지"></div>
+          <div class="review-card-photo-bottom">
+            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+            <span class="review-card-photo-name">이○○</span>
+          </div>
+        </a>
+        <!-- 2행: 텍스트 | 사진 | 텍스트 -->
+        <a href="community-review.html" class="review-card-sm">
+          <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+          <h3>다른 곳이랑 비교가 안됐어요</h3>
+          <p>몸이 아파 어떤 운동도 도전할 수 없는 상황이었습니다. 그래서 선생님께 제 상황을 말씀드렸더니, 단 한번 수업도 담당 선생님이 맞춰서 해주셨어요. 정말 감동입니다!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background-image:url('images/1_HOME_img/members_3.jpg'); background-size:cover; background-position:center;" role="img" aria-label="수강생 프로필"></div>
+            <span>배○○</span>
+          </div>
+        </a>
+        <a href="community-review.html" class="review-card-photo">
+          <div class="review-card-photo-img" style="background-image:url('images/1_HOME_img/members_3.jpg'); background-size:cover; background-position:center;" role="img" aria-label="수강생 후기 이미지"></div>
+          <div class="review-card-photo-bottom">
+            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+            <span class="review-card-photo-name">최○○</span>
+          </div>
+        </a>
+        <a href="community-review.html" class="review-card-sm">
+          <div class="review-stars" aria-label="별점 5점">★★★★★</div>
+          <h3>몸이 달라지는 게 느껴져요</h3>
+          <p>처음에는 반신반의했는데 한 달 만에 확실히 달라진 몸을 느꼈어요. 강사님이 개인 상태에 맞게 꼼꼼하게 봐주셔서 정말 만족스러워요. 주변에도 많이 추천하고 있습니다!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background-image:url('images/1_HOME_img/members_1.png'); background-size:cover; background-position:center;" role="img" aria-label="수강생 프로필"></div>
+            <span>정○○</span>
+          </div>
+        </a>
+      </div><!-- /.reviews-wrap -->
+
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="community-review.html" class="btn-outline">View More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       NEWS & PHOTOSTORY
+  ================================================ -->
+  <section class="news">
+    <div class="container">
+      <h2 class="sec-en">NEWS &amp; PHOTOSTORY</h2>
+      <p class="sec-kr">뉴스·포토스토리</p>
+
+      <div class="news-scroll-area">
+      <div class="news-scroll-wrap">
+      <div class="news-grid">
+
+        <a class="news-card" href="community-news.html">
+          <div class="news-thumb-wrap">
+            <img src="images/1_HOME_img/news_1.png" alt="2026 안산시협회장배 요가대회">
+          </div>
+          <div class="news-body">
+            <p class="news-date">2026.04.20</p>
+            <h3>2026 안산시협회장배 요가대회</h3>
+            <p class="news-desc">8월 29일 토요일 10시~12시 안산시 협회장배 요가대회가 킴스요가 중앙점에서 진행됩니다.</p>
+          </div>
+        </a>
+
+        <a class="news-card" href="community-news.html">
+          <div class="news-thumb-wrap">
+            <img src="images/1_HOME_img/news_2.jpg" alt="26회 세계 요가의 날">
+          </div>
+          <div class="news-body">
+            <p class="news-date">2026.04.15</p>
+            <h3>26&#8242; 세계 요가의 날 in 동해</h3>
+            <p class="news-desc">6월 21일 일요일 PM 18:00~20:00 추암해변광장에서 펼쳐지는 세계 요가의 날 행사입니다.</p>
+          </div>
+        </a>
+
+        <a class="news-card" href="community-news.html">
+          <div class="news-thumb-wrap">
+            <img src="images/1_HOME_img/news_3.jpg" alt="킴스요가 지도자 과정 23기 하타요가">
+          </div>
+          <div class="news-body">
+            <p class="news-date">2026.04.08</p>
+            <h3>킴스요가 지도자 과정 23기 하타요가 첫 수업</h3>
+            <p class="news-desc">킴스요가 지도자 과정 23기가 하타요가 수업으로 힘차게 첫발을 내딛었습니다.</p>
+          </div>
+        </a>
+
+        <a class="news-card" href="community-news.html">
+          <div class="news-thumb-wrap">
+            <img src="images/1_HOME_img/news_4.jpg" alt="제8회 밀양국제요가컨퍼런스">
+          </div>
+          <div class="news-body">
+            <p class="news-date">2024.09.12</p>
+            <h3>제8회 밀양국제요가컨퍼런스</h3>
+            <p class="news-desc">10월 5일~6일 &ldquo;요가의 힘&rdquo; 행사, 바디릴렉스를 통한 무드라 명상이 진행됩니다.</p>
+          </div>
+        </a>
+
+      </div>
+      </div><!-- /.news-scroll-wrap -->
+      </div><!-- /.news-scroll-area -->
+
+      <div style="text-align:center; margin-top: 15px;">
+        <a href="community-news.html" class="btn-outline">VIEW MORE</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================
+     PRE-FOOTER CTA BAR
+================================================ -->
+<div class="prefooter">
+  <div class="container">
+    <div class="prefooter-text">
+      <h2>지금, 가까운 지점에서 시작하세요.</h2>
+      <p>상담부터 체험까지 — 전문 강사가 직접 안내 드립니다.</p>
+    </div>
+    <div class="prefooter-links">
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>수강료조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>시간표조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-id-card"></i>
+        <span>원데이신청</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     FOOTER
+================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px; width:auto;"></div>
+        <p class="footer-brand">KIM'S YOGA &amp; PILATES</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p>
+          킴스요가필라테스요가<br>
+          사업자번호 : 134-27-80643<br>
+          대표 : 박경화<br>
+          경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>
+          대표전화 : 031-480-3308<br>
+          Email : dona4330@naver.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">이용약관</a>
+        <span class="footer-bottom-sep">|</span>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================
+     FLOATING BUTTONS
+================================================ -->
+<div class="floating" aria-label="바로가기 버튼">
+  <span class="float-wrap"><button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button></span>
+  <span class="float-wrap"><button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button></span>
+</div>
+
+<!-- 챗봇 팝업 -->
+<div id="chatbot" class="chatbot" aria-hidden="true">
+  <div class="chatbot-header">
+    <div class="chatbot-header-info">
+      <i class="fa-regular fa-comment-dots"></i>
+      <span>킴스 채팅 상담</span>
+    </div>
+    <button class="chatbot-close" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages"></div>
+  <div class="chatbot-quick" id="chatQuick">
+    <button class="chatbot-quick-btn"><i class="fa-solid fa-won-sign"></i>수강료 문의</button>
+    <button class="chatbot-quick-btn"><i class="fa-solid fa-location-dot"></i>지점 안내</button>
+    <button class="chatbot-quick-btn"><i class="fa-solid fa-list-check"></i>프로그램</button>
+    <button class="chatbot-quick-btn"><i class="fa-solid fa-user"></i>강사 소개</button>
+    <button class="chatbot-quick-btn"><i class="fa-solid fa-calendar-days"></i>시간표 조회</button>
+    <button class="chatbot-quick-btn"><i class="fa-regular fa-comment-dots"></i>온라인 상담</button>
+  </div>
+  <div class="chatbot-input-wrap">
+    <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." autocomplete="off">
+    <button id="chatSend"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+  // Hero slideshow
+  (function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    let cur = 0;
+    let timer;
+
+    function goTo(idx) {
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = idx;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+    }
+
+    function next() { goTo((cur + 1) % slides.length); }
+
+    timer = setInterval(next, 5000);
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        clearInterval(timer);
+        goTo(i);
+        timer = setInterval(next, 5000);
+      });
+    });
+
+    document.querySelector('.hero-arrow-prev').addEventListener('click', function () {
+      clearInterval(timer);
+      goTo((cur - 1 + slides.length) % slides.length);
+      timer = setInterval(next, 5000);
+    });
+
+    document.querySelector('.hero-arrow-next').addEventListener('click', function () {
+      clearInterval(timer);
+      next();
+      timer = setInterval(next, 5000);
+    });
+  })();
+
+  // Scroll to top
+  document.getElementById('topBtn').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Mobile menu open/close
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+
+  hamburgerBtn.addEventListener('click', function () {
+    mobileNav.classList.add('open');
+    this.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMenu() {
+    mobileNav.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.mob-close').forEach(function(btn){ btn.addEventListener('click', closeMenu); });
+
+  // 두 버튼 동시에 숨김/표시
+  var floating = document.querySelector('.floating');
+  floating.style.opacity = '0';
+  floating.style.transition = 'opacity 0.3s';
+  window.addEventListener('scroll', function () {
+    floating.style.opacity = window.scrollY > 400 ? '1' : '0';
+  });
+
+  // Float button color: footer 보이면 --color-point, 벗어나면 --color-main
+  (function () {
+    var btns = document.querySelectorAll('.float-btn');
+    var footer = document.querySelector('footer');
+    if (!footer || !btns.length) return;
+    new IntersectionObserver(function (entries) {
+      btns.forEach(function (btn) {
+        btn.classList.toggle('is-footer', entries[0].isIntersecting);
+      });
+    }, { threshold: 0 }).observe(footer);
+  })();
+
+  // Instructor cards carousel (FLIP slide)
+  (function () {
+    var grid = document.querySelector('.instructors-grid');
+    if (!grid) return;
+
+    var SLOT_Y = [0, 96, 0, 96]; // 슬롯별 세로 오프셋(px) - 위아래위아래
+    var locked = false;
+    var startX = 0, startY = 0;
+
+    function cardList() {
+      return Array.prototype.slice.call(grid.querySelectorAll('.instructor-card'));
+    }
+
+    function initTransforms() {
+      cardList().forEach(function (c, i) {
+        c.style.transition = 'none';
+        c.style.transform = 'translateY(' + (SLOT_Y[i] || 0) + 'px)';
+      });
+    }
+    initTransforms();
+
+    function rotate(dir) {
+      if (locked) return;
+      locked = true;
+
+      var cs = cardList();
+
+      // 1. FIRST: 현재 시각 위치 캡처
+      var firstRects = cs.map(function (c) { return c.getBoundingClientRect(); });
+
+      // 2. LAST: DOM 순서 변경
+      if (dir > 0) {
+        grid.appendChild(cs[0]);
+      } else {
+        grid.insertBefore(cs[cs.length - 1], cs[0]);
+      }
+
+      var newCs = cardList();
+
+      // 3. 최종 transform 적용 후 위치 캡처
+      newCs.forEach(function (c, i) {
+        c.style.transition = 'none';
+        c.style.transform = 'translateY(' + (SLOT_Y[i] || 0) + 'px)';
+      });
+      newCs[0].offsetHeight;
+
+      var lastRects = newCs.map(function (c) { return c.getBoundingClientRect(); });
+
+      // 4. INVERT: 카드를 이전 위치에서 시작
+      newCs.forEach(function (card, newIdx) {
+        var oldIdx = cs.indexOf(card);
+        var isWrap = (dir > 0 && oldIdx === 0) || (dir < 0 && oldIdx === cs.length - 1);
+        card.style.transition = 'none';
+        if (isWrap) {
+          card.style.opacity = '0';
+        } else {
+          var dx = firstRects[oldIdx].left - lastRects[newIdx].left;
+          var dy = firstRects[oldIdx].top  - lastRects[newIdx].top;
+          card.style.transform = 'translateY(' + (SLOT_Y[newIdx] || 0) + 'px) translate(' + dx + 'px,' + dy + 'px)';
+        }
+      });
+      newCs[0].offsetHeight;
+
+      // 5. PLAY: 최종 위치로 애니메이션
+      newCs.forEach(function (card, i) {
+        var oldIdx = cs.indexOf(card);
+        var isWrap = (dir > 0 && oldIdx === 0) || (dir < 0 && oldIdx === cs.length - 1);
+        if (isWrap) {
+          card.style.transition = 'opacity 0.4s ease 0.2s';
+          card.style.opacity = '1';
+        } else {
+          card.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)';
+          card.style.transform = 'translateY(' + (SLOT_Y[i] || 0) + 'px)';
+        }
+      });
+
+      setTimeout(function () { locked = false; }, 520);
+    }
+
+    // 마우스 드래그
+    grid.addEventListener('mousedown', function (e) {
+      startX = e.clientX; startY = e.clientY;
+    });
+    window.addEventListener('mouseup', function (e) {
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) rotate(dx < 0 ? 1 : -1);
+      startX = startY = 0;
+    });
+
+    // 터치 스와이프
+    grid.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    grid.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) rotate(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  })();
+
+  // 공통 드래그 스크롤 + 화살표 초기화
+  (function () {
+    function initScrollSection(wrapSel, prevSel, nextSel, cardW) {
+      var wrap = document.querySelector(wrapSel);
+      if (!wrap) return;
+      var isDragging = false, startX, scrollStart;
+
+      wrap.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        startX = e.clientX;
+        scrollStart = wrap.scrollLeft;
+        wrap.classList.add('grabbing');
+        e.preventDefault();
+      });
+      window.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        wrap.scrollLeft = scrollStart - (e.clientX - startX);
+      });
+      window.addEventListener('mouseup', function () {
+        isDragging = false;
+        wrap.classList.remove('grabbing');
+      });
+
+      var nextBtn = document.querySelector(nextSel);
+      if (nextBtn) nextBtn.addEventListener('click', function () {
+        wrap.scrollBy({ left: cardW, behavior: 'smooth' });
+      });
+    }
+
+    // 뉴스
+    initScrollSection(
+      '.news-scroll-wrap',
+      null,
+      '.news-scroll-area .scroll-arrow-next',
+      380
+    );
+  })();
+
+  // Care card click → center image change
+  (function () {
+    var cards   = document.querySelectorAll('.care-card');
+    var photo   = document.getElementById('carePhoto');
+
+    if (window.innerWidth <= 768 && photo) {
+      photo.style.backgroundSize = window.innerWidth <= 480 ? '81%' : '75%';
+      photo.style.backgroundPosition = 'center center';
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          var href = card.getAttribute('data-href');
+          if (href) { window.location.href = href; return; }
+        }
+        cards.forEach(function (c) { c.classList.remove('active'); });
+        card.classList.add('active');
+
+        var src = card.getAttribute('data-center');
+        var isSm = window.innerWidth <= 768;
+        var isXs = window.innerWidth <= 480;
+        var bgSize = isSm
+          ? (src.indexOf('care_6') !== -1 ? (isXs ? '81%' : '75%') : 'contain')
+          : (card.getAttribute('data-bg-size') || 'contain');
+        photo.style.opacity = '0';
+        setTimeout(function () {
+          photo.style.backgroundImage = "url('" + src + "')";
+          photo.style.backgroundSize = bgSize;
+          photo.style.backgroundPosition = isSm ? 'center center' : '';
+          photo.style.opacity = '1';
+        }, 180);
+      });
+    });
+  })();
+
+  // care-element 스크롤 등장/퇴장
+  (function () {
+    var elem = document.querySelector('.care-element');
+    if (!elem) return;
+    var leaveTimer = null;
+
+    function check() {
+      var rect = elem.getBoundingClientRect();
+      var inView = rect.top < window.innerHeight - 60 && rect.bottom > 60;
+
+      if (inView) {
+        clearTimeout(leaveTimer);
+        elem.classList.remove('is-leaving');
+        elem.classList.add('is-visible');
+      } else if (elem.classList.contains('is-visible')) {
+        elem.classList.remove('is-visible');
+        elem.classList.add('is-leaving');
+        leaveTimer = setTimeout(function () {
+          elem.classList.remove('is-leaving');
+        }, 1900);
+      }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+</script>
+
+<script>
+  /* 스크롤 진행 바 */
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+
+  /* 카운터 숫자 + KYA 타이핑 애니메이션 */
+  (function () {
+    var features = document.querySelector('.spread-features');
+    if (!features) return;
+
+    function animateCount(el) {
+      var target   = +el.dataset.target;
+      var duration = target >= 1000 ? 1800 : 900;
+      var start    = performance.now();
+      function step(now) {
+        var p = Math.min((now - start) / duration, 1);
+        /* easeOutExpo */
+        var ease = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = Math.floor(ease * target);
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }
+
+    function animateType(el) {
+      var text  = el.dataset.text;
+      var i     = 0;
+      var delay = 120;
+      function next() {
+        el.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(next, delay);
+        else el.classList.add('done');
+      }
+      setTimeout(next, delay);
+    }
+
+    var done = false;
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting || done) return;
+      done = true;
+      features.querySelectorAll('.count-num').forEach(animateCount);
+      features.querySelectorAll('.type-text').forEach(animateType);
+      io.disconnect();
+    }, { threshold: 0.3 });
+    io.observe(features);
+  })();
+</script>
+
+<script src="js/auth-ui.js"></script>
+
+<script>
+  (function () {
+    var section = document.querySelector('.spread');
+    var deco    = document.querySelector('.spread-deco');
+    var items   = document.querySelectorAll('.spread-deco img');
+    if (!section || !items.length) return;
+
+    /* 부유 파라미터: 진폭(px), 속도(rad/ms), 위상 */
+    var floatP = [
+      { amp: 20, spd: 0.0007, ph: 0   },
+      { amp: 13, spd: 0.0009, ph: 1.2 },
+      { amp: 10, spd: 0.0011, ph: 2.4 },
+      { amp:  8, spd: 0.0013, ph: 0.8 },
+      { amp: 15, spd: 0.0006, ph: 3.0 },
+      { amp:  9, spd: 0.0010, ph: 1.8 },
+    ];
+    /* 자체 회전 속도 (deg/ms, 양수=시계, 음수=반시계) */
+    var rotSpd = [0.012, -0.008, 0.015, -0.010, 0.007, -0.013];
+
+    function loop() {
+      var t = performance.now();
+      items.forEach(function(el, i) {
+        var p  = floatP[i] || floatP[0];
+        var fy = Math.sin(t * p.spd + p.ph) * p.amp;
+        var rd = t * (rotSpd[i] || 0.01);
+        el.style.transform = 'translateY(' + fy + 'px) rotate(' + rd + 'deg)';
+      });
+      requestAnimationFrame(loop);
+    }
+
+    function startLoop() {
+      items.forEach(function(el) { el.style.transition = 'opacity 0.5s ease'; });
+      loop();
+    }
+
+    /* 뷰포트 진입 시 등장 → 2초 후 부유+자체회전 루프 시작 */
+    var io = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting) return;
+      deco.classList.add('is-visible');
+      io.disconnect();
+      setTimeout(startLoop, 2000);
+    }, { threshold: 0.15 });
+    io.observe(section);
+  })();
+</script>
+
+<script>
+  /* ── 챗봇 ── */
+  (function () {
+    var bot      = document.getElementById('chatbot');
+    var chatBtn  = document.getElementById('chatBtn');
+    var closeBtn = document.querySelector('.chatbot-close');
+    var messages = document.getElementById('chatMessages');
+    var input    = document.getElementById('chatInput');
+    var sendBtn  = document.getElementById('chatSend');
+    var quickWrap= document.getElementById('chatQuick');
+    var opened   = false;
+
+    /* ── 자동응답 규칙 (키워드 점수 기반 매칭) ── */
+    var rules = [
+      { keys: ['안녕','반갑','hello','hi','처음','시작'],
+        reply: '안녕하세요! 👋 킴스 요가&필라테스입니다.\n1992년부터 이어온 전문 교육기관으로, 요가·필라테스 일반 수업부터 전문 지도자 과정까지 운영하고 있습니다.\n무엇이든 편하게 물어보세요 😊' },
+
+      { keys: ['수강료','가격','비용','요금','얼마','돈'],
+        reply: '수강료는 프로그램 종류와 지점에 따라 다릅니다.\n정확한 금액은 아래 페이지에서 확인하시거나 전화 문의 부탁드립니다.\n📞 031-480-3308\n👉 <a href="inquiry.html">수강료 조회하기</a>' },
+
+      { keys: ['원데이','체험','1일','하루','단기','입문'],
+        reply: '원데이 클래스로 부담 없이 체험해 보실 수 있습니다! 🧘\n예약은 온라인 신청 또는 전화로 가능합니다.\n📞 031-480-3308\n👉 <a href="inquiry.html">원데이 신청하기</a>' },
+
+      { keys: ['지점','위치','어디','주소','찾아','오시는','교통','근처','안산','안성','안양','수원','평촌','신부','신길','원곡'],
+        reply: '킴스는 경기 지역 6개 직영 지점을 운영 중입니다.\n📍 본점 | 신부점 | 신길온천점 | 원곡점 | 안양평촌점 | 안성1호점\n각 지점의 상세 주소와 지도는 아래에서 확인해 주세요.\n👉 <a href="location.html">지점·위치 안내</a>' },
+
+      { keys: ['지도자','자격증','전문','강사되','강사 되','자격','취득','kya','kpi'],
+        reply: '전문 지도자 과정을 운영하고 있습니다! 🏅\n• 요가 지도자 과정 — KYA 한국요가협회 공인\n• 필라테스 지도자 과정 — KPI 공인\n수료 후 공인 자격 취득이 가능합니다.\n👉 <a href="program-yoga-pro.html">요가 지도자 과정</a> | <a href="program-pilates-pro.html">필라테스 지도자 과정</a>' },
+
+      { keys: ['핫요가','hot','빈야사','vinyasa','아쉬탕가','ashtanga','힐링','명상','치료','재활','마이링'],
+        reply: '다양한 요가 프로그램을 운영하고 있습니다 🧘‍♀️\n• 힐링 요가 • 빈야사 • 아쉬탕가 • 핫 요가\n• 마이링 • 요가 명상 • 치료재활 요가\n👉 <a href="program-yoga.html">요가 프로그램 보기</a>' },
+
+      { keys: ['매트','기구','소도구','reformer','리포머','필라테스'],
+        reply: '필라테스 프로그램 안내입니다 💪\n• 매트 필라테스 • 소도구 필라테스 • 기구 필라테스\n각 과정은 레벨에 따라 구성되어 있습니다.\n👉 <a href="program-pilates.html">필라테스 프로그램 보기</a>' },
+
+      { keys: ['요가','yoga'],
+        reply: '요가 프로그램을 소개해 드릴게요 🧘‍♀️\n일반 요가 수업부터 전문 지도자 과정까지 운영합니다.\n👉 <a href="program-yoga.html">요가 수업 보기</a> | <a href="program-yoga-pro.html">요가 지도자 과정</a>' },
+
+      { keys: ['필라테스','pilates'],
+        reply: '필라테스 프로그램을 소개해 드릴게요 💪\n매트·소도구·기구 필라테스와 전문 지도자 과정을 운영합니다.\n👉 <a href="program-pilates.html">필라테스 수업 보기</a> | <a href="program-pilates-pro.html">필라테스 지도자 과정</a>' },
+
+      { keys: ['강사','선생님','instructor','코치','트레이너'],
+        reply: '킴스의 전문 강사진은 모두 KYA·KPI 공인 자격을 보유하고 있습니다.\n각 강사의 전문 분야와 경력을 확인해 보세요!\n👉 <a href="instructors.html">강사 소개 보기</a>' },
+
+      { keys: ['시간표','스케줄','일정','수업시간','언제','몇시'],
+        reply: '시간표는 지점별로 다르게 운영됩니다.\n원하시는 지점을 선택해 시간표를 확인해 주세요.\n👉 <a href="inquiry.html">시간표 조회하기</a>' },
+
+      { keys: ['초보','처음','입문','beginner','해본적','해봤','운동안','운동 안'],
+        reply: '처음이셔도 걱정 마세요! 😊\n킴스는 초보자를 위한 입문 과정부터 준비되어 있습니다.\n원데이 체험 클래스로 먼저 경험해 보시는 것도 좋습니다.\n👉 <a href="inquiry.html">원데이 신청하기</a>' },
+
+      { keys: ['등록','회원','가입','신청'],
+        reply: '수강 등록은 지점 방문 또는 온라인 상담을 통해 가능합니다.\n👉 <a href="inquiry.html">수강상담 신청하기</a>\n📞 031-480-3308' },
+
+      { keys: ['취소','환불','중도','그만'],
+        reply: '수강 취소 및 환불 관련 사항은 지점별 운영 규정에 따라 다릅니다.\n정확한 안내를 위해 직접 문의해 주세요.\n📞 031-480-3308\n👉 <a href="inquiry.html">온라인 상담 신청</a>' },
+
+      { keys: ['주차','주차장','차','parking'],
+        reply: '주차 가능 여부는 지점마다 다릅니다.\n각 지점 상세 페이지에서 편의시설을 확인해 주세요.\n👉 <a href="location.html">지점 안내 보기</a>' },
+
+      { keys: ['공지','이벤트','소식','뉴스','할인','프로모션'],
+        reply: '최신 공지사항과 이벤트 소식을 확인하세요! 🎉\n👉 <a href="community-notice.html">공지사항·이벤트</a> | <a href="community-news.html">뉴스·포토스토리</a>' },
+
+      { keys: ['후기','리뷰','수강생','경험','추천'],
+        reply: '다른 수강생들의 생생한 후기를 확인해 보세요 ⭐\n👉 <a href="community-review.html">수강생 후기 보기</a>' },
+
+      { keys: ['전화','번호','연락처','문의','상담','contact'],
+        reply: '언제든지 연락 주세요!\n📞 대표 문의: 031-480-3308\n📧 dona4330@naver.com\n👉 <a href="inquiry.html">온라인 상담 신청</a>' },
+
+      { keys: ['소개','about','역사','연혁','1992','설립','브랜드'],
+        reply: '킴스 요가&필라테스는 1992년 설립된 요가·필라테스 전문 교육기관입니다.\n30년 이상의 교육 노하우로 수천 명의 전문 강사를 양성해 왔습니다.\n👉 <a href="about.html">브랜드 소개 보기</a>' },
+
+      { keys: ['감사','고마워','고맙','thanks','thank'],
+        reply: '도움이 되었다니 기쁩니다 😊\n추가로 궁금한 점이 있으시면 언제든지 물어보세요!\n📞 031-480-3308' },
+    ];
+
+    var fallback = '죄송합니다, 해당 내용에 대해 정확한 답변이 어렵습니다.\n아래로 직접 문의해 주시면 친절히 안내해 드리겠습니다.\n📞 031-480-3308\n👉 <a href="inquiry.html">온라인 상담 신청</a>';
+
+    function addMsg(text, who) {
+      var wrap   = document.createElement('div');
+      wrap.className = 'chat-msg ' + who;
+      var bubble = document.createElement('div');
+      bubble.className = 'chat-bubble';
+      bubble.innerHTML = text.replace(/\n/g, '<br>');
+      wrap.appendChild(bubble);
+      messages.appendChild(wrap);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    /* 키워드 점수 기반 최적 매칭 */
+    function botReply(text) {
+      var lower = text.toLowerCase();
+      var best = { score: 0, reply: null };
+      for (var i = 0; i < rules.length; i++) {
+        var score = 0;
+        for (var j = 0; j < rules[i].keys.length; j++) {
+          if (lower.indexOf(rules[i].keys[j]) !== -1) score++;
+        }
+        if (score > best.score) { best.score = score; best.reply = rules[i].reply; }
+      }
+      return best.reply || fallback;
+    }
+
+    function send(text) {
+      text = text.trim();
+      if (!text) return;
+      addMsg(text, 'user');
+      input.value = '';
+      setTimeout(function () { addMsg(botReply(text), 'bot'); }, 400);
+    }
+
+    /* 퀵 버튼 */
+    quickWrap.querySelectorAll('.chatbot-quick-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { send(btn.textContent); });
+    });
+
+    sendBtn.addEventListener('click', function () { send(input.value); });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') send(input.value); });
+
+    /* 열기/닫기 */
+    function openChat() {
+      bot.classList.add('open');
+      bot.setAttribute('aria-hidden', 'false');
+      opened = true;
+      if (!messages.children.length) {
+        setTimeout(function () {
+          addMsg('안녕하세요! 👋\n킴스 요가&필라테스입니다.\n아래 버튼을 선택하거나 궁금한 점을 입력해 주세요.', 'bot');
+        }, 200);
+      }
+      input.focus();
+    }
+    function closeChat() {
+      bot.classList.remove('open');
+      bot.setAttribute('aria-hidden', 'true');
+    }
+
+    chatBtn.addEventListener('click', function () { opened ? closeChat() : openChat(); opened = !opened; });
+    closeBtn.addEventListener('click', closeChat);
+  })();
+</script>
+
+</body>
+</html>

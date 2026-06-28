@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수강상담신청 | KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a>
+      <a href="#">신부점</a>
+      <a href="#">신길온천점</a>
+      <a href="#">원곡점</a>
+      <a href="#">안양 평촌점</a>
+      <a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      <a href="tel:031-480-3308">031.480.3308</a>
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </a>
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li>
+          <a href="about.html">KIM'S 소개</a>
+          <ul class="gnb-dropdown">
+            <li><a href="about.html">브랜드 소개</a></li>
+            <li><a href="instructors.html">강사소개</a></li>
+            <li><a href="location.html">교육시설·위치</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="program-yoga-pro.html">교육 프로그램</a>
+          <ul class="gnb-dropdown">
+            <li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li>
+            <li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li>
+            <li><a href="program-yoga.html">요가</a></li>
+            <li><a href="program-pilates.html">필라테스</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="community-notice.html">커뮤니티</a>
+          <ul class="gnb-dropdown">
+            <li><a href="community-notice.html">공지사항·이벤트</a></li>
+            <li><a href="community-review.html">수강생 후기</a></li>
+            <li><a href="community-news.html">뉴스·포토스토리</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="inquiry.html" class="btn-gnb" aria-current="page">문의하기</a>
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">
+            <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div>
+      <button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button>
+    </div>
+    <div class="mob-logo">
+      <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스">
+    </div>
+    <ul class="mob-nav-list">
+      <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <ul class="mob-sub">
+          <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
+          <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
+          <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+    </ul>
+    <div class="mob-quick">
+      <a href="inquiry.html">온라인 상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+    </div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section">
+      <p class="mob-section-label">지점안내</p>
+      <div class="mob-branch-wrap">
+        <a href="#">본점</a><a href="#">선부점</a><a href="#">신길온천점</a>
+        <a href="#">원곡점</a><a href="#">안양 평촌점</a><a href="#">안성1호점</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <p class="mob-section-label">대표문의</p>
+      <a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a>
+      <p class="mob-hours">평일 10:00 - 21:00 &middot; 주말 10:00 - 16:00</p>
+    </div>
+    <div class="mob-cta">
+      <a href="inquiry.html" class="mob-btn-primary">문의하기</a>
+      <div class="mob-cta-auth">
+        <a href="signup.html" class="mob-btn-outline" id="mobSignup">회원가입</a>
+        <a href="login.html" class="mob-btn-outline" id="mobAuth">로그인</a>
+      </div>
+    </div>
+    <div class="mob-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="inquiry-page">
+    <div class="container">
+
+      <div class="inquiry-heading">
+        <span class="label-en">KIM'S INQUIRY</span>
+        <h1>KIM'S 상담센터</h1>
+      </div>
+
+      <div class="inquiry-tabs" role="tablist">
+        <button class="inquiry-tab-btn active" id="tab-online" role="tab" aria-selected="true" aria-controls="panel-online">온라인상담</button>
+        <button class="inquiry-tab-btn" id="tab-timetable" role="tab" aria-selected="false" aria-controls="panel-timetable">시간표조회</button>
+        <button class="inquiry-tab-btn" id="tab-oneday" role="tab" aria-selected="false" aria-controls="panel-oneday">원데이신청</button>
+      </div>
+
+      <!-- 온라인상담 -->
+      <div id="panel-online" role="tabpanel" aria-labelledby="tab-online">
+        <div class="inquiry-layout">
+
+          <!-- Left panel -->
+          <div>
+            <div class="inquiry-panel" style="margin-bottom:24px;">
+              <h3>고객 정보 입력</h3>
+              <div class="form-row">
+                <label for="i-name">이름</label>
+                <input type="text" id="i-name" placeholder="이름을 입력하세요">
+              </div>
+              <div class="form-row">
+                <label for="i-phone">연락처</label>
+                <input type="text" id="i-phone" placeholder="010-0000-0000">
+              </div>
+              <div class="form-row">
+                <label for="i-email">이메일</label>
+                <input type="email" id="i-email" placeholder="example@email.com">
+              </div>
+              <div class="form-row">
+                <label for="i-branch">지점 선택</label>
+                <select id="i-branch">
+                  <option value="">지점을 선택하세요</option>
+                  <option>본점</option>
+                  <option>신부점</option>
+                  <option>신길온천점</option>
+                  <option>원곡점</option>
+                  <option>안양 평촌점</option>
+                  <option>안성1호점</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="i-msg">문의내용</label>
+                <textarea id="i-msg" placeholder="문의 내용을 입력하세요"></textarea>
+              </div>
+            </div>
+
+            <div class="inquiry-panel">
+              <h3>수강료 조회</h3>
+              <div class="form-row">
+                <label for="i-prog-type">프로그램 유형</label>
+                <select id="i-prog-type">
+                  <option value="">프로그램을 선택하세요</option>
+                  <option>전문지도자 요가 과정</option>
+                  <option>전문지도자 필라테스 과정</option>
+                  <option>요가 (일반)</option>
+                  <option>필라테스 (일반)</option>
+                  <option>원데이 클래스</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="i-branch2">지점 선택</label>
+                <select id="i-branch2">
+                  <option value="">지점을 선택하세요</option>
+                  <option>본점</option>
+                  <option>신부점</option>
+                  <option>신길온천점</option>
+                  <option>원곡점</option>
+                  <option>안양 평촌점</option>
+                  <option>안성1호점</option>
+                </select>
+              </div>
+              <p class="inquiry-panel-note">
+                ※ 수강료는 선택하신 지점 및 프로그램에 따라 상이합니다.<br>
+                정확한 수강료는 담당 강사를 통해 안내 드립니다.<br>
+                대표 문의 : 031-480-3308
+              </p>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div class="inquiry-panel">
+            <h3>교육 과정 선택</h3>
+
+            <div class="inquiry-course-grid">
+              <div class="inquiry-course-cell" role="button" tabindex="0">전문지도자<br>요가 과정</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">전문지도자<br>필라테스 과정</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">요가<br>(일반)</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">필라테스<br>(일반)</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">원데이<br>클래스</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">기타<br>문의</div>
+            </div>
+
+            <div class="inquiry-sep"></div>
+
+            <input class="inquiry-line-input" type="text" placeholder="희망 수업 시간 또는 요일을 입력하세요">
+            <input class="inquiry-line-input" type="text" placeholder="기타 추가 문의사항을 입력하세요">
+
+            <div class="form-agree" style="margin-top:20px;">
+              <input type="checkbox" id="agree-inquiry">
+              <label for="agree-inquiry">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+            </div>
+
+            <button class="btn-submit" type="button" id="btn-online-submit">신청하기</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 시간표조회 -->
+      <div id="panel-timetable" role="tabpanel" aria-labelledby="tab-timetable" hidden>
+        <div class="inquiry-panel" style="text-align:center; padding: 60px 40px;">
+          <h3 style="border-bottom:none; text-align:center; font-size:18px;">시간표 조회</h3>
+          <div class="form-row" style="max-width:400px; margin:0 auto 24px;">
+            <label for="tt-branch">지점 선택</label>
+            <select id="tt-branch">
+              <option value="">지점을 선택하세요</option>
+              <option>본점</option>
+              <option>신부점</option>
+              <option>신길온천점</option>
+              <option>원곡점</option>
+              <option>안양 평촌점</option>
+              <option>안성1호점</option>
+            </select>
+          </div>
+          <div class="ph" style="height:360px; max-width:700px; margin:0 auto 24px;" role="img" aria-label="시간표 이미지 영역"></div>
+          <p style="font-size:13px; color:var(--color-font-sub); line-height:1.8;">
+            시간표는 매달 변경될 수 있습니다.<br>
+            정확한 시간표는 담당 지점으로 문의하세요.<br>
+            대표 문의 : <a href="tel:031-480-3308">031-480-3308</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 원데이신청 -->
+      <div id="panel-oneday" role="tabpanel" aria-labelledby="tab-oneday" hidden>
+        <div class="inquiry-layout">
+          <div class="inquiry-panel">
+            <h3>원데이 클래스 정보</h3>
+            <div class="form-row">
+              <label for="od-name">이름</label>
+              <input type="text" id="od-name" placeholder="이름을 입력하세요">
+            </div>
+            <div class="form-row">
+              <label for="od-phone">연락처</label>
+              <input type="text" id="od-phone" placeholder="010-0000-0000">
+            </div>
+            <div class="form-row">
+              <label for="od-branch">지점 선택</label>
+              <select id="od-branch">
+                <option value="">지점을 선택하세요</option>
+                <option>본점</option>
+                <option>신부점</option>
+                <option>신길온천점</option>
+                <option>원곡점</option>
+                <option>안양 평촌점</option>
+                <option>안성1호점</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="od-date">희망 날짜</label>
+              <input type="date" id="od-date">
+            </div>
+            <div class="form-row">
+              <label for="od-msg">문의사항</label>
+              <textarea id="od-msg" placeholder="문의 내용을 입력하세요"></textarea>
+            </div>
+          </div>
+
+          <div class="inquiry-panel">
+            <h3>원데이 클래스 선택</h3>
+            <div class="inquiry-course-grid">
+              <div class="inquiry-course-cell" role="button" tabindex="0">힐링<br>요가</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">빈야사<br>요가</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">아쉬탕가<br>요가</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">맷<br>필라테스</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">소도구<br>필라테스</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">요가<br>명상</div>
+            </div>
+            <div class="inquiry-sep"></div>
+            <input class="inquiry-line-input" type="text" placeholder="희망 시간을 입력하세요">
+            <div class="form-agree" style="margin-top:12px;">
+              <input type="checkbox" id="agree-oneday">
+              <label for="agree-oneday">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+            </div>
+            <button class="btn-submit" type="button" id="btn-oneday-submit">원데이 신청하기</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div class="prefooter">
+  <div class="container">
+    <div class="prefooter-text">
+      <h2>지금, 가까운 지점에서 시작하세요.</h2>
+      <p>상담부터 체험까지 — 전문 강사가 직접 안내 드립니다.</p>
+    </div>
+    <div class="prefooter-links">
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>수강료조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>시간표조회</span>
+      </a>
+      <span class="prefooter-sep"></span>
+      <a href="inquiry.html" class="prefooter-link">
+        <i class="fa-solid fa-id-card"></i>
+        <span>원데이신청</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px; width:auto;"></div>
+        <p class="footer-brand">KIM'S YOGA &amp; PILATES</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p>
+          킴스요가필라테스요가<br>
+          사업자번호 : 134-27-80643<br>
+          대표 : 박경화<br>
+          경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>
+          대표전화 : 031-480-3308<br>
+          Email : dona4330@naver.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">이용약관</a>
+        <span class="footer-bottom-sep">|</span>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button>
+  <button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+
+<script>
+  // Tab switching
+  (function() {
+    var tabs   = document.querySelectorAll('.inquiry-tab-btn');
+    var panels = document.querySelectorAll('[role="tabpanel"]');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var targetId = this.getAttribute('aria-controls');
+        tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function(p) { p.hidden = true; });
+        this.classList.add('active');
+        this.setAttribute('aria-selected','true');
+        document.getElementById(targetId).hidden = false;
+      });
+    });
+
+    // Course cell selection
+    document.querySelectorAll('.inquiry-course-cell').forEach(function(cell) {
+      cell.addEventListener('click', function() {
+        var grid = this.closest('.inquiry-course-grid');
+        grid.querySelectorAll('.inquiry-course-cell').forEach(function(c){ c.classList.remove('selected'); });
+        this.classList.add('selected');
+      });
+      cell.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+      });
+    });
+  })();
+
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', function () { mobileNav.classList.add('open'); this.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
+  function closeMenu() { mobileNav.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  document.querySelectorAll('.mob-close').forEach(function(btn){ btn.addEventListener('click', closeMenu); });
+  mobileNav.addEventListener('click', function(e){ if(e.target===mobileNav) closeMenu(); });
+    const topBtn = document.getElementById('topBtn');
+  const floatingEl = document.querySelector('.floating');
+  floatingEl.style.opacity = '0';
+  floatingEl.style.pointerEvents = 'none';
+  floatingEl.style.transition = 'opacity 0.3s';
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){
+    var show = window.scrollY > 400;
+    floatingEl.style.opacity = show ? '1' : '0';
+    floatingEl.style.pointerEvents = show ? 'auto' : 'none';
+  });
+  (function () {
+    var btns = document.querySelectorAll('.float-btn');
+    var footer = document.querySelector('footer');
+    if (!footer || !btns.length) return;
+    new IntersectionObserver(function (entries) {
+      btns.forEach(function (btn) {
+        btn.classList.toggle('is-footer', entries[0].isIntersecting);
+      });
+    }, { threshold: 0 }).observe(footer);
+  })();
+</script>
+<script src="js/auth-ui.js"></script>
+
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyAtDTvzAbY_lIIuafhDJtzTXkDDiDmEv_o",
+    authDomain: "kim-s-yoga.firebaseapp.com",
+    databaseURL: "https://kim-s-yoga-default-rtdb.firebaseio.com",
+    projectId: "kim-s-yoga",
+    storageBucket: "kim-s-yoga.firebasestorage.app",
+    messagingSenderId: "922241247178",
+    appId: "1:922241247178:web:efa08b0654d8380975d133"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.database();
+
+  // 온라인상담 신청
+  document.getElementById('btn-online-submit').addEventListener('click', function () {
+    var name   = document.getElementById('i-name').value.trim();
+    var phone  = document.getElementById('i-phone').value.trim();
+    var email  = document.getElementById('i-email').value.trim();
+    var branch = document.getElementById('i-branch').value;
+    var msg    = document.getElementById('i-msg').value.trim();
+    var agree  = document.getElementById('agree-inquiry').checked;
+    var selectedCourse = document.querySelector('#panel-online .inquiry-course-cell.selected');
+    var course   = selectedCourse ? selectedCourse.textContent.replace(/\s+/g, ' ').trim() : '';
+    var inputs   = document.querySelectorAll('#panel-online .inquiry-line-input');
+    var timeWish = inputs[0] ? inputs[0].value.trim() : '';
+    var extraMsg = inputs[1] ? inputs[1].value.trim() : '';
+
+    if (!name || !phone) { alert('이름과 연락처를 입력해주세요.'); return; }
+    if (!agree) { alert('개인정보 수집 및 이용에 동의해주세요.'); return; }
+
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = '전송 중...';
+
+    db.ref('inquiries/online').push({
+      이름: name,
+      연락처: phone,
+      이메일: email || '',
+      지점: branch || '',
+      문의내용: msg || '',
+      교육과정: course,
+      희망시간: timeWish,
+      추가문의: extraMsg,
+      접수시간: new Date().toISOString()
+    }).then(function () {
+      alert('상담 신청이 완료되었습니다.\n빠른 시간 안에 연락 드리겠습니다.');
+      btn.disabled = false;
+      btn.textContent = '신청하기';
+      ['i-name','i-phone','i-email','i-msg'].forEach(function(id){ document.getElementById(id).value = ''; });
+      document.getElementById('i-branch').value = '';
+      document.getElementById('agree-inquiry').checked = false;
+      document.querySelectorAll('#panel-online .inquiry-course-cell').forEach(function(c){ c.classList.remove('selected'); });
+      inputs.forEach(function(i){ i.value = ''; });
+    }).catch(function (err) {
+      alert('오류가 발생했습니다. 다시 시도해주세요.\n' + err.message);
+      btn.disabled = false;
+      btn.textContent = '신청하기';
+    });
+  });
+
+  // 원데이 신청
+  document.getElementById('btn-oneday-submit').addEventListener('click', function () {
+    var name   = document.getElementById('od-name').value.trim();
+    var phone  = document.getElementById('od-phone').value.trim();
+    var branch = document.getElementById('od-branch').value;
+    var date   = document.getElementById('od-date').value;
+    var msg    = document.getElementById('od-msg').value.trim();
+    var agree  = document.getElementById('agree-oneday').checked;
+    var selectedClass = document.querySelector('#panel-oneday .inquiry-course-cell.selected');
+    var classType = selectedClass ? selectedClass.textContent.replace(/\s+/g, ' ').trim() : '';
+    var timeInput = document.querySelector('#panel-oneday .inquiry-line-input');
+    var timeWish  = timeInput ? timeInput.value.trim() : '';
+
+    if (!name || !phone) { alert('이름과 연락처를 입력해주세요.'); return; }
+    if (!agree) { alert('개인정보 수집 및 이용에 동의해주세요.'); return; }
+
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = '전송 중...';
+
+    db.ref('inquiries/oneday').push({
+      이름: name,
+      연락처: phone,
+      지점: branch || '',
+      희망날짜: date || '',
+      문의사항: msg || '',
+      클래스: classType,
+      희망시간: timeWish,
+      접수시간: new Date().toISOString()
+    }).then(function () {
+      alert('원데이 신청이 완료되었습니다.\n빠른 시간 안에 연락 드리겠습니다.');
+      btn.disabled = false;
+      btn.textContent = '원데이 신청하기';
+      ['od-name','od-phone','od-msg'].forEach(function(id){ document.getElementById(id).value = ''; });
+      document.getElementById('od-branch').value = '';
+      document.getElementById('od-date').value = '';
+      document.getElementById('agree-oneday').checked = false;
+      document.querySelectorAll('#panel-oneday .inquiry-course-cell').forEach(function(c){ c.classList.remove('selected'); });
+      if (timeInput) timeInput.value = '';
+    }).catch(function (err) {
+      alert('오류가 발생했습니다. 다시 시도해주세요.\n' + err.message);
+      btn.disabled = false;
+      btn.textContent = '원데이 신청하기';
+    });
+  });
+</script>
+<script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
+

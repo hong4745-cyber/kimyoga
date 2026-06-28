@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글쓰기 | KIM'S YOGA &amp; PILATES</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .write-section { background: var(--color-sub); min-height: calc(100vh - 120px); padding: 60px 0 100px; }
+    .write-wrap { max-width: 860px; margin: 0 auto; background: var(--white); border-radius: 16px; padding: 52px 52px 48px; box-shadow: 0 8px 40px rgba(0,0,0,0.07); }
+    .write-page-title { font-size: 22px; font-weight: 700; color: var(--color-main); margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
+
+    /* 게시판 탭 */
+    .write-type-tabs { display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 2px solid var(--color-border); padding-bottom: 0; }
+    .write-type-tab { height: 40px; padding: 0 20px; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -2px; font-size: 14px; font-family: var(--font-kr); color: var(--color-font-light); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .write-type-tab.active { color: var(--color-main); font-weight: 700; border-bottom-color: var(--color-main); }
+
+    /* 폼 필드 */
+    .write-field { margin-bottom: 20px; }
+    .write-field label { display: block; font-size: 12px; font-weight: 700; color: var(--color-font-sub); margin-bottom: 8px; letter-spacing: 0.3px; }
+    .write-field label .req { color: var(--color-point); margin-left: 2px; }
+    .write-row { display: flex; gap: 12px; }
+    .write-field select,
+    .write-field input[type="text"],
+    .write-field input[type="url"] {
+      width: 100%; height: 48px; border: 1.5px solid var(--color-border); border-radius: 10px;
+      padding: 0 16px; font-size: 14px; font-family: var(--font-kr); color: var(--color-font);
+      background: var(--white); outline: none; transition: border-color 0.2s;
+    }
+    .write-field select { appearance: none; cursor: pointer; }
+    .write-field select:focus,
+    .write-field input:focus { border-color: var(--color-main); }
+    .write-field input::placeholder { color: var(--color-font-light); }
+    .write-field textarea {
+      width: 100%; min-height: 320px; border: 1.5px solid var(--color-border); border-radius: 10px;
+      padding: 16px; font-size: 14px; font-family: var(--font-kr); color: var(--color-font);
+      background: var(--white); outline: none; resize: vertical; line-height: 1.8;
+      transition: border-color 0.2s;
+    }
+    .write-field textarea:focus { border-color: var(--color-main); }
+    .write-field textarea::placeholder { color: var(--color-font-light); }
+
+    .write-divider { border: none; border-top: 1px solid var(--color-border); margin: 28px 0; }
+
+    /* 이미지 업로드 */
+    .write-img-preview { width: 100%; height: 200px; border: 2px dashed var(--color-border); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--color-font-light); font-size: 13px; cursor: pointer; transition: border-color 0.2s; overflow: hidden; position: relative; }
+    .write-img-preview:hover { border-color: var(--color-main); }
+    .write-img-preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .write-img-preview .img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .write-img-preview i { font-size: 28px; }
+    #writeImageInput { display: none; }
+
+    /* 하단 버튼 */
+    .write-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 32px; }
+    .write-cancel-btn { height: 48px; padding: 0 28px; background: none; border: 1.5px solid var(--color-border); border-radius: 50px; font-size: 14px; font-family: var(--font-kr); color: var(--color-font-sub); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+    .write-cancel-btn:hover { border-color: var(--color-main); color: var(--color-main); }
+    .write-submit-btn { height: 48px; padding: 0 36px; background: var(--color-main); color: var(--white); border: none; border-radius: 50px; font-size: 14px; font-weight: 700; font-family: var(--font-kr); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .write-submit-btn:hover { opacity: 0.88; }
+    .write-submit-btn:disabled { opacity: 0.55; cursor: default; }
+
+    /* 권한 없음 */
+    .write-auth-msg { text-align: center; padding: 80px 20px; color: var(--color-font-sub); }
+    .write-auth-msg i { font-size: 40px; color: var(--color-border); margin-bottom: 16px; display: block; }
+
+    @media (max-width: 768px) {
+      .write-wrap { padding: 32px 20px 40px; border-radius: 0; box-shadow: none; }
+      .write-actions { flex-direction: column-reverse; }
+      .write-cancel-btn, .write-submit-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#">KYA 대한요가기협회 공인 교육기관</a>
+      <a href="#">KIM'S 본점</a><a href="#">신부점</a><a href="#">신길온천점</a>
+      <a href="#">원곡점</a><a href="#">안양 평촌점</a><a href="#">안성1호점</a>
+    </div>
+    <div class="top-bar-right">
+      <span>대표문의</span>
+      <a href="tel:031-480-3308">031.480.3308</a>
+      <a href="inquiry.html">온라인상담</a>
+      <a href="inquiry.html">수강료 조회</a>
+      <a href="inquiry.html">시간표 조회</a>
+      <a href="login.html" id="topbarAuth">로그인</a>
+    </div>
+  </div>
+</div>
+
+<header class="gnb">
+  <div class="container">
+    <a href="index.html" class="gnb-logo"><img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스"></a>
+    <nav aria-label="주메뉴">
+      <ul class="gnb-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">KIM'S 소개</a><ul class="gnb-dropdown"><li><a href="about.html">브랜드 소개</a></li><li><a href="instructors.html">강사소개</a></li><li><a href="location.html">교육시설·위치</a></li></ul></li>
+        <li><a href="program-yoga-pro.html">교육 프로그램</a><ul class="gnb-dropdown"><li><a href="program-yoga-pro.html">전문지도자 요가 과정</a></li><li><a href="program-pilates-pro.html">전문지도자 필라테스 과정</a></li><li><a href="program-yoga.html">요가</a></li><li><a href="program-pilates.html">필라테스</a></li></ul></li>
+        <li><a href="community-notice.html" class="active">커뮤니티</a><ul class="gnb-dropdown"><li><a href="community-notice.html">공지사항·이벤트</a></li><li><a href="community-review.html">수강생 후기</a></li><li><a href="community-news.html">뉴스·포토스토리</a></li></ul></li>
+      </ul>
+    </nav>
+    <a href="inquiry.html" class="btn-gnb">문의하기</a>
+    <button class="gnb-hamburger" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="gnb-mobile" id="mobileNav" aria-label="모바일 메뉴" role="dialog" aria-modal="true">
+  <div class="mob-left">
+    <div class="mob-topbar">      <div class="mob-topbar-brand">
+        <img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스" class="mob-topbar-logo">
+      </div><button class="mob-close" aria-label="메뉴 닫기">&#x2715;</button></div>
+    <div class="mob-logo"><img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스"></div>
+    <ul class="mob-nav-list"><li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li><li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li></ul>
+    <div class="mob-quick"><a href="inquiry.html">온라인 상담</a><a href="inquiry.html">수강료 조회</a><a href="inquiry.html">시간표 조회</a></div>
+  </div>
+  <div class="mob-right">
+    <button class="mob-close mob-close-right" aria-label="메뉴 닫기">&#x2715;</button>
+    <div class="mob-section"><p class="mob-section-label">대표문의</p><a href="tel:031-480-3308" class="mob-phone">031. 480. 3308</a></div>
+    <div class="mob-cta"><a href="inquiry.html" class="mob-btn-primary">문의하기</a><div class="mob-cta-auth">
+        <a href="signup.html" class="mob-btn-outline" id="mobSignup">회원가입</a>
+        <a href="login.html" class="mob-btn-outline" id="mobAuth">로그인</a>
+      </div></div>
+  </div>
+</nav>
+
+<main>
+  <section class="write-section">
+    <div class="container">
+      <div class="write-wrap" id="writeWrap">
+
+        <p class="write-page-title"><i class="fa-solid fa-pen-to-square"></i> <span id="writeTitleText">글쓰기</span></p>
+
+        <!-- 게시판 탭 -->
+        <div class="write-type-tabs" id="writeTypeTabs">
+          <button class="write-type-tab" data-type="notice">공지사항·이벤트</button>
+          <button class="write-type-tab" data-type="review">수강생 후기</button>
+          <button class="write-type-tab" data-type="news">뉴스·포토스토리</button>
+        </div>
+
+        <!-- 카테고리 (공지 전용) -->
+        <div class="write-field" id="categoryField">
+          <label for="writeCategory">카테고리</label>
+          <div class="write-row">
+            <select id="writeCategory" style="max-width:200px;">
+              <option value="공지">공지</option>
+              <option value="이벤트">이벤트</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 별점 (후기 전용) -->
+        <div class="write-field" id="ratingField" style="display:none;">
+          <label>별점</label>
+          <div id="starPicker" style="display:flex;gap:4px;font-size:24px;cursor:pointer;">
+            <span class="star" data-v="1">☆</span>
+            <span class="star" data-v="2">☆</span>
+            <span class="star" data-v="3">☆</span>
+            <span class="star" data-v="4">☆</span>
+            <span class="star" data-v="5">☆</span>
+          </div>
+          <input type="hidden" id="writeRating" value="5">
+        </div>
+
+        <hr class="write-divider">
+
+        <!-- 제목 -->
+        <div class="write-field">
+          <label for="writeTitle">제목 <span class="req">*</span></label>
+          <input type="text" id="writeTitle" placeholder="제목을 입력하세요" maxlength="100">
+        </div>
+
+        <!-- 내용 -->
+        <div class="write-field">
+          <label for="writeContent">내용 <span class="req">*</span></label>
+          <textarea id="writeContent" placeholder="내용을 입력하세요"></textarea>
+        </div>
+
+        <!-- 대표 이미지 -->
+        <div class="write-field" id="imageField" style="display:none;">
+          <label>대표 이미지 <span style="font-weight:400;color:var(--color-font-light)">(선택)</span></label>
+          <div class="write-img-preview" id="imgPreview">
+            <div class="img-placeholder"><i class="fa-solid fa-image"></i><span>클릭하여 이미지 선택</span><span style="font-size:11px;">JPG, PNG, GIF · 최대 5MB</span></div>
+          </div>
+          <input type="file" id="writeImageInput" accept="image/*">
+        </div>
+
+        <div class="write-actions">
+          <button class="write-cancel-btn" id="writeCancelBtn"><i class="fa-solid fa-xmark"></i> 취소</button>
+          <button class="write-submit-btn" id="writeSubmitBtn"><i class="fa-solid fa-paper-plane"></i> <span id="submitBtnText">등록하기</span></button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-col"><div class="footer-logo"><img src="images/1_HOME_img/logo_footer.png" alt="킴스요가필라테스 로고" style="max-height:52px;width:auto;"></div><p class="footer-brand">KIM'S YOGA &amp; PILATES</p></div>
+      <div class="footer-col"><h4>Address</h4><p>킴스요가필라테스요가<br>사업자번호 : 134-27-80643<br>대표 : 박경화<br>경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호</p></div>
+      <div class="footer-col"><h4>Contact</h4><p>대표전화 : 031-480-3308<br>Email : dona4330@naver.com</p></div>
+      <div class="footer-col"><h4>Follow Us</h4><div class="social-row"><a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a><a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-links"><a href="#">이용약관</a><span class="footer-bottom-sep">|</span><a href="#">개인정보처리방침</a></div>
+      <p class="footer-bottom-copy">© 2026 KIM'S YOGA &amp; PILATES</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <button class="float-btn" id="chatBtn" aria-label="채팅 상담"><i class="fa-regular fa-comment-dots"></i></button>
+  <button class="float-btn" id="topBtn" aria-label="맨 위로 이동"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', function(){ mobileNav.classList.add('open'); this.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
+  function closeMenu(){ mobileNav.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  document.querySelectorAll('.mob-close').forEach(function(b){ b.addEventListener('click', closeMenu); });
+  mobileNav.addEventListener('click', function(e){ if(e.target===mobileNav) closeMenu(); });
+
+  const topBtn = document.getElementById('topBtn');
+  const floatingEl = document.querySelector('.floating');
+  floatingEl.style.opacity='0'; floatingEl.style.pointerEvents='none'; floatingEl.style.transition='opacity 0.3s';
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){ var s=window.scrollY>400; floatingEl.style.opacity=s?'1':'0'; floatingEl.style.pointerEvents=s?'auto':'none'; });
+  (function(){ var btns=document.querySelectorAll('.float-btn'),footer=document.querySelector('footer'); if(!footer||!btns.length)return; new IntersectionObserver(function(e){ btns.forEach(function(b){ b.classList.toggle('is-footer',e[0].isIntersecting); }); },{threshold:0}).observe(footer); })();
+</script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+<script src="js/firebase-init.js"></script>
+<script src="js/auth-ui.js"></script>
+
+<script>
+(function () {
+  var params   = new URLSearchParams(location.search);
+  var editId   = params.get('id');   // 수정 모드
+  var initType = params.get('type') || 'notice';
+  var postType = initType;
+  var selectedFile = null;
+  var currentImageUrl = '';
+
+  /* ── 미로그인 시 리다이렉트 ── */
+  _auth.onAuthStateChanged(function (user) {
+    if (!user) { window.location.href = 'login.html?redirect=community-write.html'; }
+  });
+
+  /* ── 타입 탭 ── */
+  var tabs = document.querySelectorAll('.write-type-tab');
+  function setType(type) {
+    postType = type;
+    tabs.forEach(function (t) {
+      t.classList.toggle('active', t.dataset.type === type);
+    });
+    document.getElementById('categoryField').style.display = type === 'notice'  ? '' : 'none';
+    document.getElementById('ratingField').style.display   = type === 'review'  ? '' : 'none';
+    document.getElementById('imageField').style.display    = type === 'news'    ? '' : 'none';
+  }
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { setType(tab.dataset.type); });
+  });
+
+  /* 수정 모드일 때 탭 잠금 */
+  if (editId) {
+    document.getElementById('writeTitleText').textContent = '글 수정';
+    document.getElementById('submitBtnText').textContent  = '수정하기';
+    tabs.forEach(function (t) { t.disabled = true; t.style.cursor = 'default'; });
+  }
+
+  setType(initType);
+
+  /* ── 별점 ── */
+  var stars   = document.querySelectorAll('.star');
+  var ratingInput = document.getElementById('writeRating');
+  function renderStars(val) {
+    stars.forEach(function (s) {
+      s.textContent = parseInt(s.dataset.v) <= val ? '★' : '☆';
+      s.style.color = parseInt(s.dataset.v) <= val ? '#FF9264' : '#ccc';
+    });
+  }
+  renderStars(5);
+  stars.forEach(function (s) {
+    s.addEventListener('click', function () {
+      ratingInput.value = s.dataset.v;
+      renderStars(parseInt(s.dataset.v));
+    });
+    s.addEventListener('mouseover', function () { renderStars(parseInt(s.dataset.v)); });
+    s.addEventListener('mouseout',  function () { renderStars(parseInt(ratingInput.value)); });
+  });
+
+  /* ── 이미지 선택 ── */
+  var imgPreview = document.getElementById('imgPreview');
+  var imgInput   = document.getElementById('writeImageInput');
+  imgPreview.addEventListener('click', function () { imgInput.click(); });
+  imgInput.addEventListener('change', function () {
+    selectedFile = imgInput.files[0];
+    if (!selectedFile) return;
+    if (selectedFile.size > 5 * 1024 * 1024) { alert('이미지는 5MB 이하만 업로드할 수 있습니다.'); return; }
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      imgPreview.innerHTML = '<img src="' + e.target.result + '" alt="미리보기">';
+    };
+    reader.readAsDataURL(selectedFile);
+  });
+
+  /* ── 수정 모드: 기존 데이터 로드 ── */
+  if (editId) {
+    _rdb.ref('posts/' + initType + '/' + editId).once('value').then(function (snap) {
+      if (!snap.exists()) { alert('게시글을 찾을 수 없습니다.'); history.back(); return; }
+      var d = snap.val();
+      setType(d.type || initType);
+      if (d.category)  document.getElementById('writeCategory').value = d.category;
+      if (d.rating)    { ratingInput.value = d.rating; renderStars(d.rating); }
+      document.getElementById('writeTitle').value   = d.title   || '';
+      document.getElementById('writeContent').value = d.content || '';
+      if (d.imageUrl) {
+        currentImageUrl = d.imageUrl;
+        imgPreview.innerHTML = '<img src="' + d.imageUrl + '" alt="기존 이미지">';
+      }
+    });
+  }
+
+  /* ── 제출 ── */
+  document.getElementById('writeSubmitBtn').addEventListener('click', function () {
+    var title   = document.getElementById('writeTitle').value.trim();
+    var content = document.getElementById('writeContent').value.trim();
+    if (!title)   { alert('제목을 입력해 주세요.'); return; }
+    if (!content) { alert('내용을 입력해 주세요.'); return; }
+
+    var btn = this;
+    btn.disabled = true;
+    document.getElementById('submitBtnText').textContent = '저장 중…';
+
+    var user = _auth.currentUser;
+    if (!user) { alert('로그인이 필요합니다.'); btn.disabled = false; return; }
+
+    function savePost(imgUrl) {
+      var now = firebase.database.ServerValue.TIMESTAMP;
+      var data = {
+        type:       postType,
+        title:      title,
+        content:    content,
+        authorId:   user.uid,
+        authorName: user.displayName || user.email.split('@')[0],
+        updatedAt:  now
+      };
+      if (postType === 'notice') data.category = document.getElementById('writeCategory').value;
+      if (postType === 'review') data.rating   = parseInt(ratingInput.value) || 5;
+      if (postType === 'news')   data.imageUrl = imgUrl || currentImageUrl || '';
+
+      var promise;
+      if (editId) {
+        promise = _rdb.ref('posts/' + postType + '/' + editId).update(data);
+      } else {
+        data.createdAt = now;
+        data.views = 0;
+        promise = _rdb.ref('posts/' + postType).push(data);
+      }
+
+      var redirectMap = { notice: 'community-notice.html', review: 'community-review.html', news: 'community-news.html' };
+      promise
+        .then(function () { window.location.href = redirectMap[postType] || 'community-notice.html'; })
+        .catch(function (err) {
+          console.error(err);
+          alert('저장 중 오류가 발생했습니다.\n' + err.message);
+          btn.disabled = false;
+          document.getElementById('submitBtnText').textContent = editId ? '수정하기' : '등록하기';
+        });
+    }
+
+    /* 이미지가 있으면 Storage에 업로드 */
+    if (selectedFile && postType === 'news') {
+      var storageRef = firebase.storage().ref('posts/' + Date.now() + '_' + selectedFile.name);
+      storageRef.put(selectedFile).then(function (snap) {
+        return snap.ref.getDownloadURL();
+      }).then(function (url) {
+        savePost(url);
+      }).catch(function (err) {
+        console.error(err);
+        savePost(''); // 업로드 실패 시 이미지 없이 저장
+      });
+    } else {
+      savePost('');
+    }
+  });
+
+  /* 취소 */
+  document.getElementById('writeCancelBtn').addEventListener('click', function () { history.back(); });
+})();
+</script>
+<script>
+  (function () {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
