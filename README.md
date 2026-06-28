@@ -47,27 +47,33 @@
 
 ---
 
-# 🖼️ Before / After
+## 🖼️ Before / After
 
-<table>
-<tr>
-<td width="50%" align="center">
+### 🔹 Before
 
-### Before
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279">
+    <img src="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279" width="95%" alt="Before">
+  </a>
+</p>
 
-<img src="https://github.com/user-attachments/assets/ddb73c1c-223b-45b4-97e5-896855ab4279" height="500"/>
+<p align="center">
+<sub>👆 이미지를 클릭하면 원본 크기로 볼 수 있습니다.</sub>
+</p>
 
-</td>
+---
 
-<td width="50%" align="center">
+### 🔹 After
 
-### After
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe">
+    <img src="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe" width="95%" alt="After">
+  </a>
+</p>
 
-<img src="https://github.com/user-attachments/assets/6da12caf-345d-4385-a816-69ad8c8463fe" height="500"/>
-
-</td>
-</tr>
-</table>
+<p align="center">
+<sub>👆 이미지를 클릭하면 원본 크기로 볼 수 있습니다.</sub>
+</p>
 
 ---
 
