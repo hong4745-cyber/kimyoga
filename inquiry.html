@@ -135,29 +135,73 @@
   </div>
 </nav>
 
+<!-- Page Hero -->
+<div class="page-hero inquiry-hero">
+  <div class="inquiry-hero-inner">
+    <span class="label-en">KIM'S INQUIRY</span>
+    <h1>KIM'S 상담센터</h1>
+    <p>궁금한 점은 언제든지 물어보세요<br>전문 상담사가 빠르게 답변드립니다</p>
+  </div>
+  <div class="page-hero-wave">
+    <img src="images/1_HOME_img/SVG.png" alt="">
+  </div>
+</div>
+
 <main>
   <section class="inquiry-page">
     <div class="container">
 
-      <div class="inquiry-heading">
-        <span class="label-en">KIM'S INQUIRY</span>
-        <h1>KIM'S 상담센터</h1>
+      <!-- 빠른 연락 정보 -->
+      <div class="inquiry-contact-strip">
+        <a href="tel:031-480-3308" class="inquiry-contact-item">
+          <div class="inquiry-contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <strong>대표 문의</strong>
+            <span>031-480-3308</span>
+          </div>
+        </a>
+        <div class="inquiry-contact-divider"></div>
+        <div class="inquiry-contact-item">
+          <div class="inquiry-contact-icon"><i class="fa-regular fa-clock"></i></div>
+          <div>
+            <strong>운영 시간</strong>
+            <span>평일 10:00 – 21:00<br>주말 10:00 – 16:00</span>
+          </div>
+        </div>
+        <div class="inquiry-contact-divider"></div>
+        <div class="inquiry-contact-item">
+          <div class="inquiry-contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <strong>본점 주소</strong>
+            <span>경기도 안산시 단원구 고잔동<br>534-2 지스타프라자 601호</span>
+          </div>
+        </div>
       </div>
 
+      <!-- 탭 -->
       <div class="inquiry-tabs" role="tablist">
-        <button class="inquiry-tab-btn active" id="tab-online" role="tab" aria-selected="true" aria-controls="panel-online">온라인상담</button>
-        <button class="inquiry-tab-btn" id="tab-timetable" role="tab" aria-selected="false" aria-controls="panel-timetable">시간표조회</button>
-        <button class="inquiry-tab-btn" id="tab-oneday" role="tab" aria-selected="false" aria-controls="panel-oneday">원데이신청</button>
+        <button class="inquiry-tab-btn active" id="tab-online" role="tab" aria-selected="true" aria-controls="panel-online">
+          <i class="fa-regular fa-comment-dots"></i> 온라인상담
+        </button>
+        <button class="inquiry-tab-btn" id="tab-timetable" role="tab" aria-selected="false" aria-controls="panel-timetable">
+          <i class="fa-regular fa-calendar-days"></i> 시간표조회
+        </button>
+        <button class="inquiry-tab-btn" id="tab-oneday" role="tab" aria-selected="false" aria-controls="panel-oneday">
+          <i class="fa-solid fa-star"></i> 원데이신청
+        </button>
       </div>
 
       <!-- 온라인상담 -->
       <div id="panel-online" role="tabpanel" aria-labelledby="tab-online">
         <div class="inquiry-layout">
 
-          <!-- Left panel -->
-          <div>
-            <div class="inquiry-panel" style="margin-bottom:24px;">
-              <h3>고객 정보 입력</h3>
+          <!-- Left -->
+          <div class="inquiry-left-col">
+            <div class="inquiry-card" style="margin-bottom:24px;">
+              <div class="inquiry-card-head">
+                <i class="fa-regular fa-user"></i>
+                <h3>고객 정보 입력</h3>
+              </div>
               <div class="form-row">
                 <label for="i-name">이름</label>
                 <input type="text" id="i-name" placeholder="이름을 입력하세요">
@@ -174,12 +218,8 @@
                 <label for="i-branch">지점 선택</label>
                 <select id="i-branch">
                   <option value="">지점을 선택하세요</option>
-                  <option>본점</option>
-                  <option>신부점</option>
-                  <option>신길온천점</option>
-                  <option>원곡점</option>
-                  <option>안양 평촌점</option>
-                  <option>안성1호점</option>
+                  <option>본점</option><option>신부점</option><option>신길온천점</option>
+                  <option>원곡점</option><option>안양 평촌점</option><option>안성1호점</option>
                 </select>
               </div>
               <div class="form-row">
@@ -188,8 +228,11 @@
               </div>
             </div>
 
-            <div class="inquiry-panel">
-              <h3>수강료 조회</h3>
+            <div class="inquiry-card">
+              <div class="inquiry-card-head">
+                <i class="fa-solid fa-won-sign"></i>
+                <h3>수강료 조회</h3>
+              </div>
               <div class="form-row">
                 <label for="i-prog-type">프로그램 유형</label>
                 <select id="i-prog-type">
@@ -205,33 +248,43 @@
                 <label for="i-branch2">지점 선택</label>
                 <select id="i-branch2">
                   <option value="">지점을 선택하세요</option>
-                  <option>본점</option>
-                  <option>신부점</option>
-                  <option>신길온천점</option>
-                  <option>원곡점</option>
-                  <option>안양 평촌점</option>
-                  <option>안성1호점</option>
+                  <option>본점</option><option>신부점</option><option>신길온천점</option>
+                  <option>원곡점</option><option>안양 평촌점</option><option>안성1호점</option>
                 </select>
               </div>
-              <p class="inquiry-panel-note">
-                ※ 수강료는 선택하신 지점 및 프로그램에 따라 상이합니다.<br>
-                정확한 수강료는 담당 강사를 통해 안내 드립니다.<br>
-                대표 문의 : 031-480-3308
-              </p>
+              <div class="inquiry-note-box">
+                <i class="fa-solid fa-circle-info"></i>
+                <p>수강료는 지점 및 프로그램에 따라 상이합니다.<br>정확한 안내는 담당 강사를 통해 드립니다.<br>대표 문의 : 031-480-3308</p>
+              </div>
             </div>
           </div>
 
-          <!-- Right panel -->
-          <div class="inquiry-panel">
-            <h3>교육 과정 선택</h3>
+          <!-- Right -->
+          <div class="inquiry-card">
+            <div class="inquiry-card-head">
+              <i class="fa-solid fa-list-check"></i>
+              <h3>교육 과정 선택</h3>
+            </div>
 
             <div class="inquiry-course-grid">
-              <div class="inquiry-course-cell" role="button" tabindex="0">전문지도자<br>요가 과정</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">전문지도자<br>필라테스 과정</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">요가<br>(일반)</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">필라테스<br>(일반)</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">원데이<br>클래스</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">기타<br>문의</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-leaf"></i><span>전문지도자<br>요가 과정</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-dumbbell"></i><span>전문지도자<br>필라테스 과정</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-person-walking"></i><span>요가 (일반)</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-circle-dot"></i><span>필라테스 (일반)</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-calendar-day"></i><span>원데이 클래스</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-regular fa-comment"></i><span>기타 문의</span>
+              </div>
             </div>
 
             <div class="inquiry-sep"></div>
@@ -239,12 +292,14 @@
             <input class="inquiry-line-input" type="text" placeholder="희망 수업 시간 또는 요일을 입력하세요">
             <input class="inquiry-line-input" type="text" placeholder="기타 추가 문의사항을 입력하세요">
 
-            <div class="form-agree" style="margin-top:20px;">
+            <div class="form-agree">
               <input type="checkbox" id="agree-inquiry">
-              <label for="agree-inquiry">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+              <label for="agree-inquiry">개인정보 수집 및 이용에 동의합니다. <em>(필수)</em></label>
             </div>
 
-            <button class="btn-submit" type="button" id="btn-online-submit">신청하기</button>
+            <button class="inquiry-submit-btn" type="button" id="btn-online-submit">
+              상담 신청하기 <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
 
         </div>
@@ -252,34 +307,35 @@
 
       <!-- 시간표조회 -->
       <div id="panel-timetable" role="tabpanel" aria-labelledby="tab-timetable" hidden>
-        <div class="inquiry-panel" style="text-align:center; padding: 60px 40px;">
-          <h3 style="border-bottom:none; text-align:center; font-size:18px;">시간표 조회</h3>
-          <div class="form-row" style="max-width:400px; margin:0 auto 24px;">
+        <div class="inquiry-card inquiry-timetable-card">
+          <div class="inquiry-card-head" style="justify-content:center;">
+            <i class="fa-regular fa-calendar-days"></i>
+            <h3>시간표 조회</h3>
+          </div>
+          <div class="form-row" style="max-width:400px; margin:0 auto 32px;">
             <label for="tt-branch">지점 선택</label>
             <select id="tt-branch">
               <option value="">지점을 선택하세요</option>
-              <option>본점</option>
-              <option>신부점</option>
-              <option>신길온천점</option>
-              <option>원곡점</option>
-              <option>안양 평촌점</option>
-              <option>안성1호점</option>
+              <option>본점</option><option>신부점</option><option>신길온천점</option>
+              <option>원곡점</option><option>안양 평촌점</option><option>안성1호점</option>
             </select>
           </div>
-          <div class="ph" style="height:360px; max-width:700px; margin:0 auto 24px;" role="img" aria-label="시간표 이미지 영역"></div>
-          <p style="font-size:13px; color:var(--color-font-sub); line-height:1.8;">
-            시간표는 매달 변경될 수 있습니다.<br>
-            정확한 시간표는 담당 지점으로 문의하세요.<br>
-            대표 문의 : <a href="tel:031-480-3308">031-480-3308</a>
-          </p>
+          <div class="ph" style="height:380px; max-width:760px; margin:0 auto 28px; border-radius:12px;" role="img" aria-label="시간표 이미지 영역"></div>
+          <div class="inquiry-note-box" style="max-width:500px; margin:0 auto; text-align:left;">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>시간표는 매달 변경될 수 있습니다.<br>정확한 시간표는 담당 지점으로 문의하세요.<br>대표 문의 : <a href="tel:031-480-3308" style="color:var(--color-main); font-weight:600;">031-480-3308</a></p>
+          </div>
         </div>
       </div>
 
       <!-- 원데이신청 -->
       <div id="panel-oneday" role="tabpanel" aria-labelledby="tab-oneday" hidden>
         <div class="inquiry-layout">
-          <div class="inquiry-panel">
-            <h3>원데이 클래스 정보</h3>
+          <div class="inquiry-card">
+            <div class="inquiry-card-head">
+              <i class="fa-solid fa-star"></i>
+              <h3>원데이 클래스 정보</h3>
+            </div>
             <div class="form-row">
               <label for="od-name">이름</label>
               <input type="text" id="od-name" placeholder="이름을 입력하세요">
@@ -292,12 +348,8 @@
               <label for="od-branch">지점 선택</label>
               <select id="od-branch">
                 <option value="">지점을 선택하세요</option>
-                <option>본점</option>
-                <option>신부점</option>
-                <option>신길온천점</option>
-                <option>원곡점</option>
-                <option>안양 평촌점</option>
-                <option>안성1호점</option>
+                <option>본점</option><option>신부점</option><option>신길온천점</option>
+                <option>원곡점</option><option>안양 평촌점</option><option>안성1호점</option>
               </select>
             </div>
             <div class="form-row">
@@ -310,23 +362,40 @@
             </div>
           </div>
 
-          <div class="inquiry-panel">
-            <h3>원데이 클래스 선택</h3>
+          <div class="inquiry-card">
+            <div class="inquiry-card-head">
+              <i class="fa-solid fa-list-check"></i>
+              <h3>원데이 클래스 선택</h3>
+            </div>
             <div class="inquiry-course-grid">
-              <div class="inquiry-course-cell" role="button" tabindex="0">힐링<br>요가</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">빈야사<br>요가</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">아쉬탕가<br>요가</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">맷<br>필라테스</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">소도구<br>필라테스</div>
-              <div class="inquiry-course-cell" role="button" tabindex="0">요가<br>명상</div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-heart"></i><span>힐링 요가</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-wind"></i><span>빈야사 요가</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-fire"></i><span>아쉬탕가 요가</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-person-swimming"></i><span>맷 필라테스</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-circle-nodes"></i><span>소도구 필라테스</span>
+              </div>
+              <div class="inquiry-course-cell" role="button" tabindex="0">
+                <i class="fa-solid fa-moon"></i><span>요가 명상</span>
+              </div>
             </div>
             <div class="inquiry-sep"></div>
             <input class="inquiry-line-input" type="text" placeholder="희망 시간을 입력하세요">
-            <div class="form-agree" style="margin-top:12px;">
+            <div class="form-agree">
               <input type="checkbox" id="agree-oneday">
-              <label for="agree-oneday">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+              <label for="agree-oneday">개인정보 수집 및 이용에 동의합니다. <em>(필수)</em></label>
             </div>
-            <button class="btn-submit" type="button" id="btn-oneday-submit">원데이 신청하기</button>
+            <button class="inquiry-submit-btn" type="button" id="btn-oneday-submit">
+              원데이 신청하기 <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
         </div>
       </div>
