@@ -207,9 +207,12 @@
 
 ---
 
-## 1. 히어로 슬라이드쇼 (`index.html`)
+## 1. 🎞️ 히어로 슬라이드쇼 (`index.html`)
 
-<!-- Hero Slider GIF -->
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/<!-- 첫 번째 이미지 ID -->" width="49%">
+  <img src="https://github.com/user-attachments/assets/<!-- 두 번째 이미지 ID -->" width="49%">
+</p>
 
 ### 주요 기능
 
@@ -227,7 +230,7 @@
 
 ## 2. Sticky Header & Dropdown Navigation (전 페이지 공통)
 
-<!-- Header GIF -->
+<img src="https://github.com/user-attachments/assets/186c0a74-650c-4b55-9428-dfc438592d73" width="100%">
 
 ### 주요 기능
 
@@ -245,7 +248,7 @@
 
 ## 3. 모바일 Drawer Menu (전 페이지 공통)
 
-<!-- Mobile GIF -->
+<img src="https://github.com/user-attachments/assets/006be519-d2f0-4ff5-bd16-bbfcb2b20a33" width="100%">
 
 ### 주요 기능
 
@@ -263,7 +266,7 @@
 
 ## 4. Scroll Progress Bar (전 페이지 공통)
 
-<!-- Progress GIF -->
+<img src="https://github.com/user-attachments/assets/bb9d7253-16eb-4d7d-ba97-67d9e64750dd" width="100%">
 
 ### 주요 기능
 
@@ -279,7 +282,7 @@
 
 ## 5. 강사 필터링 카드 (`instructors.html`)
 
-<!-- Instructor GIF -->
+<img src="https://github.com/user-attachments/assets/f7bfe3ca-535f-4129-899a-bf787e5033a2" width="100%">
 
 ### 주요 기능
 
@@ -296,7 +299,7 @@
 
 ## 6. 지점 정보 & 시설 갤러리 (`location.html`)
 
-<!-- Location GIF -->
+<img src="https://github.com/user-attachments/assets/c06f35b7-09f0-4635-b724-c4fb01df478f" width="100%">
 
 ### 주요 기능
 
@@ -314,7 +317,7 @@
 
 ## 7. 프로그램 검색 및 필터 (`program-yoga.html`, `program-pilates.html`)
 
-<!-- Program GIF -->
+<img src="https://github.com/user-attachments/assets/f0f88055-bfc0-4a01-b44b-53a64cb5ea8c" width="100%">
 
 ### 주요 기능
 
@@ -331,7 +334,7 @@
 
 ## 8. 커뮤니티 게시판 (`community-*`)
 
-<!-- Community GIF -->
+<img src="https://github.com/user-attachments/assets/4039329b-2e09-4dc7-afef-674dce967e2b" width="100%">
 
 ### 주요 기능
 
@@ -349,7 +352,7 @@
 
 ## 9. 수강 상담 신청 (`inquiry.html`)
 
-<!-- Inquiry GIF -->
+<img src="https://github.com/user-attachments/assets/d0aae841-279e-44e4-be3a-3440a89f4637" width="100%">
 
 ### 주요 기능
 
@@ -366,7 +369,7 @@
 
 ## 10. Firebase 회원 인증 (`login.html`, `signup.html`)
 
-<!-- Login GIF -->
+<img src="https://github.com/user-attachments/assets/267d5bfb-f570-4fd4-9cc4-273ed9349bf9" width="100%">
 
 ### 주요 기능
 
