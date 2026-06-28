@@ -3,13 +3,13 @@
 > 기존 요가·필라테스 교육기관 홈페이지를 사용자 중심의 UI/UX와 반응형 웹으로 리뉴얼한 프로젝트입니다.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d00b306b-7b07-48dc-aaa7-d2624587ec26" width="100%">
+  <img src="https://github.com/user-attachments/assets/f613e932-0626-42f8-8faf-3a4b70b0a672" width="100%">
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f613e932-0626-42f8-8faf-3a4b70b0a672" width="31%">
-  <img src="https://github.com/user-attachments/assets/e6787d43-eb0c-42cf-b74a-9a79f8bb8128" width="31%">
-  <img src="https://github.com/user-attachments/assets/c12fcbeb-de0f-4ffd-a4da-f42b8223bcfa" width="31%">
+  <img src="https://github.com/user-attachments/assets/e6787d43-eb0c-42cf-b74a-9a79f8bb8128" width="48%">
+  &nbsp;
+  <img src="https://github.com/user-attachments/assets/c12fcbeb-de0f-4ffd-a4da-f42b8223bcfa" width="48%">
 </p>
 
 ---
