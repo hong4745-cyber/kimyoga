@@ -99,15 +99,30 @@
     <ul class="mob-nav-list">
       <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
       <li class="mob-nav-item mob-has-sub">
-        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">KIM'S 소개 <span class="mob-chevron">&#8964;</span></button>
         <ul class="mob-sub">
           <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
           <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
           <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
         </ul>
       </li>
-      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
-      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">교육 프로그램 <span class="mob-chevron">&#8964;</span></button>
+        <ul class="mob-sub">
+          <li><a href="program-yoga-pro.html" class="mob-sub-link">전문지도자 요가 과정</a></li>
+          <li><a href="program-pilates-pro.html" class="mob-sub-link">전문지도자 필라테스 과정</a></li>
+          <li><a href="program-yoga.html" class="mob-sub-link">요가</a></li>
+          <li><a href="program-pilates.html" class="mob-sub-link">필라테스</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item mob-has-sub">
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">커뮤니티 <span class="mob-chevron">&#8964;</span></button>
+        <ul class="mob-sub">
+          <li><a href="community-notice.html" class="mob-sub-link">공지사항·이벤트</a></li>
+          <li><a href="community-review.html" class="mob-sub-link">수강생 후기</a></li>
+          <li><a href="community-news.html" class="mob-sub-link">뉴스·포토스토리</a></li>
+        </ul>
+      </li>
     </ul>
     <div class="mob-quick">
       <a href="inquiry.html">온라인 상담</a>
@@ -143,6 +158,7 @@
     </div>
   </div>
 </nav>
+
 
 <main>
 
@@ -254,12 +270,37 @@
     <div class="program-wave-bottom">
       <img src="images/1_HOME_img/SVG(하단).png" alt="">
     </div>
-    <div class="container">
-      <div class="program-content">
-        <h2 class="sec-en">PROGRAM</h2>
-        <p class="program-desc">1992년부터 이어온 요가·필라테스 전문 교육기관,<br>킴스요가필라테스의 지도자 과정을 소개합니다.</p>
-        <a href="program-yoga-pro.html" class="btn-green">프로그램</a>
+
+    <!-- 2-슬라이드 드래그 트랙 -->
+    <div class="program-slides-track" id="programTrack">
+      <!-- Slide 1: 요가 -->
+      <div class="program-slide">
+        <div class="container">
+          <div class="program-content">
+            <span class="program-slide-label">YOGA</span>
+            <h2 class="sec-en">PROGRAM</h2>
+            <p class="program-desc">1992년부터 이어온 요가·필라테스 전문 교육기관,<br>킴스요가필라테스의 지도자 과정을 소개합니다.</p>
+            <a href="program-yoga-pro.html" class="btn-green">요가 프로그램</a>
+          </div>
+        </div>
       </div>
+      <!-- Slide 2: 필라테스 -->
+      <div class="program-slide">
+        <div class="container">
+          <div class="program-content">
+            <span class="program-slide-label">PILATES</span>
+            <h2 class="sec-en">PROGRAM</h2>
+            <p class="program-desc">체계적인 커리큘럼과 전문 강사진이 함께하는<br>킴스요가필라테스 필라테스 전문 과정입니다.</p>
+            <a href="program-pilates-pro.html" class="btn-green">필라테스 프로그램</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 닷 인디케이터 -->
+    <div class="program-dots" role="group" aria-label="슬라이드 선택">
+      <button class="program-dot active" aria-label="요가 슬라이드"></button>
+      <button class="program-dot" aria-label="필라테스 슬라이드"></button>
     </div>
   </section>
 
@@ -448,7 +489,7 @@
             <img src="images/1_HOME_img/news_1.png" alt="2026 안산시협회장배 요가대회">
           </div>
           <div class="news-body">
-            <p class="news-date">2026.04.20</p>
+            <p class="news-date">2026.04.20</p>http://127.0.0.1:14236/program-yoga-pro.html
             <h3>2026 안산시협회장배 요가대회</h3>
             <p class="news-desc">8월 29일 토요일 10시~12시 안산시 협회장배 요가대회가 킴스요가 중앙점에서 진행됩니다.</p>
           </div>
@@ -833,6 +874,65 @@
     );
   })();
 
+  // ── Program 요가/필라테스 드래그 슬라이더 ──
+  (function () {
+    var track   = document.getElementById('programTrack');
+    var section = track ? track.parentElement : null;
+    var dots    = document.querySelectorAll('.program-dot');
+    if (!track || !section) return;
+
+    var cur = 0, total = 2;
+    var startX = 0, startTX = 0, isDrag = false;
+
+    function goTo(idx) {
+      cur = Math.max(0, Math.min(total - 1, idx));
+      track.style.transform = 'translateX(' + (-cur * 50) + '%)';
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === cur); });
+    }
+
+    // 닷 클릭
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); });
+    });
+
+    // 마우스 드래그
+    section.addEventListener('mousedown', function (e) {
+      if (e.target.closest('.program-dot')) return;
+      isDrag = true;
+      startX  = e.clientX;
+      startTX = -cur * 50;
+      track.classList.add('is-dragging');
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', function (e) {
+      if (!isDrag) return;
+      var delta = ((e.clientX - startX) / section.offsetWidth) * 50;
+      var tx = Math.max(-50, Math.min(0, startTX + delta));
+      track.style.transform = 'translateX(' + tx + '%)';
+    });
+    window.addEventListener('mouseup', function (e) {
+      if (!isDrag) return;
+      isDrag = false;
+      track.classList.remove('is-dragging');
+      var delta = e.clientX - startX;
+      goTo(Math.abs(delta) > 50 ? (delta < 0 ? cur + 1 : cur - 1) : cur);
+    });
+
+    // 터치 스와이프
+    section.addEventListener('touchstart', function (e) {
+      startX  = e.touches[0].clientX;
+      startTX = -cur * 50;
+    }, { passive: true });
+    section.addEventListener('touchmove', function (e) {
+      var delta = ((e.touches[0].clientX - startX) / section.offsetWidth) * 50;
+      track.style.transform = 'translateX(' + Math.max(-50, Math.min(0, startTX + delta)) + '%)';
+    }, { passive: true });
+    section.addEventListener('touchend', function (e) {
+      var delta = e.changedTouches[0].clientX - startX;
+      goTo(Math.abs(delta) > 50 ? (delta < 0 ? cur + 1 : cur - 1) : cur);
+    });
+  })();
+
   // Care card 높이 균등화
   (function () {
     function equalCareCards() {
@@ -1153,3 +1253,9 @@
 
 </body>
 </html>
+
+
+
+
+
+

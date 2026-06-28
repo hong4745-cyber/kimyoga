@@ -253,7 +253,14 @@
     <div class="mob-logo"><img src="images/1_HOME_img/logo nav_1.png" alt="킴스요가 필라테스"></div>
     <ul class="mob-nav-list">
       <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
-      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">커뮤니티 <span class="mob-chevron">&#8964;</span></button>
+        <ul class="mob-sub">
+          <li><a href="community-notice.html" class="mob-sub-link">공지사항·이벤트</a></li>
+          <li><a href="community-review.html" class="mob-sub-link">수강생 후기</a></li>
+          <li><a href="community-news.html" class="mob-sub-link">뉴스·포토스토리</a></li>
+        </ul>
+      </li>
     </ul>
     <div class="mob-quick">
       <a href="inquiry.html">온라인 상담</a>
@@ -272,6 +279,7 @@
     </div>
   </div>
 </nav>
+
 
 <main>
   <section class="login-section">
@@ -562,4 +570,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 <script src="js/auth-ui.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 

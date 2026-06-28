@@ -90,15 +90,30 @@
     <ul class="mob-nav-list">
       <li class="mob-nav-item"><a href="index.html">HOME <span class="mob-arrow">&#8594;</span></a></li>
       <li class="mob-nav-item mob-has-sub">
-        <div class="mob-parent">KIM'S 소개 <span class="mob-dot"></span></div>
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">KIM'S 소개 <span class="mob-chevron">&#8964;</span></button>
         <ul class="mob-sub">
           <li><a href="about.html" class="mob-sub-link">브랜드 소개</a></li>
           <li><a href="instructors.html" class="mob-sub-link">강사 소개</a></li>
           <li><a href="location.html" class="mob-sub-link">교육시설 / 위치</a></li>
         </ul>
       </li>
-      <li class="mob-nav-item"><a href="program-yoga-pro.html">교육 프로그램 <span class="mob-arrow">&#8594;</span></a></li>
-      <li class="mob-nav-item"><a href="community-notice.html">커뮤니티 <span class="mob-arrow">&#8594;</span></a></li>
+      <li class="mob-nav-item mob-has-sub">
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">교육 프로그램 <span class="mob-chevron">&#8964;</span></button>
+        <ul class="mob-sub">
+          <li><a href="program-yoga-pro.html" class="mob-sub-link">전문지도자 요가 과정</a></li>
+          <li><a href="program-pilates-pro.html" class="mob-sub-link">전문지도자 필라테스 과정</a></li>
+          <li><a href="program-yoga.html" class="mob-sub-link">요가</a></li>
+          <li><a href="program-pilates.html" class="mob-sub-link">필라테스</a></li>
+        </ul>
+      </li>
+      <li class="mob-nav-item mob-has-sub">
+        <button type="button" class="mob-parent" onclick="toggleAccordion(this)">커뮤니티 <span class="mob-chevron">&#8964;</span></button>
+        <ul class="mob-sub">
+          <li><a href="community-notice.html" class="mob-sub-link">공지사항·이벤트</a></li>
+          <li><a href="community-review.html" class="mob-sub-link">수강생 후기</a></li>
+          <li><a href="community-news.html" class="mob-sub-link">뉴스·포토스토리</a></li>
+        </ul>
+      </li>
     </ul>
     <div class="mob-quick">
       <a href="inquiry.html">온라인 상담</a>
@@ -134,6 +149,7 @@
     </div>
   </div>
 </nav>
+
 
 <nav class="page-subnav">
   <div class="container">
@@ -182,7 +198,7 @@
       </div>
     </div>
     <div class="about-diff-item fade-up">
-      <div class="about-diff-text" style="padding: 80px 130px 80px 140px;">
+      <div class="about-diff-text">
         <h3><i class="fa-solid fa-spa"></i> 몸과 함께 다루는 요가</h3>
         <p>
           단순한 운동을 넘어 몸과 마음의 균형을 찾는 수업을 진행합니다. 전문 강사진이 개인의 신체 조건과 목표에 맞춰 맞춤형 지도를 제공하며, 힐링요가, 빈야사, 아쉬탕가 등 다양한 스타일의 요가를 배울 수 있습니다. 지속적인 수련을 통해 몸의 유연성과 정신적 안정감을 동시에 키워나갈 수 있습니다.
@@ -214,7 +230,7 @@
         </div>
         <img src="images/2_kim's yoga_img/brand_e.png" alt="" aria-hidden="true" class="slider-brand-badge">
       </div>
-      <div class="about-diff-text" style="padding: 80px 120px 80px 150px;">
+      <div class="about-diff-text">
         <h3><i class="fa-solid fa-dumbbell"></i> 요가부터 파워풀한 필라테스</h3>
         <p>
           킴스의 필라테스 프로그램은 맷 필라테스부터 기구 필라테스까지 전 과정을 아우릅니다.
@@ -517,4 +533,10 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
 

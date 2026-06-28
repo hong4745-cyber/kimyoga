@@ -1,3 +1,38 @@
+/* ================================================================
+   모바일 메뉴 아코디언
+   - toggleAccordion(btn)      : 클릭한 항목 열기/닫기
+   - closeAllAccordion(except) : except를 제외한 모든 항목 닫기
+   ================================================================ */
+
+function closeAllAccordion(except) {
+  document.querySelectorAll('.mob-has-sub').forEach(function (item) {
+    if (item === except) return;
+    item.classList.remove('open', 'active');
+    var sub = item.querySelector('.mob-sub');
+    if (sub) sub.style.maxHeight = '0';
+  });
+}
+
+window.toggleAccordion = function (btn) {
+  var item = btn.closest('.mob-has-sub');
+  if (!item) return;
+  var sub    = item.querySelector('.mob-sub');
+  var isOpen = item.classList.contains('open');
+
+  closeAllAccordion(isOpen ? null : item);
+
+  if (isOpen) {
+    item.classList.remove('open', 'active');
+    if (sub) sub.style.maxHeight = '0';
+  } else {
+    item.classList.add('open', 'active');
+    if (sub) sub.style.maxHeight = sub.scrollHeight + 'px';
+  }
+};
+
+/* ================================================================
+   이하 공통 인증 UI
+   ================================================================ */
 (function () {
 
   /* ── 로그인 상태 반영 ── */
@@ -42,6 +77,7 @@
     if (subnav) subnav.style.top = h + 'px';
     if (tabs)   tabs.style.top   = h + 'px';
   }
+
 
   /* ── 로그인 모달 HTML 주입 ── */
   function injectModal() {
@@ -192,12 +228,67 @@
     });
   }
 
+  /* ── 모바일 메뉴 현재 페이지 active 표시 ── */
+  function setMobNavActive() {
+    var page = location.pathname.split('/').pop() || 'index.html';
+
+    /* HOME 등 직접 링크 */
+    document.querySelectorAll('.mob-nav-item > a').forEach(function (a) {
+      if (a.getAttribute('href') === page) {
+        a.closest('.mob-nav-item').classList.add('active');
+      }
+    });
+
+    /* 서브메뉴 → 부모 아코디언 자동 열기 */
+    document.querySelectorAll('.mob-sub-link').forEach(function (a) {
+      if (a.getAttribute('href') === page) {
+        a.classList.add('active');
+        var item = a.closest('.mob-has-sub');
+        if (item) {
+          item.classList.add('active', 'open');
+          var sub = item.querySelector('.mob-sub');
+          if (sub) sub.style.maxHeight = sub.scrollHeight + 'px';
+        }
+      }
+    });
+  }
+
+  /* ── 서브네비 드래그 스크롤 ── */
+  function initSubnavDrag() {
+    var wrap = document.querySelector('.page-subnav .container');
+    if (!wrap) return;
+    var isDrag = false, startX = 0, scrollStart = 0;
+
+    wrap.addEventListener('mousedown', function (e) {
+      isDrag = true;
+      startX = e.clientX;
+      scrollStart = wrap.scrollLeft;
+      wrap.classList.add('sn-grabbing');
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', function (e) {
+      if (!isDrag) return;
+      wrap.scrollLeft = scrollStart - (e.clientX - startX);
+    });
+    window.addEventListener('mouseup', function () {
+      if (!isDrag) return;
+      isDrag = false;
+      wrap.classList.remove('sn-grabbing');
+    });
+  }
+
   /* ── 초기화 ── */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { applyAuthState(); fixSubnavTop(); });
-  } else {
+  function init() {
     applyAuthState();
     fixSubnavTop();
+    setMobNavActive();
+    initSubnavDrag();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
   window.addEventListener('resize', fixSubnavTop);
 })();
