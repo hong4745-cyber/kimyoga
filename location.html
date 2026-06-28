@@ -469,45 +469,57 @@
 </script>
 <script src="js/auth-ui.js"></script>
 <script>
-  function initNaverMap() {
-    setTimeout(function() {
-    var mapEl = document.getElementById('naverMap');
-    if (!mapEl || typeof naver === 'undefined') return;
-    var center = new naver.maps.LatLng(37.3171, 126.8311);
-    var map = new naver.maps.Map('naverMap', {
-      center: center,
-      zoom: 16,
-      mapTypeControl: false,
-      scaleControl: false,
+  var _naverMapInstances = {};
+
+  var _BRANCHES = [
+    { id: 'naverMap',    lat: 37.3171, lng: 126.8311, name: "KIM'S YOGA & PILATES 본점",       addr: '경기도 안산시 단원구 고잔동 534-2<br>지스타프라자 601호', tel: '031-480-3308' },
+    { id: 'map-panel-1', lat: 37.3433, lng: 126.8153, name: "KIM'S YOGA & PILATES 신부점",      addr: '경기도 안산시 단원구 선부광장1로 84 203호',              tel: '031-410-3088' },
+    { id: 'map-panel-2', lat: 37.3195, lng: 126.8202, name: "KIM'S YOGA & PILATES 신길온천점",  addr: '경기도 안산시 단원구 새볼길 48 월산빌딩 4층',            tel: '031-492-8778' },
+    { id: 'map-panel-3', lat: 37.3109, lng: 126.8458, name: "KIM'S YOGA & PILATES 원곡점",      addr: '경기도 안산시 단원구 원곡동',                           tel: '031-677-3383' },
+    { id: 'map-panel-4', lat: 37.3831, lng: 126.9524, name: "KIM'S YOGA & PILATES 안양 평촌점", addr: '경기도 안양시 동안구 호계동 1065-4<br>종로문고B1',       tel: '031-388-8774' },
+    { id: 'map-panel-5', lat: 37.0010, lng: 127.2636, name: "KIM'S YOGA & PILATES 안성1호점",   addr: '경기도 안성시 안성맞춤대로 1042-1',                     tel: '031-677-3383' }
+  ];
+
+  function _createBranchMap(branch) {
+    if (_naverMapInstances[branch.id]) {
+      naver.maps.Event.trigger(_naverMapInstances[branch.id], 'resize');
+      return;
+    }
+    var mapEl = document.getElementById(branch.id);
+    if (!mapEl) return;
+
+    var center = new naver.maps.LatLng(branch.lat, branch.lng);
+    var map = new naver.maps.Map(branch.id, {
+      center: center, zoom: 16,
+      mapTypeControl: false, scaleControl: false,
       logoControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
     });
 
-    var marker = new naver.maps.Marker({
-      position: center,
-      map: map,
-      title: "KIM'S YOGA & PILATES 본점"
-    });
+    var marker = new naver.maps.Marker({ position: center, map: map, title: branch.name });
 
     var infowindow = new naver.maps.InfoWindow({
-      content: [
-        '<div style="padding:12px 16px;font-size:13px;font-family:\'Noto Sans KR\',sans-serif;line-height:1.7;min-width:220px;">',
-          '<strong style="color:#496357;display:block;margin-bottom:4px;">KIM\'S YOGA &amp; PILATES</strong>',
-          '경기도 안산시 단원구 고잔동 534-2<br>지스타프라자 601호',
-          '<br><a href="tel:031-480-3308" style="color:#496357;font-size:12px;">031-480-3308</a>',
-        '</div>'
-      ].join('')
+      content: '<div style="padding:12px 16px;font-size:13px;font-family:\'Noto Sans KR\',sans-serif;line-height:1.7;min-width:220px;">'
+        + '<strong style="color:#496357;display:block;margin-bottom:4px;">' + branch.name + '</strong>'
+        + branch.addr
+        + '<br><a href="tel:' + branch.tel + '" style="color:#496357;font-size:12px;">' + branch.tel + '</a>'
+        + '</div>'
     });
 
     naver.maps.Event.addListener(marker, 'click', function () {
-      if (infowindow.getMap()) {
-        infowindow.close();
-      } else {
-        infowindow.open(map, marker);
-      }
+      infowindow.getMap() ? infowindow.close() : infowindow.open(map, marker);
     });
-
     infowindow.open(map, marker);
-    }, 0);
+    _naverMapInstances[branch.id] = map;
+  }
+
+  function initNaverMap() {
+    setTimeout(function () { _createBranchMap(_BRANCHES[0]); }, 300);
+
+    document.querySelectorAll('.location-tab').forEach(function (tab, idx) {
+      tab.addEventListener('click', function () {
+        setTimeout(function () { _createBranchMap(_BRANCHES[idx]); }, 100);
+      });
+    });
   }
 </script>
 <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=px1u66o3cc&callback=initNaverMap"></script>
