@@ -167,7 +167,7 @@
   ================================================ -->
   <section class="hero" aria-label="히어로 배너">
     <div class="hero-slides">
-      <div class="hero-slide active" style="background-image:url('images/1_HOME_img/main_1.jpg')"></div>
+      <div class="hero-slide active" style="background-image:url('images/1_HOME_img/main_1.jpg');background-position:center bottom -70px"></div>
       <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_2.png')"></div>
       <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_3.png')"></div>
       <div class="hero-slide" style="background-image:url('images/1_HOME_img/main_4.png')"></div>
@@ -295,12 +295,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- 닷 인디케이터 -->
-    <div class="program-dots" role="group" aria-label="슬라이드 선택">
-      <button class="program-dot active" aria-label="요가 슬라이드"></button>
-      <button class="program-dot" aria-label="필라테스 슬라이드"></button>
     </div>
   </section>
 
@@ -489,7 +483,7 @@
             <img src="images/1_HOME_img/news_1.png" alt="2026 안산시협회장배 요가대회">
           </div>
           <div class="news-body">
-            <p class="news-date">2026.04.20</p>http://127.0.0.1:14236/program-yoga-pro.html
+            <p class="news-date">2026.04.20</p>
             <h3>2026 안산시협회장배 요가대회</h3>
             <p class="news-desc">8월 29일 토요일 10시~12시 안산시 협회장배 요가대회가 킴스요가 중앙점에서 진행됩니다.</p>
           </div>
@@ -878,7 +872,6 @@
   (function () {
     var track   = document.getElementById('programTrack');
     var section = track ? track.parentElement : null;
-    var dots    = document.querySelectorAll('.program-dot');
     if (!track || !section) return;
 
     var cur = 0, total = 2;
@@ -887,17 +880,10 @@
     function goTo(idx) {
       cur = Math.max(0, Math.min(total - 1, idx));
       track.style.transform = 'translateX(' + (-cur * 50) + '%)';
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === cur); });
     }
-
-    // 닷 클릭
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { goTo(i); });
-    });
 
     // 마우스 드래그
     section.addEventListener('mousedown', function (e) {
-      if (e.target.closest('.program-dot')) return;
       isDrag = true;
       startX  = e.clientX;
       startTX = -cur * 50;

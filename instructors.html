@@ -589,6 +589,17 @@
     }, { passive: true });
   })();
 </script>
+<script>
+  document.querySelectorAll('.instr-card').forEach(function(card, i) {
+    var btn = card.querySelector('.instr-arrow');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        window.location.href = 'instructor-detail.html?id=' + (i + 1);
+      });
+    }
+  });
+</script>
 </body>
 </html>
 

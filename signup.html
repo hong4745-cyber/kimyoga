@@ -166,10 +166,6 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 13px; font-weight: 900; flex-shrink: 0;
     }
-    .signup-social-btn.kakao { background: #FEE500; color: #191919; }
-    .signup-social-btn.kakao .social-icon { background: rgba(0,0,0,0.08); color: #191919; }
-    .signup-social-btn.naver { background: #03C75A; color: #ffffff; }
-    .signup-social-btn.naver .social-icon { background: rgba(0,0,0,0.10); color: #ffffff; }
     .signup-social-btn.google { background: #ffffff; color: #3c4043; border: 1.5px solid #dadce0; }
     .signup-social-btn.google .social-icon { background: transparent; color: inherit; font-size: 15px; }
 
@@ -403,14 +399,6 @@
         <div class="signup-divider"><span>또는 간편 가입</span></div>
 
         <div class="signup-social-btns">
-          <button type="button" class="signup-social-btn kakao" aria-label="카카오 계정으로 가입">
-            <span class="social-icon">K</span>
-            카카오로 시작하기
-          </button>
-          <button type="button" class="signup-social-btn naver" aria-label="네이버 계정으로 가입">
-            <span class="social-icon">N</span>
-            네이버로 시작하기
-          </button>
           <button type="button" class="signup-social-btn google" id="btnGoogleSignup" aria-label="구글 계정으로 가입">
             <span class="social-icon"><i class="fa-brands fa-google"></i></span>
             Google로 시작하기
@@ -699,11 +687,6 @@
 <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore-compat.js"></script>
 <script src="js/firebase-init.js"></script>
 
-<!-- ── 카카오 SDK ── -->
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-<!-- ── 네이버 로그인 SDK ── -->
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
 
 <script>
 (function () {
@@ -729,52 +712,6 @@
     });
   }
 
-  /* 카카오 간편 가입 */
-  var btnKakao = document.querySelector('.signup-social-btn.kakao');
-  if (btnKakao) {
-    btnKakao.addEventListener('click', function () {
-      if (typeof Kakao === 'undefined') { alert('카카오 SDK를 불러오지 못했습니다.'); return; }
-      if (!Kakao.isInitialized()) Kakao.init(window._KAKAO_JS_KEY);
-      Kakao.Auth.login({
-        success: function () {
-          Kakao.API.request({
-            url: '/v2/user/me',
-            success: function (res) {
-              var acct  = res.kakao_account || {};
-              var email = acct.email;
-              var name  = (acct.profile && acct.profile.nickname) || '';
-              window._socialSignIn('kakao', res.id, email, name);
-            },
-            fail: function (err) { alert('카카오 정보를 가져오지 못했습니다.'); console.error(err); }
-          });
-        },
-        fail: function (err) { console.error(err); }
-      });
-    });
-  }
-
-  /* 네이버 간편 가입 */
-  var btnNaver = document.querySelector('.signup-social-btn.naver');
-  if (btnNaver && typeof naver_id_login !== 'undefined') {
-    var naverLogin = new naver_id_login(window._NAVER_CLIENT_ID, window._NAVER_CALLBACK_URL);
-    naverLogin.setDomain(location.origin);
-    naverLogin.setState(Math.random().toString(36).substr(2));
-    naverLogin.setPopup();
-
-    btnNaver.addEventListener('click', function () { naverLogin.loginStart(); });
-
-    if (naverLogin.oauthParams && naverLogin.oauthParams.access_token) {
-      fetch('https://openapi.naver.com/v1/nid/me', {
-        headers: { Authorization: 'Bearer ' + naverLogin.oauthParams.access_token }
-      })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var res   = data.response || {};
-        window._socialSignIn('naver', res.id, res.email, res.name || res.nickname || '');
-      })
-      .catch(function (err) { alert('네이버 정보를 가져오지 못했습니다.'); console.error(err); });
-    }
-  }
 })();
 </script>
 <script>

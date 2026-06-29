@@ -710,7 +710,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
    ============================================================ */
 .hero {
   position: relative;
-  height: 800px;
+  height: 850px;
   overflow: hidden;
   z-index: 1;
 }
@@ -1087,7 +1087,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 
 .program-wave-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   left: 0;
   width: 100%;
   z-index: 2;
@@ -1101,6 +1101,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 .program-section .container {
   width: 100%;
   align-self: center;
+  margin-top: -250px;
 }
 
 .program-content {
@@ -1157,29 +1158,6 @@ button { cursor: pointer; font-family: var(--font-kr); }
   color: rgba(255,255,255,0.55);
   margin-bottom: 10px;
   text-transform: uppercase;
-}
-.program-dots {
-  position: absolute;
-  bottom: 72px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 3;
-}
-.program-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s, transform 0.3s;
-}
-.program-dot.active {
-  background: #fff;
-  border-color: #fff;
-  transform: scale(1.3);
 }
 
 /* ============================================================
@@ -2454,7 +2432,7 @@ footer {
   background: rgba(0, 0, 0, 0.38);
   z-index: 0;
 }
-.about-intro .container { position: relative; z-index: 1; width: 100%; padding: 0 0 100px 150px; }
+.about-intro .container { position: relative; z-index: 1; width: 100%; padding: 60px 0 100px 150px; }
 .about-intro-inner { text-align: left; max-width: 520px; }
 .about-intro-inner .sec-label { color: var(--color-sub); }
 .about-intro-inner .about-us-label { font-family: var(--font-en); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; margin-bottom: 18px; color: var(--color-sub); }
@@ -2493,6 +2471,7 @@ footer {
 .about-different { background: var(--white); padding-top: 88px; }
 .about-different-head { text-align: center; margin-bottom: 56px; }
 .about-diff-item { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+.about-diff-reverse { margin-top: 80px; }
 .about-diff-img { position: relative; overflow: visible; align-self: center; }
 
 /* ---- Arc Frame Component ---- */
@@ -2613,16 +2592,17 @@ footer {
   transform: translate(-50%, -50%) rotate(30deg) scale(1.1);
 }
 
-/* 역방향 슬라이더 — 이미지 오른쪽, 아크 왼쪽 (요가와 동일) */
+/* 역방향 슬라이더 — 아크 수직 위치·기울기 반전 */
 .about-diff-reverse .arc-frame::before {
-  left: 5%;
-  right: auto;
-  transform: translate(-50%, -50%) rotate(30deg);
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  left: auto;
+  right: 70%;
+  top: 80%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
 }
 .about-diff-reverse:hover .arc-frame::before {
   opacity: 1;
-  transform: translate(-50%, -50%) rotate(30deg) scale(1.1);
+  transform: translate(-50%, -50%) rotate(-30deg) scale(1.1);
 }
 
 /* ::after 미사용 */
@@ -2878,6 +2858,22 @@ footer {
 .write-modal .btn-outline:hover { background: none; color: var(--color-main); border-color: var(--color-main); }
 .write-modal .btn-green { width: 110px; height: 38px; font-size: 13px; gap: 6px; }
 .write-modal .btn-green::after { font-size: 11px; }
+
+/* Signup popup (authModal 스타일, Google only) */
+.signup-popup-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 10000; align-items: center; justify-content: center; }
+.signup-popup-backdrop.open { display: flex; }
+.signup-popup { background: var(--white); border-radius: 20px; padding: 44px 40px 36px; max-width: 420px; width: 90%; position: relative; box-shadow: 0 16px 56px rgba(0,0,0,.15); animation: modalIn 0.22s ease; }
+.signup-popup-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 22px; cursor: pointer; color: #aaa; line-height: 1; }
+.signup-popup-close:hover { color: var(--color-font); }
+.signup-popup-head { text-align: center; margin-bottom: 28px; }
+.signup-popup-head p { font-family: var(--font-en); font-size: 11px; letter-spacing: 3px; color: #888; margin-bottom: 6px; }
+.signup-popup-head h2 { font-size: 20px; font-weight: 700; color: var(--color-main); margin: 0; }
+.signup-popup-error { display: none; background: #fff0f0; color: #c00; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+.signup-popup-google-btn { width: 100%; height: 48px; background: var(--white); border: 1.5px solid #e0dbd3; border-radius: 50px; font-size: 14px; font-family: var(--font-kr); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 18px; transition: border-color 0.2s, box-shadow 0.2s; }
+.signup-popup-google-btn:hover { border-color: var(--color-main); box-shadow: 0 4px 12px rgba(0,0,0,.10); }
+.signup-popup-footer { text-align: center; }
+.signup-popup-footer span { font-size: 12px; color: #aaa; }
+.signup-popup-footer a { font-size: 12px; color: var(--color-main); font-weight: 700; margin-left: 6px; text-decoration: none; }
 .page-btn { width: 32px; height: 32px; border: 1px solid var(--color-border); background: none; font-size: 13px; color: var(--color-font-sub); cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font-kr); transition: background 0.15s, color 0.15s; }
 .page-btn.active { background: var(--color-main); color: var(--color-sub); border-color: var(--color-main); }
 .page-btn:hover:not(.active) { background: var(--color-sub); }
