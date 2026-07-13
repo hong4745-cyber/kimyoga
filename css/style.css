@@ -257,6 +257,12 @@ button { cursor: pointer; font-family: var(--font-kr); }
   color: var(--color-sub);
 }
 
+.top-bar-phone {
+  white-space: nowrap;
+  font-weight: 500;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
 .top-bar-left a,
 .top-bar-right a {
   color: var(--color-sub);
@@ -297,11 +303,12 @@ button { cursor: pointer; font-family: var(--font-kr); }
 
 .gnb .container {
   max-width: 1410px;
-  padding: 0 150px;
+  padding: 0 clamp(24px, 11.7vw, 150px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  gap: clamp(12px, 2vw, 40px);
 }
 
 .gnb-logo {
@@ -319,9 +326,8 @@ button { cursor: pointer; font-family: var(--font-kr); }
 /* Nav */
 .gnb-nav {
   display: flex;
-  gap: 36px;
-  width: 600px;
-  justify-content: space-between;
+  gap: clamp(14px, 2.8vw, 36px);
+  justify-content: center;
 }
 
 .gnb-nav > li { position: relative; }
@@ -393,7 +399,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
   border: 1.5px solid var(--color-sub);
   border-radius: var(--radius);
   color: var(--color-main);
-  padding: 8px 22px;
+  padding: 8px clamp(10px, 1.7vw, 22px);
   font-size: 13px;
   font-weight: 500;
   background: var(--color-sub);
@@ -2023,7 +2029,7 @@ footer {
    ============================================================ */
 @media (max-width: 1280px) {
   .container { padding: 0 60px; }
-  .gnb .container { padding: 0 60px; }
+  .top-bar-left a:first-child { display: none; }
 
   /* Spread — 데코 크기 유지 (절대위치이므로 별도 조정 불필요) */
 
@@ -2045,15 +2051,13 @@ footer {
    ============================================================ */
 @media (max-width: 1024px) {
   .container { padding: 0 40px; }
-  .gnb .container { padding: 0 40px; }
 
   /* Top bar */
   .top-bar-left a,
   .top-bar-right a,
   .top-bar-right span { padding: 0 7px; font-size: 10.5px; }
 
-  /* GNB */
-  .gnb-nav { gap: 16px; }
+  /* GNB — padding·gap은 clamp로 유동 처리, font-size만 소폭 축소 */
   .gnb-nav > li > a { font-size: 13px; }
 
   /* Hero */
@@ -2682,7 +2686,19 @@ footer {
 .location-page-title { text-align: center; margin-bottom: 40px; }
 .location-page-title h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
 .location-page-title p { font-size: 13px; color: var(--color-font-sub); line-height: 1.8; word-break: keep-all; max-width: 500px; margin: 0 auto; }
-.location-tabs { display: flex; justify-content: space-between; border-bottom: 2px solid var(--color-border); margin-bottom: 40px; }
+.location-tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+.location-tabs::-webkit-scrollbar { display: none; }
+.location-tabs.is-dragging { cursor: grabbing; user-select: none; }
 .location-tab {
   padding: 13px 32px; font-size: 13px; font-weight: 500;
   color: var(--color-font-sub); border-bottom: 2px solid transparent;
@@ -2695,6 +2711,11 @@ footer {
 .location-main-img { height: 360px; background: var(--ph); margin-bottom: 12px; overflow: hidden; cursor: pointer; position: relative; }
 .location-main-img:hover .grid-img-inner { transform: scale(1.04); }
 .location-img-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 48px; }
+.location-img-grid[data-cols="8"] { grid-template-columns: repeat(8, 1fr); }
+.location-img-grid[data-cols="6"] { grid-template-columns: repeat(6, 1fr); }
+.location-img-grid[data-cols="5"] { grid-template-columns: repeat(5, 1fr); }
+.location-img-grid[data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+.location-img-grid[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
 .location-img-grid .ph { height: 130px; }
 .location-img-grid > div { overflow: hidden; cursor: pointer; position: relative; border-radius: 4px; }
 .grid-img-inner { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
@@ -2707,7 +2728,7 @@ footer {
 #loc-lb-img { position: relative; max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 6px; z-index: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
 #loc-lb-close { position: absolute; top: 20px; right: 28px; font-size: 42px; line-height: 1; color: #fff; background: none; border: none; cursor: pointer; z-index: 2; opacity: 0.8; transition: opacity 0.2s; }
 #loc-lb-close:hover { opacity: 1; }
-.location-map { height: 430px; margin-top: 40px; border-radius: 8px; overflow: hidden; background: var(--color-sub); }
+.location-map { height: 430px; margin-top: 40px; border-radius: 8px; overflow: hidden; background: var(--color-sub); display: block; width: 100%; border: 0; }
 .location-panel { display: none; }
 .location-panel.active { display: block; }
 .location-map-placeholder { height: 430px; margin-top: 40px; border-radius: 8px; background: var(--ph); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px; }
@@ -3093,7 +3114,10 @@ footer {
   .instructors-full-grid { grid-template-columns: repeat(3, 1fr); }
   .prog-list-layout { grid-template-columns: 220px 1fr; }
   .prog-info-grid { grid-template-columns: repeat(2, 1fr); }
-  .location-img-grid { grid-template-columns: repeat(3, 1fr); }
+  .location-tabs { justify-content: flex-start; }
+  .location-img-grid[data-cols="8"] { grid-template-columns: repeat(4, 1fr); }
+  .location-img-grid[data-cols="6"] { grid-template-columns: repeat(3, 1fr); }
+  .location-img-grid[data-cols="5"] { grid-template-columns: repeat(3, 1fr); }
   .inquiry-layout { grid-template-columns: 300px 1fr; }
   .inquiry-contact-strip { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px 28px; }
   .inquiry-contact-divider { display: none; }
@@ -3118,7 +3142,11 @@ footer {
   .about-quote-inner { padding: 0 20px; }
   .instructors-full-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .instr-card-photo { height: 200px; }
-  .location-img-grid { grid-template-columns: repeat(2, 1fr); }
+  .location-img-grid[data-cols="8"] { grid-template-columns: repeat(4, 1fr); }
+  .location-img-grid[data-cols="6"] { grid-template-columns: repeat(3, 1fr); }
+  .location-img-grid[data-cols="5"] { grid-template-columns: repeat(3, 1fr); }
+  .location-img-grid[data-cols="4"] { grid-template-columns: repeat(2, 1fr); }
+  .location-img-grid[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
   .prog-hero { height: 440px; }
   .prog-hero-btns .btn-green,
   .prog-hero-btns .btn-outline-white { font-size: 13px; padding: 10px 20px; }
@@ -3181,4 +3209,6 @@ footer {
   /* 수업 프로그램 (요가 / 필라테스) */
   .prog-list-page { padding: 20px 0 48px; }
   .prog-sidebar { border-radius: 16px; }
+  /* 교육시설 사진 그리드 */
+  .location-img-grid[data-cols] { grid-template-columns: repeat(2, 1fr); }
 }

@@ -23,8 +23,7 @@
       <a href="#">안성1호점</a>
     </div>
     <div class="top-bar-right">
-      <span>대표문의</span>
-      031.480.3308
+      <a href="tel:031-480-3308" class="top-bar-phone">대표문의 031.480.3308</a>
       <a href="inquiry.html">온라인상담</a>
       <a href="inquiry.html">수강료 조회</a>
       <a href="inquiry.html">시간표 조회</a>
@@ -200,7 +199,7 @@
           <tr><th scope="row">이메일</th><td>dona4330@naver.com</td></tr>
           <tr><th scope="row">운영시간</th><td>평일 &amp; 토요일 AM 9:00~PM 10:00 / 국,공휴일 휴무</td></tr>
         </tbody></table>
-        <div id="naverMap" class="location-map"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.3171,126.8311&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 본점 지도"></iframe>
       </div>
 
       <!-- ② 신부점 -->
@@ -219,7 +218,7 @@
           <tr><th scope="row">운영시간</th><td>평일 &amp; 토요일 AM 9:00~PM 10:00 / 국,공휴일 휴무</td></tr>
           <tr><th scope="row">주차</th><td>지하주차 / 주차권 1장 (1시간 30분 가능)</td></tr>
         </tbody></table>
-        <div class="location-map" id="map-panel-1"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.3433,126.8153&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 신부점 지도"></iframe>
       </div>
 
       <!-- ③ 신길온천점 -->
@@ -239,7 +238,7 @@
           <tr><th scope="row">운영시간</th><td>평일 &amp; 토요일 AM 9:00~PM 10:00 / 국,공휴일 휴무</td></tr>
           <tr><th scope="row">주차</th><td>지하주차 / 주차도장 (1시간 무료)</td></tr>
         </tbody></table>
-        <div class="location-map" id="map-panel-2"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.3195,126.8202&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 신길온천점 지도"></iframe>
       </div>
 
       <!-- ④ 원곡점 -->
@@ -259,7 +258,7 @@
           <tr><th scope="row">이메일</th><td>dona4330@naver.com</td></tr>
           <tr><th scope="row">운영시간</th><td>평일 &amp; 토요일 AM 9:00~PM 10:00 / 국,공휴일 휴무</td></tr>
         </tbody></table>
-        <div class="location-map" id="map-panel-3"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.3109,126.8458&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 원곡점 지도"></iframe>
       </div>
 
       <!-- ⑤ 안양 평촌점 -->
@@ -276,7 +275,7 @@
           <tr><th scope="row">이메일</th><td>sjinkim21@naver.com</td></tr>
           <tr><th scope="row">운영시간</th><td>평일 &amp; 토요일 AM 9:00~PM 10:00 / 국,공휴일 휴무</td></tr>
         </tbody></table>
-        <div class="location-map" id="map-panel-4"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.3831,126.9524&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 안양 평촌점 지도"></iframe>
       </div>
 
       <!-- ⑥ 안성1호점 -->
@@ -294,7 +293,7 @@
           <tr><th scope="row">운영시간</th><td>평일 AM 8:30~PM 09:30 / 주말 및 국,공휴일 휴무</td></tr>
           <tr><th scope="row">주차</th><td>서인동 공영주차장 무료주차 가능</td></tr>
         </tbody></table>
-        <div class="location-map" id="map-panel-5"></div>
+        <iframe class="location-map" src="https://maps.google.com/maps?q=37.0010,127.2636&z=16&output=embed" width="100%" loading="lazy" allowfullscreen title="KIM'S 안성1호점 지도"></iframe>
       </div>
     </div>
   </section>
@@ -396,9 +395,9 @@
     document.querySelectorAll('.location-img-grid').forEach(function(grid){
       var cells = Array.prototype.filter.call(grid.children, function(el){ return el.tagName === 'DIV'; });
 
-      // 사진 수에 따라 열 자동 조정
+      // 사진 수에 따라 CSS data-cols 속성으로 열 조정 (미디어쿼리 반응형 적용을 위해 인라인 스타일 대신 사용)
       if(cells.length > 0){
-        grid.style.gridTemplateColumns = 'repeat(' + cells.length + ', 1fr)';
+        grid.setAttribute('data-cols', cells.length);
       }
 
       // 메인 이미지 처리 (hover scale + lightbox)
@@ -451,17 +450,46 @@
       this.classList.add('active');
       this.setAttribute('aria-selected','true');
       document.querySelectorAll('.location-panel')[idx].classList.add('active');
-      // 패널이 완전히 렌더된 후 지도 생성
-      var _idx = idx;
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          if (typeof _createBranchMap === 'function') {
-            _createBranchMap(_BRANCHES[_idx]);
-          }
-        });
-      });
     });
   });
+
+  // Location tabs — 마우스 드래그 스와이프
+  (function() {
+    var tabs = document.querySelector('.location-tabs');
+    if (!tabs) return;
+    var isDown = false, startX, scrollLeft, moved = false;
+
+    tabs.addEventListener('mousedown', function(e) {
+      isDown = true;
+      moved = false;
+      startX = e.pageX - tabs.getBoundingClientRect().left;
+      scrollLeft = tabs.scrollLeft;
+      tabs.classList.add('is-dragging');
+    });
+
+    document.addEventListener('mouseup', function() {
+      if (!isDown) return;
+      isDown = false;
+      tabs.classList.remove('is-dragging');
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - tabs.getBoundingClientRect().left;
+      var dist = x - startX;
+      if (Math.abs(dist) > 4) moved = true;
+      tabs.scrollLeft = scrollLeft - dist;
+    });
+
+    // 드래그였으면 탭 전환 클릭 차단 (capture phase)
+    tabs.addEventListener('click', function(e) {
+      if (moved) {
+        e.stopImmediatePropagation();
+        moved = false;
+      }
+    }, true);
+  })();
 
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileNav    = document.getElementById('mobileNav');
@@ -492,57 +520,6 @@
   })();
 </script>
 <script src="js/auth-ui.js"></script>
-<script>
-  var _naverMapInstances = {};
-
-  var _BRANCHES = [
-    { id: 'naverMap',    lat: 37.3171, lng: 126.8311, name: "KIM'S YOGA & PILATES 본점",       addr: '경기도 안산시 단원구 고잔동 534-2<br>지스타프라자 601호', tel: '031-480-3308' },
-    { id: 'map-panel-1', lat: 37.3433, lng: 126.8153, name: "KIM'S YOGA & PILATES 신부점",      addr: '경기도 안산시 단원구 선부광장1로 84 203호',              tel: '031-410-3088' },
-    { id: 'map-panel-2', lat: 37.3195, lng: 126.8202, name: "KIM'S YOGA & PILATES 신길온천점",  addr: '경기도 안산시 단원구 새볼길 48 월산빌딩 4층',            tel: '031-492-8778' },
-    { id: 'map-panel-3', lat: 37.3109, lng: 126.8458, name: "KIM'S YOGA & PILATES 원곡점",      addr: '경기도 안산시 단원구 원곡동',                           tel: '031-493-3308' },
-    { id: 'map-panel-4', lat: 37.3831, lng: 126.9524, name: "KIM'S YOGA & PILATES 안양 평촌점", addr: '경기도 안양시 동안구 호계동 1065-4<br>종로문고B1',       tel: '031-388-8774' },
-    { id: 'map-panel-5', lat: 37.0010, lng: 127.2636, name: "KIM'S YOGA & PILATES 안성1호점",   addr: '경기도 안성시 안성맞춤대로 1042-1',                     tel: '031-677-3383' }
-  ];
-
-  function _createBranchMap(branch) {
-    try {
-      if (_naverMapInstances[branch.id]) {
-        naver.maps.Event.trigger(_naverMapInstances[branch.id], 'resize');
-        return;
-      }
-      var mapEl = document.getElementById(branch.id);
-      if (!mapEl) return;
-
-      var center = new naver.maps.LatLng(branch.lat, branch.lng);
-      var map = new naver.maps.Map(branch.id, {
-        center: center, zoom: 16,
-        mapTypeControl: false, scaleControl: false,
-        logoControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
-      });
-
-      var marker = new naver.maps.Marker({ position: center, map: map, title: branch.name });
-      var infowindow = new naver.maps.InfoWindow({
-        content: '<div style="padding:12px 16px;font-size:13px;font-family:\'Noto Sans KR\',sans-serif;line-height:1.7;min-width:220px;">'
-          + '<strong style="color:#496357;display:block;margin-bottom:4px;">' + branch.name + '</strong>'
-          + branch.addr
-          + '<br><a href="tel:' + branch.tel + '" style="color:#496357;font-size:12px;">' + branch.tel + '</a>'
-          + '</div>'
-      });
-      naver.maps.Event.addListener(marker, 'click', function () {
-        infowindow.getMap() ? infowindow.close() : infowindow.open(map, marker);
-      });
-      infowindow.open(map, marker);
-      _naverMapInstances[branch.id] = map;
-    } catch(e) {
-      console.warn('지도 로드 실패:', branch.id, e);
-    }
-  }
-
-  function initNaverMap() {
-    setTimeout(function () { _createBranchMap(_BRANCHES[0]); }, 300);
-  }
-</script>
-<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5871gw9dnm&callback=initNaverMap"></script>
 <script>
   (function () {
     var bar = document.getElementById('scroll-progress');
