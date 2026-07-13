@@ -326,7 +326,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 /* Nav */
 .gnb-nav {
   display: flex;
-  gap: clamp(14px, 2.8vw, 36px);
+  gap: clamp(32px, 5.2vw, 72px);
   justify-content: center;
 }
 
@@ -811,7 +811,9 @@ button { cursor: pointer; font-family: var(--font-kr); }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.1) 100%);
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 32%),
+    linear-gradient(to right, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.1) 100%);
 }
 
 .hero-body {
@@ -2111,6 +2113,7 @@ footer {
 
   /* Hero */
   .hero { height: 520px; }
+  .hero-body { align-items: flex-start; padding-top: 48px; }
   .hero-text h1 { font-size: 26px; line-height: 1.4; }
   .hero-arrow { width: 36px; height: 36px; font-size: 20px; }
   .hero-arrow-prev { display: none; }
@@ -2238,6 +2241,7 @@ footer {
 
   /* Hero */
   .hero { height: 440px; }
+  .hero-body { padding-top: 32px; }
   .hero-text { padding: 0; }
   .hero-text h1 { font-size: 20px; }
   .hero-text p { font-size: 12px; }
@@ -2354,7 +2358,7 @@ footer {
   .mob-close-right { display: none; }
   .mob-hours { display: none; }
   .mob-nav-list { padding: 4px 20px; }
-  .mob-nav-item > a, .mob-parent { font-size: 15px; padding: 14px 0; }
+  .mob-nav-item > a, .mob-parent { font-size: 15px; padding: 20px 0; }
   .mob-quick { padding: 12px 20px 20px; }
 }
 
