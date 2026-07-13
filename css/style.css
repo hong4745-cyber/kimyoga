@@ -2707,14 +2707,17 @@ footer {
 #loc-lb-img { position: relative; max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 6px; z-index: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
 #loc-lb-close { position: absolute; top: 20px; right: 28px; font-size: 42px; line-height: 1; color: #fff; background: none; border: none; cursor: pointer; z-index: 2; opacity: 0.8; transition: opacity 0.2s; }
 #loc-lb-close:hover { opacity: 1; }
-.location-map { height: 430px; margin-bottom: 32px; border-radius: 8px; overflow: hidden; }
+.location-map { height: 430px; margin-top: 40px; border-radius: 8px; overflow: hidden; background: var(--color-sub); }
 .location-panel { display: none; }
 .location-panel.active { display: block; }
-.location-map-placeholder { height: 430px; margin-bottom: 32px; border-radius: 8px; background: var(--ph); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px; }
-.location-info-table { width: 100%; border-collapse: collapse; font-size: 13px; border-top: 1px solid var(--color-border); }
+.location-map-placeholder { height: 430px; margin-top: 40px; border-radius: 8px; background: var(--ph); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px; }
+.location-info-table { width: 100%; border-collapse: collapse; font-size: 13px; border-top: 2px solid var(--color-main); margin-top: 48px; }
 .location-info-table th, .location-info-table td { padding: 14px 20px; border-bottom: 1px solid var(--color-border); text-align: left; }
 .location-info-table th { width: 130px; font-weight: 600; color: var(--color-main); background: var(--color-sub); white-space: nowrap; }
 .location-info-table td { color: var(--color-font-sub); }
+.location-map-fallback { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.location-map-fallback p { font-size: 13px; color: #999; margin: 0; }
+.location-map-fallback a { font-size: 13px; color: var(--color-main); text-decoration: underline; }
 
 /* ============================================================
    PROGRAM PRO (지도자 과정)
