@@ -14,7 +14,7 @@
     }
     .detail-photo {
       flex: 0 0 58%;
-      background: var(--ph) no-repeat center top / cover;
+      background: var(--ph) no-repeat center 30% / cover;
     }
     .detail-info {
       flex: 1;
@@ -261,14 +261,14 @@
           킴스요가필라테스요가<br>
           사업자번호 : 134-27-80643<br>
           대표 : 박경화<br>
-          경기도 안산시 단원구고잔동 534-2<br>지스타프라자 601호
+          경기도 안산시 단원구고잔동&nbsp;534-2<br>지스타프라자 601호
         </p>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <p>
-          대표전화 : 031-480-3308<br>
-          Email : dona4330@naver.com
+          대표전화 : <span style="white-space:nowrap;">031-480-3308</span><br>
+          <span style="white-space:nowrap;">Email : dona4330@naver.com</span>
         </p>
       </div>
       <div class="footer-col">
@@ -302,14 +302,14 @@
     { name: '강수연', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(고잔&중앙)_강수연.jpg' },
     { name: '강지현', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(고잔&중앙)_강지현.jpg' },
     { name: '김진솔', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(고잔&중앙)_김진솔.jpg' },
-    { name: '김진희', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(고잔&중앙)_김진희.jpg' },
-    { name: '오혜린', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(고잔&중앙)_오혜린.jpg' },
+    { name: '김진희', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(고잔&중앙)_김진희.jpg', bgPos: 'center 20%', bgSize: '120%' },
+    { name: '오혜린', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(고잔&중앙)_오혜린.jpg', bgPos: 'center 55%' },
     { name: '정보람', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(고잔&중앙)_정보람.jpg' },
     { name: '김성수', tag: '재활 전문 강사',             photo: 'images/3_instrsuctors_img/(고잔&중앙)김성수.jpg' },
     { name: '강수연', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(선부)_강수연.jpg' },
-    { name: '박경진', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(선부)_박경진.jpg' },
+    { name: '박경진', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(선부)_박경진.jpg', bgPos: 'center 45%' },
     { name: '조은숙', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(선부)_조은숙.jpg' },
-    { name: '임진아', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(선부점)_임진아.png' },
+    { name: '임진아', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(선부점)_임진아.png', bgPos: 'center 50%' },
     { name: '한향숙', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(신길온천)_한향숙.jpg' },
     { name: '이금옥', tag: '요가 전문 강사',             photo: 'images/3_instrsuctors_img/(신길온천)_이금옥.jpg' },
     { name: '이은영', tag: '필라테스 전문 강사',         photo: 'images/3_instrsuctors_img/(신길온천)_이은영.jpg' },
@@ -327,8 +327,11 @@
     var inst = instructors[id - 1];
     if (!inst) { window.location.href = 'instructors.html'; return; }
     document.title = inst.name + ' | KIM\'S YOGA & PILATES';
-    document.getElementById('detailPhoto').style.backgroundImage = 'url("' + inst.photo + '")';
-    document.getElementById('detailPhoto').setAttribute('aria-label', inst.name + ' 사진');
+    var photoEl = document.getElementById('detailPhoto');
+    photoEl.style.backgroundImage = 'url("' + inst.photo + '")';
+    if (inst.bgPos) { photoEl.style.backgroundPosition = inst.bgPos; }
+    if (inst.bgSize) { photoEl.style.backgroundSize = inst.bgSize; }
+    photoEl.setAttribute('aria-label', inst.name + ' 사진');
     document.getElementById('detailName').textContent = inst.name;
     document.getElementById('detailTag').textContent = inst.tag;
   })();
