@@ -13,6 +13,17 @@ function closeAllAccordion(except) {
   });
 }
 
+/* HOME 등 아코디언이 아닌 직접 링크의 active 점 표시/해제
+   (드롭다운이 열려있는 동안은 그쪽에만 점이 보이도록 꺼둠) */
+function setDirectLinkActive(on) {
+  var page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.mob-nav-item:not(.mob-has-sub) > a').forEach(function (a) {
+    if (a.getAttribute('href') === page) {
+      a.closest('.mob-nav-item').classList.toggle('active', on);
+    }
+  });
+}
+
 window.toggleAccordion = function (btn) {
   var item = btn.closest('.mob-has-sub');
   if (!item) return;
@@ -24,9 +35,11 @@ window.toggleAccordion = function (btn) {
   if (isOpen) {
     item.classList.remove('open', 'active');
     if (sub) sub.style.maxHeight = '0';
+    setDirectLinkActive(true);
   } else {
     item.classList.add('open', 'active');
     if (sub) sub.style.maxHeight = sub.scrollHeight + 'px';
+    setDirectLinkActive(false);
   }
 };
 

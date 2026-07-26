@@ -189,7 +189,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 189px;
+  width: 160px;
   height: 55px;
   background: var(--color-main);
   color: var(--color-sub);
@@ -1063,7 +1063,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 
 .img-band-wave-top {
   position: absolute;
-  top: 0;
+  top: -10px;
   left: 0;
   width: 100%;
   z-index: 2;
@@ -1181,19 +1181,43 @@ button { cursor: pointer; font-family: var(--font-kr); }
    ============================================================ */
 .instructors {
   background: var(--color-sub2);
-  padding: 88px 0;
+  padding: 50px 0;
   text-align: center;
 }
 
 .instructors .sec-en { color: var(--color-main); }
 .instructors .sec-kr { font-size: 18px; }
 
+.instructors-scroll-wrap { overflow: hidden; padding: 0 10px; }
+
 .instructors-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 96px) / 4);
   gap: 32px;
   margin-top: 40px;
-  margin-bottom: 96px;
+  padding-bottom: 96px;
+}
+
+.instructors-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+  margin-bottom: 68px;
+}
+
+.instructors-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.instructors-dot.active {
+  background: var(--color-main);
+  transform: scale(1.3);
 }
 
 .instructor-photo {
@@ -1220,8 +1244,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
 }
 
-.instructors-grid .instructor-card:nth-child(2),
-.instructors-grid .instructor-card:nth-child(4) {
+.instructors-grid .instructor-card:nth-child(even) {
   transform: translateY(96px);
 }
 
@@ -1390,8 +1413,8 @@ button { cursor: pointer; font-family: var(--font-kr); }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 780px;
-  height: 900px;
+  width: 620px;
+  height: 720px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1415,11 +1438,11 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 .care-element.is-visible {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0.85);
 }
 .care-element.is-leaving {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0.85);
   transition: opacity 1.8s ease;
 }
 
@@ -2083,13 +2106,42 @@ footer {
   .deco-circle-3  { right: 4%; top: 32%; }
   .spread-features { gap: 24px; }
 
-  /* Care — 중앙 이미지 폭 축소 */
-  .care-layout { grid-template-columns: 1fr 260px 1fr; gap: 20px; }
-  .care-center { height: 460px; }
-  .care-card { width: 100%; height: auto; min-height: 240px; padding: 20px 16px 14px; }
+  /* Care — 이미지 상단, 카드 하단 2열 (태블릿 769~1024px) */
+  .care-layout {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    height: auto;
+  }
+  .care-layout > div:nth-child(2) {
+    position: relative;
+    inset: auto;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    height: 560px;
+  }
+  .care-layout > div:nth-child(1) {
+    position: relative;
+    left: auto; top: auto;
+    transform: none;
+    width: auto;
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .care-layout > div:nth-child(3) {
+    position: relative;
+    right: auto; top: auto;
+    transform: none;
+    width: auto;
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .care-card { width: auto; height: auto; min-height: 240px; padding: 20px 16px 14px; }
   .care-card-icon { width: 72px; height: 72px; }
-  .care-photo { width: 360px; height: 450px; }
-  .care-element { width: 420px; }
+  .care-photo { width: 680px; height: 540px; }
+  .care-element { width: 560px; top: 43%; }
 
   /* News — 카드 너비 축소 */
   .news-card { flex: 0 0 280px; }
@@ -2153,7 +2205,7 @@ footer {
 
   /* Instructors — 3열 유지, 150px 기준 */
   .instructors { padding: 64px 0; }
-  .instructors-grid { gap: 16px; }
+  .instructors-grid { grid-auto-columns: 150px; gap: 16px; }
   .instructor-photo { width: 150px; height: auto; }
   .instructor-card { width: 150px; }
 
@@ -2250,6 +2302,7 @@ footer {
 
   /* btn-glass-wrap 축소 */
   .btn-glass-wrap { width: 185px; height: 75px; }
+  .btn-glass-wrap .btn-green { width: 170px; height: 50px; }
 
   /* GNB */
   .gnb .container { height: 54px; padding: 0 16px; }
@@ -2291,41 +2344,49 @@ footer {
   }
   .instructors-grid {
     display: grid;
-    grid-template-columns: repeat(4, 136px);
+    grid-auto-flow: column;
+    grid-auto-columns: 136px;
     gap: 10px;
     width: max-content;
+    padding-bottom: 0;
   }
   .instructor-photo { width: 136px; height: 190px; }
   .instructor-card { width: 136px; }
-  .instructors-grid .instructor-card:nth-child(2),
-  .instructors-grid .instructor-card:nth-child(4) { transform: translateY(0); }
+  .instructors-grid .instructor-card:nth-child(even) { transform: translateY(0); }
+  .instructor-photo.photo-down-mobile { background-position: center top -5px !important; }
+  .instructor-photo.photo-down-mobile-2 { background-position: left -20px top -35px !important; }
+  .instructor-photo.photo-left-mobile { background-position: 70% top !important; }
+  .instructor-photo.photo-down-mobile-3 { background-position: center top -15px !important; }
+  .instructors-dots { margin-top: 16px; margin-bottom: 8px; }
   .instructors .btn-outline { margin-top: 4px; }
 
-  /* Care — 이미지 상단, 카드 2×2 하단 */
+  /* Care — 카드 2×2 상단, 이미지 하단 */
   .care { padding: 48px 0; }
   .care-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     gap: 16px;
   }
-  .care-center {
+  .care-layout > div:nth-child(2) {
+    position: relative;
+    inset: auto;
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 3;
     height: 300px;
     min-height: unset;
   }
-  .care-photo { width: 320px; height: 340px; }
+  .care-photo { width: 300px; height: 360px; left: calc(50% - 15px); }
   .care-element { width: 360px; }
   .care-layout > div:first-child {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
   .care-layout > div:last-child {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -2679,28 +2740,18 @@ footer {
 }
 .instructors-full-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .instr-card { background: transparent; overflow: hidden; }
-.instr-card-photo { height: 280px; background: var(--ph); border-radius: 10px; overflow: hidden; position: relative; }
-.instr-card-photo::after { content: ''; position: absolute; inset: 0; background-image: inherit; background-size: inherit; background-position: inherit; background-repeat: no-repeat; filter: grayscale(100%) sepia(15%); transition: transform 0.4s ease, filter 0.4s ease; }
-.instr-card:hover .instr-card-photo::after { transform: scale(1.05); filter: grayscale(0%); }
-.photo-dim::after { filter: grayscale(100%) sepia(15%) brightness(0.75); }
-.instr-card:hover .photo-dim::after { filter: grayscale(0%) brightness(1); }
-.photo-light::after { filter: grayscale(100%) sepia(15%) brightness(1.2); }
-.instr-card:hover .photo-light::after { filter: grayscale(0%) brightness(1); }
+.instr-card-photo { height: 280px; background: var(--ph); border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; }
+.instr-card-photo::after { content: ''; position: absolute; inset: 0; background-image: inherit; background-size: inherit; background-position: inherit; background-repeat: no-repeat; transition: transform 0.4s ease, filter 0.4s ease; }
+.instr-card:hover .instr-card-photo::after { transform: scale(1.05); }
+.photo-dim::after { filter: brightness(0.75); }
+.instr-card:hover .photo-dim::after { filter: brightness(1); }
+.photo-light::after { filter: brightness(1.2); }
+.instr-card:hover .photo-light::after { filter: brightness(1); }
 .instr-card-body { padding: 16px; display: flex; align-items: center; justify-content: space-between; background: transparent; }
-.instr-card-info h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-.instr-card-info .tag { font-size: 11px; color: var(--color-font-sub); }
+.instr-card-info h3 { font-size: 16px; font-weight: 600; margin-bottom: 0; }
+.instr-card-info .tag { font-size: 13px; color: var(--color-font-sub); }
 .instr-card-info .tag-branch { font-size: 11px; color: var(--color-main); }
 .instr-card-info .tag-branch::before { content: ' | '; color: var(--color-font-sub); }
-.instr-arrow {
-  width: 30px; height: 30px; border-radius: 50%;
-  border: 1px solid var(--color-main); background: none;
-  font-size: 13px; color: var(--color-main);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; flex-shrink: 0;
-  transition: background 0.2s, color 0.2s;
-}
-.instr-arrow:hover { background: var(--color-main); color: var(--color-sub); border-color: var(--color-main); }
-
 /* ============================================================
    LOCATION PAGE
    ============================================================ */
@@ -3190,6 +3241,8 @@ footer {
   .inquiry-card { padding: 28px 20px; }
   .inquiry-tabs { flex-direction: column; align-items: center; }
   .inquiry-tab-btn { width: 100%; max-width: 320px; justify-content: center; }
+  .inquiry-layout > .inquiry-card { height: auto; }
+  .inquiry-layout > .inquiry-card .inquiry-submit-btn { margin-bottom: 0; }
 }
 
 /* ============================================================
@@ -3233,4 +3286,10 @@ footer {
   .prog-sidebar { border-radius: 16px; }
   /* 교육시설 사진 그리드 */
   .location-img-grid[data-cols] { grid-template-columns: repeat(2, 1fr); }
+
+  /* 강사소개 카드 그리드 — 2열, 같은 행끼리 높이 정렬 */
+  .instructors-full-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .instr-card-photo { height: 170px; }
+  .instr-card-photo.photo-zoom-mobile { background-size: 190% !important; background-position: 68% 20% !important; }
+  .instr-card-photo.photo-down { transform: translateY(10px); }
 }
