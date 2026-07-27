@@ -3570,6 +3570,18 @@ footer {
     padding-top: 65px;
   }
 
+  .program-section {
+    background-image: none;
+    background-attachment: scroll;
+  }
+
+  .program-bg {
+    background-image: url('../images/1_HOME_img/program.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   .gnb {
     position: fixed;
     top: 0;
