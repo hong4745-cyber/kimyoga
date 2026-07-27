@@ -258,7 +258,10 @@
   <!-- Full-width image band -->
   <div class="img-band" style="background-image:url('images/1_HOME_img/program.jpg')" role="img" aria-label="요가 그룹 수업 이미지">
     <div class="img-band-wave-top">
-      <img src="images/1_HOME_img/SVG(상단).png" alt="">
+      <picture>
+        <source media="(max-width: 420px)" srcset="images/band-wave-top.png?v=2">
+        <img src="images/1_HOME_img/SVG(상단).png" alt="">
+      </picture>
     </div>
 
   </div>
@@ -270,7 +273,10 @@
     <div class="program-bg"></div>
     <div class="program-overlay" aria-hidden="true"></div>
     <div class="program-wave-bottom">
-      <img src="images/1_HOME_img/SVG(하단).png" alt="">
+      <picture>
+        <source media="(max-width: 420px)" srcset="images/program-wave-bottom.png?v=2">
+        <img src="images/1_HOME_img/SVG(하단).png" alt="">
+      </picture>
     </div>
 
     <!-- 2-슬라이드 드래그 트랙 -->
@@ -780,7 +786,7 @@
     if (!grid) return;
 
     var SLOT_Y = [0, 96, 0, 96]; // 슬롯별 세로 오프셋(px) - 위아래위아래
-    var mobileQuery = window.matchMedia('(max-width: 480px)');
+    var mobileQuery = window.matchMedia('(max-width: 419px)');
     var locked = false;
     var startX = 0, startY = 0;
 

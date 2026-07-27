@@ -81,7 +81,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
   align-items: center;
   justify-content: center;
   width: 235px;
-  height: 95px;
+  height: 100px;
   border-radius: 50px;
   position: relative;
   isolation: isolate;
@@ -203,6 +203,10 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 .btn-green::after { content: '→'; font-size: 14px; }
 .btn-green:hover { background: var(--color-main-hover); gap: 14px; }
+
+.hero-body .btn-glass-wrap .btn-green {
+  width: 150px;
+}
 
 .btn-outline {
   display: inline-block;
@@ -1047,6 +1051,7 @@ button { cursor: pointer; font-family: var(--font-kr); }
 /* Full-width image divider */
 .img-band {
   position: relative;
+  margin-top: 8px;
   height: 300px;
   background-color: var(--ph);
   background-size: cover;
@@ -1063,17 +1068,30 @@ button { cursor: pointer; font-family: var(--font-kr); }
 
 .img-band-wave-top {
   position: absolute;
-  top: -10px;
+  top: -4px;
   left: 0;
   width: 100%;
   z-index: 2;
   line-height: 0;
 }
+.img-band-wave-top::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-sub);
+}
 .img-band-wave-top img {
   width: 100%;
+  height: clamp(36px, 5.5vw, 105px);
+  display: block;
+  object-fit: fill;
+}
+.img-band-wave-top picture {
   display: block;
 }
-
 
 /* ============================================================
    PROGRAM
@@ -1111,6 +1129,9 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 .program-wave-bottom img {
   width: 100%;
+  display: block;
+}
+.program-wave-bottom picture {
   display: block;
 }
 
@@ -2094,7 +2115,7 @@ footer {
   .hero-text .hero-desc { font-size: 16px; }
 
   /* btn-glass-wrap */
-  .btn-glass-wrap { width: 215px; height: 87px; }
+  .btn-glass-wrap { width: 215px; height: 92px; }
 
   /* Spread */
   .spread { padding: 72px 0; }
@@ -2156,9 +2177,10 @@ footer {
 }
 
 /* ============================================================
-   RESPONSIVE — TABLET (≤ 768px)  →  768.png 와이어프레임 기준
+   RESPONSIVE — TABLET / MOBILE (< 768px)
+   420px 이상은 태블릿, 420px 미만은 아래 모바일 규칙이 추가 적용됩니다.
    ============================================================ */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .container { padding: 0 24px; }
 
   /* Top bar */
@@ -2182,7 +2204,7 @@ footer {
   .hero-arrow-next { right: 14px; }
 
   /* btn-glass-wrap */
-  .btn-glass-wrap { width: 200px; height: 81px; }
+  .btn-glass-wrap { width: 200px; height: 86px; }
 
   /* Spread — 3단 */
   .spread { padding: 64px 0; }
@@ -2289,9 +2311,9 @@ footer {
 }
 
 /* ============================================================
-   RESPONSIVE — MOBILE (≤ 480px)  →  Background.png 와이어프레임 기준
+   RESPONSIVE — MOBILE (< 420px)
    ============================================================ */
-@media (max-width: 480px) {
+@media screen and (max-width: 419px) {
   .container { padding: 0 16px; }
 
   /* 슬라이드 화살표 숨김 */
@@ -2301,7 +2323,7 @@ footer {
   body > *:not(footer) { font-size: calc(1em - 2px); }
 
   /* btn-glass-wrap 축소 */
-  .btn-glass-wrap { width: 185px; height: 75px; }
+  .btn-glass-wrap { width: 185px; height: 80px; }
   .btn-glass-wrap .btn-green { width: 170px; height: 50px; }
 
   /* GNB */
@@ -2370,10 +2392,12 @@ footer {
   .care-layout > div:nth-child(2) {
     position: relative;
     inset: auto;
-    grid-column: 1;
-    grid-row: 3;
+    width: auto;
     height: 300px;
     min-height: unset;
+    grid-column: 1;
+    grid-row: 2;
+    z-index: 3;
   }
   .care-photo { width: 300px; height: 360px; left: calc(50% - 15px); }
   .care-element { width: 360px; }
@@ -2386,7 +2410,7 @@ footer {
   }
   .care-layout > div:last-child {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -2439,6 +2463,93 @@ footer {
   .mob-nav-list { padding: 4px 20px; }
   .mob-nav-item > a, .mob-parent { font-size: 15px; padding: 20px 0; }
   .mob-quick { padding: 12px 20px 20px; }
+}
+
+/* Image band enlargement for small screens */
+@media screen and (max-width: 480px) {
+  .img-band {
+    height: 220px;
+  }
+
+  .img-band-wave-top {
+    left: -10%;
+    width: 120%;
+  }
+
+  .img-band-wave-top img {
+    height: 64px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .img-band {
+    overflow: visible;
+  }
+
+  .img-band-wave-top {
+    top: -14px;
+    height: 35px;
+  }
+
+  .img-band-wave-top img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .program-wave-bottom {
+    width: 120%;
+    left: -10%;
+  }
+
+  .program-wave-bottom img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .care-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+  }
+
+  .care-layout > div:nth-child(2) {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    height: 260px;
+    grid-column: 1;
+    grid-row: 2;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .care-photo {
+    width: 360px;
+    height: 360px;
+    left: 50%;
+    background-size: contain !important;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .care-layout > div:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .care-layout > div:last-child {
+    grid-column: 1;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 48px;
+  }
 }
 
 /* ============================================================
@@ -3197,7 +3308,7 @@ footer {
   .review-page-grid { grid-template-columns: 1fr; }
   .news-page-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .page-hero { height: 220px; }
   /* about 브랜드소개 */
   .about-intro { min-height: 380px; }
@@ -3246,9 +3357,9 @@ footer {
 }
 
 /* ============================================================
-   RESPONSIVE — 교육프로그램 (≤ 480px)
+   RESPONSIVE — 교육프로그램 / MOBILE (< 420px)
    ============================================================ */
-@media (max-width: 480px) {
+@media screen and (max-width: 419px) {
   /* about 브랜드소개 */
   .about-intro { min-height: 280px; }
   .about-intro .container { padding: 36px 20px 48px; }

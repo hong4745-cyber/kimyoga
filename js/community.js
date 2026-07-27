@@ -61,6 +61,15 @@ function _fmtDate(ts) {
   return y + '.' + m + '.' + day;
 }
 
+function _renderBoardState(el, message, isLoading) {
+  el.style.visibility = 'visible';
+  el.innerHTML =
+    '<p class="board-loading" style="grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--color-font-light);">' +
+      (isLoading ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> ' : '') +
+      _esc(message) +
+    '</p>';
+}
+
 /* ── 공지사항: 즉시 fallback 렌더 후 Firebase 실데이터로 교체 ── */
 function _renderNoticeRows(listEl, items) {
   listEl.innerHTML = '';
@@ -82,15 +91,25 @@ function _renderNoticeRows(listEl, items) {
 
 window.loadNoticeBoard = function (listEl, paginationEl, pageSize) {
   pageSize = pageSize || 10;
-  _renderNoticeRows(listEl, _FALLBACK_NOTICE.map(function(f){ return { id: f.id, data: f }; }));
-  if (!window._rdb) return;
+  _renderBoardState(listEl, '불러오는 중...', true);
+  if (!window._rdb) {
+    _renderBoardState(listEl, '게시글을 불러올 수 없습니다.', false);
+    return;
+  }
   _rdb.ref('posts/notice').orderByChild('createdAt').limitToLast(pageSize).once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
-      if (items.length > 0) _renderNoticeRows(listEl, items);
+      if (items.length > 0) {
+        _renderNoticeRows(listEl, items);
+      } else {
+        _renderBoardState(listEl, '등록된 게시글이 없습니다.', false);
+      }
     })
-    .catch(function (err) { console.error(err); });
+    .catch(function (err) {
+      console.error(err);
+      _renderBoardState(listEl, '게시글을 불러오지 못했습니다.', false);
+    });
 };
 
 /* ── 수강생 후기: 즉시 fallback 렌더 후 Firebase 실데이터로 교체 ── */
@@ -121,15 +140,25 @@ function _renderReviewCards(gridEl, items) {
 
 window.loadReviewBoard = function (gridEl, pageSize) {
   pageSize = pageSize || 6;
-  _renderReviewCards(gridEl, _FALLBACK_REVIEW.map(function(f){ return { id: f.id, data: f }; }));
-  if (!window._rdb) return;
+  _renderBoardState(gridEl, '불러오는 중...', true);
+  if (!window._rdb) {
+    _renderBoardState(gridEl, '게시글을 불러올 수 없습니다.', false);
+    return;
+  }
   _rdb.ref('posts/review').orderByChild('createdAt').limitToLast(pageSize).once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
-      if (items.length > 0) _renderReviewCards(gridEl, items);
+      if (items.length > 0) {
+        _renderReviewCards(gridEl, items);
+      } else {
+        _renderBoardState(gridEl, '등록된 게시글이 없습니다.', false);
+      }
     })
-    .catch(function (err) { console.error(err); });
+    .catch(function (err) {
+      console.error(err);
+      _renderBoardState(gridEl, '게시글을 불러오지 못했습니다.', false);
+    });
 };
 
 /* ── 뉴스: 즉시 fallback 렌더 후 Firebase 실데이터로 교체 ── */
@@ -155,15 +184,25 @@ function _renderNewsCards(gridEl, items) {
 
 window.loadNewsBoard = function (gridEl, pageSize) {
   pageSize = pageSize || 6;
-  _renderNewsCards(gridEl, _FALLBACK_NEWS.map(function(f){ return { id: f.id, data: f }; }));
-  if (!window._rdb) return;
+  _renderBoardState(gridEl, '불러오는 중...', true);
+  if (!window._rdb) {
+    _renderBoardState(gridEl, '게시글을 불러올 수 없습니다.', false);
+    return;
+  }
   _rdb.ref('posts/news').orderByChild('createdAt').limitToLast(pageSize).once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
-      if (items.length > 0) _renderNewsCards(gridEl, items);
+      if (items.length > 0) {
+        _renderNewsCards(gridEl, items);
+      } else {
+        _renderBoardState(gridEl, '등록된 게시글이 없습니다.', false);
+      }
     })
-    .catch(function (err) { console.error(err); });
+    .catch(function (err) {
+      console.error(err);
+      _renderBoardState(gridEl, '게시글을 불러오지 못했습니다.', false);
+    });
 };
 
 /* ── 상세 페이지 공통 로드 ── */
