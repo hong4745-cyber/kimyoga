@@ -3062,9 +3062,9 @@ footer {
 /* ::after 미사용 */
 .about-diff-item .arc-frame::after { content: none; }
 .about-diff-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 200px 80px 200px; position: relative; z-index: 1; }
-.about-diff-text h3 { font-size: clamp(16px, 1.5vw, 20px); font-weight: 700; margin-bottom: 16px; color: var(--color-main); }
+.about-diff-text h3 { font-size: clamp(18px, 1.5vw, 22px); font-weight: 700; margin-bottom: 16px; color: var(--color-main); }
 .about-diff-text h3 i { font-size: clamp(14px, 1.3vw, 18px); opacity: 0.45; margin-right: 6px; }
-.about-diff-text p { font-size: clamp(13px, 1.1vw, 14px); color: var(--color-font-sub); line-height: 1.9; word-break: keep-all; text-align: justify; }
+.about-diff-text p { font-size: clamp(15px, 1.1vw, 16px); color: var(--color-font-sub); line-height: 1.9; word-break: keep-all; text-align: justify; }
 
 /* 스크롤 페이드업 애니메이션 */
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -3072,14 +3072,14 @@ footer {
 .about-quote { background: var(--color-sub2); padding: 60px 0; text-align: center; margin-top: 80px; }
 .about-quote-inner { max-width: 680px; margin: 0 auto; }
 .about-quote blockquote {
-  font-size: clamp(15px, 1.8vw, 22px);
+  font-size: clamp(18px, calc(1.8vw + 3px), 25px);
   font-weight: 600;
   color: var(--color-main);
   line-height: 1.7;
   margin-bottom: 14px;
   word-break: keep-all;
 }
-.about-quote .quote-sub { font-size: 13px; color: var(--color-main); margin-bottom: 36px; }
+.about-quote .quote-sub { font-size: 16px; color: var(--color-main); margin-bottom: 36px; }
 .about-quote .btn-green { background: var(--color-main); color: var(--color-sub); min-width: 195px; }
 
 /* ============================================================
@@ -3125,7 +3125,7 @@ footer {
 .location-page { padding: 64px 0 88px; }
 .location-page-title { text-align: center; margin-bottom: 40px; }
 .location-page-title h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-.location-page-title p { font-size: 13px; color: var(--color-font-sub); line-height: 1.8; word-break: keep-all; max-width: 500px; margin: 0 auto; }
+.location-page-title p { font-size: 15px; color: var(--color-font-sub); line-height: 1.8; word-break: keep-all; max-width: 500px; margin: 0 auto; }
 .location-tabs {
   display: flex;
   justify-content: space-between;
@@ -3140,7 +3140,7 @@ footer {
 .location-tabs::-webkit-scrollbar { display: none; }
 .location-tabs.is-dragging { cursor: grabbing; user-select: none; }
 .location-tab {
-  padding: 13px 32px; font-size: 13px; font-weight: 500;
+  padding: 13px 32px; font-size: 15px; font-weight: 500;
   color: var(--color-font-sub); border-bottom: 2px solid transparent;
   margin-bottom: -2px; white-space: nowrap; background: none;
   cursor: pointer; font-family: var(--font-kr);
@@ -3634,6 +3634,19 @@ footer {
   .about-intro .container { padding: 48px 24px 60px; }
   .about-intro-inner { max-width: 100%; }
   .about-subtext { padding: 44px 0; }
+  .about-subtext.is-visible .container {
+    max-width: 560px;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .about-subtext.is-visible p {
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .about-subtext.is-visible p br {
+    display: none;
+  }
   .about-subtext-flower.asf1,
   .about-subtext-flower.asf3 { display: none; }
   .about-subtext-flower.asf2 { left: 16px; }
@@ -3641,10 +3654,20 @@ footer {
   .about-different-head { margin-bottom: 36px; }
   .about-diff-item { grid-template-columns: 1fr; }
   .about-diff-text { padding: 36px 24px 40px; }
+  .about-diff-text h3 { font-size: 18px; }
   .about-quote { padding: 44px 0; margin-top: 48px; }
   .about-quote-inner { padding: 0 20px; }
   .instructors-full-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .instr-card-photo { height: 200px; }
+  .location-page-title p {
+    max-width: 330px;
+    padding: 0 8px;
+    line-height: 1.75;
+    text-align: center;
+  }
+  .location-page-title p br {
+    display: none;
+  }
   .location-img-grid[data-cols="8"] { grid-template-columns: repeat(4, 1fr); }
   .location-img-grid[data-cols="6"] { grid-template-columns: repeat(3, 1fr); }
   .location-img-grid[data-cols="5"] { grid-template-columns: repeat(3, 1fr); }
