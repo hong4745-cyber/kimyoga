@@ -62,12 +62,54 @@ function _fmtDate(ts) {
 }
 
 function _renderBoardState(el, message, isLoading) {
+  el.hidden = false;
   el.style.visibility = 'visible';
   el.innerHTML =
     '<p class="board-loading" style="grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--color-font-light);">' +
       (isLoading ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> ' : '') +
       _esc(message) +
     '</p>';
+}
+
+function _activatePagination(listEl, items, pageSize, renderItems) {
+  var container = listEl.closest('.container');
+  var paginationEl = container ? container.querySelector('.pagination') : null;
+  var totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+  var currentPage = 1;
+
+  function makeButton(label, ariaLabel, page, disabled, active) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'page-btn' + (active ? ' active' : '');
+    button.textContent = label;
+    if (ariaLabel) button.setAttribute('aria-label', ariaLabel);
+    if (active) button.setAttribute('aria-current', 'page');
+    button.disabled = disabled;
+    button.addEventListener('click', function () {
+      if (!disabled && page !== currentPage) showPage(page);
+    });
+    return button;
+  }
+
+  function showPage(page) {
+    currentPage = Math.max(1, Math.min(page, totalPages));
+    var start = (currentPage - 1) * pageSize;
+    renderItems(listEl, items.slice(start, start + pageSize));
+
+    if (!paginationEl) return;
+    paginationEl.innerHTML = '';
+    paginationEl.appendChild(makeButton('«', '첫 페이지', 1, currentPage === 1, false));
+    paginationEl.appendChild(makeButton('‹', '이전 페이지', currentPage - 1, currentPage === 1, false));
+
+    for (var i = 1; i <= totalPages; i++) {
+      paginationEl.appendChild(makeButton(String(i), i + ' 페이지', i, false, i === currentPage));
+    }
+
+    paginationEl.appendChild(makeButton('›', '다음 페이지', currentPage + 1, currentPage === totalPages, false));
+    paginationEl.appendChild(makeButton('»', '마지막 페이지', totalPages, currentPage === totalPages, false));
+  }
+
+  showPage(1);
 }
 
 /* ── 공지사항: 즉시 fallback 렌더 후 Firebase 실데이터로 교체 ── */
@@ -96,12 +138,12 @@ window.loadNoticeBoard = function (listEl, paginationEl, pageSize) {
     _renderBoardState(listEl, '게시글을 불러올 수 없습니다.', false);
     return;
   }
-  _rdb.ref('posts/notice').orderByChild('createdAt').limitToLast(pageSize).once('value')
+  _rdb.ref('posts/notice').orderByChild('createdAt').once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
       if (items.length > 0) {
-        _renderNoticeRows(listEl, items);
+        _activatePagination(listEl, items, pageSize, _renderNoticeRows);
       } else {
         _renderBoardState(listEl, '등록된 게시글이 없습니다.', false);
       }
@@ -145,12 +187,12 @@ window.loadReviewBoard = function (gridEl, pageSize) {
     _renderBoardState(gridEl, '게시글을 불러올 수 없습니다.', false);
     return;
   }
-  _rdb.ref('posts/review').orderByChild('createdAt').limitToLast(pageSize).once('value')
+  _rdb.ref('posts/review').orderByChild('createdAt').once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
       if (items.length > 0) {
-        _renderReviewCards(gridEl, items);
+        _activatePagination(gridEl, items, pageSize, _renderReviewCards);
       } else {
         _renderBoardState(gridEl, '등록된 게시글이 없습니다.', false);
       }
@@ -189,12 +231,12 @@ window.loadNewsBoard = function (gridEl, pageSize) {
     _renderBoardState(gridEl, '게시글을 불러올 수 없습니다.', false);
     return;
   }
-  _rdb.ref('posts/news').orderByChild('createdAt').limitToLast(pageSize).once('value')
+  _rdb.ref('posts/news').orderByChild('createdAt').once('value')
     .then(function (snap) {
       var items = [];
       snap.forEach(function (child) { items.unshift({ id: child.key, data: child.val() }); });
       if (items.length > 0) {
-        _renderNewsCards(gridEl, items);
+        _activatePagination(gridEl, items, pageSize, _renderNewsCards);
       } else {
         _renderBoardState(gridEl, '등록된 게시글이 없습니다.', false);
       }
