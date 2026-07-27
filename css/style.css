@@ -221,6 +221,14 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 .btn-outline:hover { background: var(--color-main); color: var(--color-sub); }
 
+.instructors .btn-outline,
+.reviews .btn-outline,
+.news .btn-outline {
+  border-width: 2px;
+  padding: 12px 34px;
+  font-size: 15px;
+}
+
 .btn-outline-white {
   display: inline-block;
   border: 1.5px solid rgba(255,255,255,0.7);
@@ -1157,8 +1165,35 @@ button { cursor: pointer; font-family: var(--font-kr); }
 }
 
 .program-content .btn-green {
-  background: var(--color-sub);
-  color: var(--color-main);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.32) 0%,
+      rgba(255, 255, 255, 0.12) 55%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  color: var(--color-sub);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(135%);
+  backdrop-filter: blur(12px) saturate(135%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 24px rgba(24, 52, 43, 0.2);
+}
+
+.program-content .btn-green:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.18) 55%,
+      rgba(255, 255, 255, 0.28) 100%
+    );
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 10px 28px rgba(24, 52, 43, 0.26);
 }
 
 /* ── Program 슬라이더 ── */
@@ -1631,6 +1666,11 @@ button { cursor: pointer; font-family: var(--font-kr); }
   justify-content: center;
   gap: 8px;
   margin-top: 18px;
+  transform: translateY(-8px);
+}
+
+.news-dots + div {
+  transform: translateY(-8px);
 }
 
 .news-dot {
@@ -2503,7 +2543,7 @@ footer {
 
 @media screen and (max-width: 420px) {
   body {
-    padding-top: 54px;
+    padding-top: 65px;
   }
 
   .gnb {
@@ -2514,18 +2554,18 @@ footer {
   }
 
   .gnb .container {
-    height: 54px;
+    height: 65px;
   }
 
   .gnb-logo img {
-    height: 38px;
-    max-height: 38px;
+    height: 44px;
+    max-height: 44px;
     width: auto;
   }
 
   .community-tabs,
   .page-subnav {
-    top: 54px;
+    top: 65px;
   }
 
   .mob-quick {
@@ -2631,6 +2671,26 @@ footer {
     min-width: 0;
   }
 
+  .news-desc {
+    font-size: 12px;
+  }
+
+  .prefooter-text h2 {
+    font-size: 18px;
+  }
+
+  .prefooter-text p {
+    font-size: 15px;
+  }
+
+  .instructors h2.sec-en {
+    font-size: 24px;
+  }
+
+  .hero-dots {
+    bottom: 7%;
+  }
+
   .img-band {
     overflow: visible;
   }
@@ -2655,6 +2715,26 @@ footer {
   .program-wave-bottom img {
     height: auto;
     object-fit: contain;
+  }
+
+  .program-section {
+    height: 320px;
+  }
+
+  .program-section .container {
+    margin-top: 0;
+  }
+
+  .program-content {
+    max-width: 100%;
+    transform: translateY(-15px);
+  }
+
+  .program-desc {
+    display: block;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 18px;
   }
 
   .care-layout {
@@ -2705,12 +2785,12 @@ footer {
   .footer-grid .footer-col:last-child {
     grid-column: 1 / 3;
     grid-row: 4;
-    justify-self: end;
-    text-align: right;
+    justify-self: start;
+    text-align: left;
   }
 
   .footer-grid .footer-col:last-child .social-row {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
   .footer-grid .footer-col:nth-child(2) {
@@ -3486,6 +3566,20 @@ footer {
   .news-page-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media screen and (max-width: 767px) {
+  .page-subnav {
+    top: 60px;
+    margin-top: 0;
+  }
+
+  .page-subnav .container {
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+    overflow-x: hidden;
+    cursor: default;
+    touch-action: pan-y;
+  }
+
   .page-hero { height: 220px; }
   /* about 브랜드소개 */
   .about-intro { min-height: 380px; }
@@ -3544,6 +3638,12 @@ footer {
 /* ============================================================
    RESPONSIVE — 교육프로그램 / MOBILE (< 420px)
    ============================================================ */
+@media screen and (max-width: 420px) {
+  .page-subnav {
+    top: 65px;
+  }
+}
+
 @media screen and (max-width: 419px) {
   /* about 브랜드소개 */
   .about-intro { min-height: 280px; }
