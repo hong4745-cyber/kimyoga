@@ -577,6 +577,8 @@
       </div><!-- /.news-scroll-wrap -->
       </div><!-- /.news-scroll-area -->
 
+      <div class="news-dots" aria-label="뉴스 슬라이드 위치"></div>
+
       <div style="text-align:center; margin-top: 15px;">
         <a href="community-news.html" class="btn-outline">VIEW MORE</a>
       </div>
@@ -631,7 +633,7 @@
           킴스요가필라테스요가<br>
           사업자번호 : 134-27-80643<br>
           대표 : 박경화<br>
-          경기도 안산시 단원구고잔동&nbsp;534-2<br>지스타프라자 601호
+          경기도 안산시 단원구고잔동&nbsp;534&#8209;2<br>지스타프라자 601호
         </p>
       </div>
 
@@ -911,6 +913,45 @@
         if (idx !== current) { current = idx; updateDots(); }
       }, { passive: true });
     }
+  })();
+
+  // 뉴스 카드 인디케이터
+  (function () {
+    var wrap = document.querySelector('.news-scroll-wrap');
+    var grid = document.querySelector('.news-grid');
+    var dotsWrap = document.querySelector('.news-dots');
+    if (!wrap || !grid || !dotsWrap) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.news-card'));
+    var dots = cards.map(function (_, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'news-dot' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', (index + 1) + '번째 뉴스');
+      dot.addEventListener('click', function () {
+        var card = cards[0];
+        if (!card) return;
+        var gap = parseFloat(getComputedStyle(grid).gap) || 0;
+        wrap.scrollTo({ left: index * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function updateNewsDots() {
+      if (!cards.length) return;
+      var gap = parseFloat(getComputedStyle(grid).gap) || 0;
+      var step = cards[0].getBoundingClientRect().width + gap;
+      var current = Math.round(wrap.scrollLeft / step);
+      current = Math.max(0, Math.min(dots.length - 1, current));
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('active', index === current);
+      });
+    }
+
+    wrap.addEventListener('scroll', updateNewsDots, { passive: true });
+    window.addEventListener('resize', updateNewsDots);
+    updateNewsDots();
   })();
 
   // 공통 드래그 스크롤 + 화살표 초기화
